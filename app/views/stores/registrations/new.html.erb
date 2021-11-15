@@ -4,7 +4,7 @@
       <h2 class="page-heading">店舗新規登録</h2>
 
 
-      <%= form_with url: store_registration_path, local: true do |f| %>
+      <%= form_with model:@store,url: store_registration_path, local: true do |f| %>
 
       <div class="field">
         <%= f.label :email, "メールアドレス" %><br />
@@ -25,6 +25,11 @@
         <%= f.label :name, "店舗名" %><br />
         <%= f.text_field :name, id:"user_name" %>
       </div>
+      <div class="field" hidden>
+        <%= f.label :company_id, "id" %><br />
+        <%= f.text_field :company_id,value:current_company.id%>
+      </div>
+
 
 
       <div class="actions">

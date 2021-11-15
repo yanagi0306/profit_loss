@@ -21,15 +21,15 @@
       </div>
       <% if store_signed_in?%>
       <div class="nav__right">
-        <span class="company_nu">合同会社PlasH-table</span>
-        <span class="store_nu"> BENCIA </span>
+        <span class="company_nu"><%=current_store.company.name%></span>
+        <span class="store_nu"> <%=current_store.name%> </span>
         <%= link_to "ログアウト", destroy_store_session_path,method: :delete, class: :nav__logout %>
       </div>
       <% elsif company_signed_in?%>
       <div class="nav__right">
-        <span class="company_nu">合同会社PlasH-table</span>
-        <%= link_to "店舗としてログイン", destroy_store_session_path,method: :delete, class: :nav__logout %>
-        <%= link_to "ログアウト", destroy_store_session_path,method: :delete, class: :nav__logout %>
+        <span class="company_nu"><%=current_company.name%></span>
+        <%= link_to "店舗としてログイン", new_store_session_path, class: :nav__logout %>
+        <%= link_to "ログアウト", destroy_company_session_path,method: :delete, class: :nav__logout %>
       </div>
       <% end %>
     </div>
@@ -46,7 +46,7 @@
       </ul>
       <ul class="configuration_lists">
         <li class="side_list_table"><i class="fa fa-cog" aria-hidden="true"></i>店舗設定</li>
-        <li class="side_list">新規出店</li>
+        <li class="side_list"><%=link_to '新規出店',new_store_registration_path, class: :link_list%></li>
         <li class="side_list">予算管理</li>
         <li class="side_list">予算比率管理</li>
       </ul>
@@ -57,9 +57,9 @@
         <li class="side_list">簡易PL</li>
       </ul>
     </div>
-    <div class="main">
-      <%= yield %>
-    </div>
+
+    <%= yield %>
+
   </div>
   <footer class="footer">
     <p class="copyright">Copyright © FOOD JOURNAL All rights reserved.</p>

@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class Stores::RegistrationsController < Devise::RegistrationsController
+  before_action :check, only: %i[create new destroy update]
   before_action :configure_sign_up_params, only: [:create]
+
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
@@ -38,11 +40,15 @@ class Stores::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  private
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name]).marge(company_id:current_company.id)
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[email company_id])
+  end
+
+  def check
+    redirect_to root_path unless company_signed_in?
   end
 
   # If you have extra params to permit, append them to the sanitizer.
