@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_14_114241) do
+ActiveRecord::Schema.define(version: 2021_11_15_052027) do
+
+  create_table "budgets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.date "ymd", null: false
+    t.integer "water", null: false
+    t.integer "gas", null: false
+    t.integer "electric", null: false
+    t.integer "rent", null: false
+    t.integer "income", null: false
+    t.integer "sales", null: false
+    t.integer "lunch_sales", null: false
+    t.integer "dinner_sales", null: false
+    t.integer "part_cost", null: false
+    t.integer "employee_cost", null: false
+    t.integer "food_cost", null: false
+    t.integer "other", null: false
+    t.bigint "store_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["store_id"], name: "index_budgets_on_store_id"
+  end
 
   create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -40,5 +60,6 @@ ActiveRecord::Schema.define(version: 2021_11_14_114241) do
     t.index ["reset_password_token"], name: "index_stores_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "budgets", "stores"
   add_foreign_key "stores", "companies"
 end

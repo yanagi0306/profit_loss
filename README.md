@@ -33,18 +33,18 @@
 | Colum              | Type       | Options                       |
 | ------------------ | ---------- | ----------------------------- |
 | ymd                | date       | null:false,unique:true        |
-| water              | integer    | null:false                    |
-| gas                | integer    | null:false                    |
-| electric           | integer    | null:false                    |
-| rent               | integer    | null:false                    |
-| income             | integer    | null:false                    |
-| sales              | integer    | null:false                    |
-| lunch_sale         | integer    | null:false                    |
-| dinner_sale        | integer    | null:false                    |
-| part_cost          | integer    | null:false                    |
-| employee_cost      | integer    | null:false                    |
-| food_cost          | integer    | null:false                    |
-| other              | integer    | null:false                    |
+| water              | integer    |                               |
+| gas                | integer    |                               |
+| electric           | integer    |                               |
+| rent               | integer    |                               |
+| income             | integer    |                               |
+| sales              | integer    |                               |
+| lunch_sale         | integer    |                               |
+| dinner_sale        | integer    |                               |
+| part_cost          | integer    |                               |
+| employee_cost      | integer    |                               |
+| food_cost          | integer    |                               |
+| other              | integer    |                               |
 | fixed_cost_id      | references | foreign_key: true             |
 | store_id           | references | foreign_key: true             |
 | budget_day_ratio_id| references | foreign_key: true             |

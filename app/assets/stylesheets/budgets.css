@@ -1,0 +1,93 @@
+.budgets-wrapper {
+  width: calc(100vw - 210px);
+  padding: 15px;
+}
+.main-content-title-wrap {
+  display: flex;
+  padding-bottom: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+}
+.form-label {
+  margin-right: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  padding-top: 2px;
+}
+.form-group {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+}
+.form-group-btn {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+}
+#search_store {
+  margin-left: 132px;
+}
+#search_year {
+  margin-left: 100px;
+}
+.input-item {
+  width: 170px;
+  height: 30px;
+  font-size: 13px;
+}
+.budgets-title {
+  font-size: 15px;
+}
+.result-title {
+  height: 34px;
+  width: calc(100vw - 210px -15px);
+  background: #eee;
+  padding: 8px 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.result-content {
+  margin-top: 18x;
+  width: calc(100vw - 210px -15px);
+  margin-left: 10px;
+}
+
+.table-head {
+  height: 45px;
+  background-color: #eee;
+}
+.search-column {
+  width: 260px;
+  height: 45x;
+  text-align: center;
+  border: #dee2e6 solid 1px;
+}
+
+.budgets-value {
+  width: 260px;
+  height: 45px;
+  text-align: center;
+  border: #dee2e6 solid 1px;
+}
+
+.last-month {
+  width: 260px;
+  height: 45px;
+  text-align: center;
+  border: #dee2e6 solid 1px;
+}
+.budgets-table {
+  border-collapse: collapse;
+}
+th {
+  color: #495057;
+  font-size: 13px;
+}
+td {
+  color: #495057;
+  font-size: 13px;
+}

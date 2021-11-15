@@ -7,6 +7,7 @@ class Store < ApplicationRecord
          :rememberable,
          :validatable
   belongs_to :company
+  has_many :budgets
   validates :name, presence: true
   validates :name, uniqueness: true
 end
