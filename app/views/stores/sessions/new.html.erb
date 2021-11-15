@@ -1,0 +1,28 @@
+<div class="main">
+  <div class="inner">
+    <div class="form__wrapper">
+      <h2 class="page-heading">ユーザーログイン</h2>
+
+      <%= form_with  model:@store,url:store_session_path, local: true do |f| %>
+
+      <div class="field">
+        <%= f.label :name , "店舗名" %><br />
+        <%= f.text_field :name, id:"user_email", autofocus: true, autocomplete: "name" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password, "パスワード（6文字以上）" %><br />
+        <%= f.password_field :password, id:"user_password", autocomplete: "current-password" %>
+      </div>
+      <% unless store_signed_in? %>
+      <%= link_to '会社でログイン',new_company_session_path, class: "info"%><br>
+      <%end%>
+      <%= link_to 'Forgot Password ?',root_path, class: "info"%>
+
+      <div class="actions">
+        <%= f.submit "ログイン", class: :form__btn %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
