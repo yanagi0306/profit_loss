@@ -8,6 +8,8 @@ class Store < ApplicationRecord
          :validatable
   belongs_to :company
   has_many :budgets
+  has_many :achievements
+  has_one :sales
   validates :name, presence: true
   validates :name, uniqueness: true
 end

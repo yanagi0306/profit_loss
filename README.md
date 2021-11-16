@@ -70,17 +70,16 @@
 | rent               | integer    | null:false                    |
 | income             | integer    | null:false                    |
 | sales              | integer    | null:false                    |
-| lunch_sale         | integer    | null:false                    |
-| dinner_sale        | integer    | null:false                    |
+| lunch_sales        | integer    | null:false                    |
+| dinner_sales       | integer    | null:false                    |
 | part_cost          | integer    | null:false                    |
 | employee_cost      | integer    | null:false                    |
 | food_cost          | integer    | null:false                    |
 | other              | integer    | null:false                    |
-| category_name_id   | integer    | null:false                    |
 | income_id          | references | foreign_key: true             |
 | variable_cost_id   | references | foreign_key: true             |
 | fixed_cost_id      | references | foreign_key: true             |
-| sales_day_id       | references | foreign_key: true             |
+| sales_id           | references | foreign_key: true             |
 | store_id           | references | foreign_key: true             |
 
 
@@ -88,10 +87,10 @@
 
 ### Association
 
-- belongs_to :income
-- belongs_to :variable_cost
-- belongs_to :fixed_cost
-- belongs_to :sales_day
+- has_one :incom
+- has_one :variable_cost
+- has_one :fixed_cost
+- has_one :sales
 - belongs_to :store
 
 
@@ -108,7 +107,7 @@
 
 ### Association
 
-- has_one :achievement
+- belongs_to :achievement
 
 
 ## Storesテーブル
@@ -124,7 +123,7 @@
 ### Association
 
 
-- has_one :achievement
+- belongs_to :achievement
 
 
 
@@ -161,7 +160,7 @@
 ### Association
 
 
-- has_one :achievement
+- belongs_to :achievement
 
 ## Budget_day_ratiosテーブル
 

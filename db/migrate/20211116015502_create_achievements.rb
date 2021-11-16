@@ -1,6 +1,6 @@
-class CreateBudgets < ActiveRecord::Migration[6.0]
+class CreateAchievements < ActiveRecord::Migration[6.0]
   def change
-    create_table :budgets do |t|
+    create_table :achievements do |t|
       t.date :ymd, null: false, unique: true
       t.integer :water
       t.integer :gas
@@ -15,11 +15,7 @@ class CreateBudgets < ActiveRecord::Migration[6.0]
       t.integer :food_cost
       t.integer :other
 
-      t.references :store, type: :bigint, null: false, foreign_key: true
-      t.references :Budgets_day_ratio,
-                   type: :bigint,
-                   null: false,
-                   foreign_key: true
+      t.references :store, type: :bigint, foreign_key: true
       t.timestamps
     end
   end

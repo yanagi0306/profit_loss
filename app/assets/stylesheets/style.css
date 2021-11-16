@@ -140,7 +140,7 @@ a {
 .info:hover {
   color: #aaa;
 }
-/* メイン */
+
 /* サイドバー */
 .wrapper {
   display: flex;
@@ -164,18 +164,19 @@ a {
 .side_list {
   color: white;
   height: 50px;
-  padding-left: 60px;
+  padding-left: 30px;
   font-size: 14px;
 }
 .link_list {
   font-size: 14px;
   color: white;
+  text-decoration: none;
 }
 .side_list_table {
   border-top: 1px solid gray;
   color: white;
   height: 50px;
-  padding-left: 40px;
+  padding-left: 10px;
   font-size: 16px;
   padding-top: 15px;
   margin-bottom: 20px;
@@ -183,7 +184,7 @@ a {
 .side_list_table_top {
   color: white;
   height: 50px;
-  padding-left: 40px;
+  padding-left: 10px;
   font-size: 16px;
 }
 

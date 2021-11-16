@@ -13,4 +13,7 @@ Rails.application.routes.draw do
 
   resources :stores, only: [:index]
   resources :budgets, only: %i[index update create]
+  resources :budgets_day_ratios, only: %i[index create]
+  resources :achievements, only: [:create]
+  resources :income, only: %i[index create update]
 end

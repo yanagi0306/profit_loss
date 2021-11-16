@@ -4,12 +4,13 @@ class DeviseCreateStores < ActiveRecord::Migration[6.0]
   def change
     create_table :stores do |t|
       ## Database authenticatable
-      t.string :email,              null: false, default: ""
-      t.string :encrypted_password, null: false, default: ""
-      t.string :name,               null: false, unique: true
-      t.references :company,null: false,foreign_key: true
+      t.string :email, null: false, default: ''
+      t.string :encrypted_password, null: false, default: ''
+      t.string :name, null: false, unique: true
+      t.references :company, type: :bigint, null: false, foreign_key: true
+
       ## Recoverable
-      t.string   :reset_password_token
+      t.string :reset_password_token
       t.datetime :reset_password_sent_at
 
       ## Rememberable
@@ -33,11 +34,10 @@ class DeviseCreateStores < ActiveRecord::Migration[6.0]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-
       t.timestamps null: false
     end
 
-    add_index :stores, :email,                unique: true
+    add_index :stores, :email, unique: true
     add_index :stores, :reset_password_token, unique: true
     # add_index :stores, :confirmation_token,   unique: true
     # add_index :stores, :unlock_token,         unique: true
