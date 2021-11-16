@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_16_064714) do
+ActiveRecord::Schema.define(version: 2021_11_16_080605) do
 
   create_table "achievements", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "ymd", null: false
@@ -79,19 +79,43 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
     t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
   end
 
-  create_table "fixed_costs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "fixed_cost_achievements", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "achievement_id", null: false
+    t.bigint "fixed_cost_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["achievement_id"], name: "index_fixed_cost_achievements_on_achievement_id"
+    t.index ["fixed_cost_id"], name: "index_fixed_cost_achievements_on_fixed_cost_id"
+  end
+
+  create_table "fixed_cost_budgets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "budget_id", null: false
+    t.bigint "fixed_cost_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["budget_id"], name: "index_fixed_cost_budgets_on_budget_id"
+    t.index ["fixed_cost_id"], name: "index_fixed_cost_budgets_on_fixed_cost_id"
+  end
+
+  create_table "fixed_costs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "price", null: false
+    t.integer "fixed_category_id", null: false
+    t.date "start_date", null: false
+    t.date "end_date", null: false
+    t.bigint "budgets_day_ratio_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["budgets_day_ratio_id"], name: "index_fixed_costs_on_budgets_day_ratio_id"
   end
 
   create_table "incomes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "price", null: false
     t.date "ymd", null: false
-    t.bigint "store_id", null: false
     t.string "memo"
+    t.bigint "achievement_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["store_id"], name: "index_incomes_on_store_id"
+    t.index ["achievement_id"], name: "index_incomes_on_achievement_id"
   end
 
   create_table "sales", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -121,14 +145,25 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
   end
 
   create_table "variable_costs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "price", null: false
+    t.integer "variable_category_id", null: false
+    t.date "ymd", null: false
+    t.bigint "achievement_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["achievement_id"], name: "index_variable_costs_on_achievement_id"
   end
 
   add_foreign_key "achievements", "stores"
   add_foreign_key "budgets", "Budgets_day_ratios"
   add_foreign_key "budgets", "stores"
-  add_foreign_key "incomes", "stores"
+  add_foreign_key "fixed_cost_achievements", "achievements"
+  add_foreign_key "fixed_cost_achievements", "fixed_costs"
+  add_foreign_key "fixed_cost_budgets", "budgets"
+  add_foreign_key "fixed_cost_budgets", "fixed_costs"
+  add_foreign_key "fixed_costs", "budgets_day_ratios"
+  add_foreign_key "incomes", "achievements"
   add_foreign_key "sales", "achievements"
   add_foreign_key "stores", "companies"
+  add_foreign_key "variable_costs", "achievements"
 end

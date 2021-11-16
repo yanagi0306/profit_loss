@@ -14,8 +14,7 @@ class CreateAchievements < ActiveRecord::Migration[6.0]
       t.integer :employee_cost
       t.integer :food_cost
       t.integer :other
-
-      t.references :store, type: :bigint, foreign_key: true
+      t.references :store, foreign_key: true
       t.timestamps
     end
   end

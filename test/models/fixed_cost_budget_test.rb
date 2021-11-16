@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class BdgetDayRatioTest < ActiveSupport::TestCase
+class FixedCostBudgetTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
