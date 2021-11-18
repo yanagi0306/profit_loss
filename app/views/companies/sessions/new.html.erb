@@ -6,12 +6,12 @@
       <%= form_with  model:@company,url: company_session_path, local: true do |f| %>
 
       <div class="field">
-        <%= f.label :name, "会社名" %><br />
+        <%= f.label :name, "会社名" ,class:"certification"%><br />
         <%= f.text_field :name, id:"user_email", autofocus: true, autocomplete: "name" %>
       </div>
 
       <div class="field">
-        <%= f.label :password, "パスワード（6文字以上）" %><br />
+        <%= f.label :password, "パスワード（6文字以上）" ,class:"certification"%><br />
         <%= f.password_field :password, id:"user_password", autocomplete: "current-password" %>
       </div>
 

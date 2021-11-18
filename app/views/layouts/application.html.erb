@@ -38,29 +38,31 @@
   <div class="wrapper">
     <div class="sidebar">
       <ul class="input_lists">
-        <li class="side_list_table_top">
+        <li class="side_list_table">
           <i class="fa fa-home" aria-hidden="true"></i>店舗収支管理</li>
-        <li class="side_list">売上管理</li>
-        <li class="side_list">臨時収入管理</li>
-        <li class="side_list">固定費管理</li>
-        <li class="side_list">変動費管理</li>
+        <li class="side_list"><%=link_to '売上管理',sales_path, class: :link_list%></li>
+        <li class="side_list"><%=link_to '臨時収入管理',incomes_path, class: :link_list%></li>
+        <li class="side_list"><%=link_to '固定費管理',budgets_path, class: :link_list%></li>
+        <li class="side_list"><%=link_to '変動費',variable_costs_path, class: :link_list%></li>
       </ul>
       <ul class="configuration_lists">
-        <li class="side_list_table"><i class="fa fa-cog" aria-hidden="true"></i>店舗設定</li>
+        <li class="side_list_table"><i class="fa fa-cog" aria-hidden="true"></i>店舗管理設定</li>
+        <% if company_signed_in? %>
         <li class="side_list"><%=link_to '新規出店',new_store_registration_path, class: :link_list%></li>
+        <% end %>
         <li class="side_list"><%=link_to '予算管理',budgets_path, class: :link_list%></li>
         <li class="side_list"><%=link_to '予算比率管理',budgets_day_ratios_path, class: :link_list%></li>
       </ul>
       <ul class="management_lists">
         <li class="side_list_table"><i class="fa fa-calculator" aria-hidden="true"></i>店舗分析</li>
-        <li class="side_list">売上実績一覧</li>
-        <li class="side_list">Zチャート</li>
-        <li class="side_list">簡易PL</li>
+        <li class="side_list"><%=link_to '売上実績管理',new_store_registration_path, class: :link_list%></li>
+        <li class="side_list"><%=link_to 'Zチャート',new_store_registration_path, class: :link_list%></li>
+        <li class="side_list"><%=link_to '簡易PL',new_store_registration_path, class: :link_list%></li>
       </ul>
     </div>
-
-    <%= yield %>
-
+    <div class="main">
+      <%= yield %>
+    </div>
   </div>
   <footer class="footer">
     <p class="copyright">Copyright © FOOD JOURNAL All rights reserved.</p>

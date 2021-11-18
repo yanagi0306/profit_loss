@@ -15,5 +15,7 @@ Rails.application.routes.draw do
   resources :budgets, only: %i[index update create]
   resources :budgets_day_ratios, only: %i[index create]
   resources :achievements, only: [:create]
-  resources :income, only: %i[index create update]
+  resources :incomes, only: %i[index create update]
+  resources :sales, only: %i[index create update]
+  resources :variable_costs, only: %i[index create update]
 end

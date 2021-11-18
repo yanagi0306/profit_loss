@@ -9,16 +9,34 @@
   align-items: center;
   padding-bottom: 1rem;
 }
-.form-label {
-  margin-right: 10px;
-  font-size: 15px;
+label {
+  font-size: 13px;
   font-weight: 700;
+  width: 60px;
+}
+.form-label {
+  margin-left: 20px;
   padding-top: 2px;
+  width: 60px;
 }
 .form-group {
   margin-top: 20px;
   margin-bottom: 20px;
   display: flex;
+}
+.form-inline {
+  display: flex;
+  justify-content: center;
+  width: 1300px;
+  position: relative;
+  right: 29px;
+}
+.form-inline-store {
+  display: flex;
+  justify-content: center;
+  width: 1300px;
+  position: relative;
+  right: 120px;
 }
 .form-group-btn {
   margin-top: 20px;
@@ -26,12 +44,12 @@
   display: flex;
   justify-content: center;
 }
-#search_store {
+/* #search_store {
   margin-left: 132px;
 }
 #search_year {
-  margin-left: 100px;
-}
+  margin-left: 105px;
+} */
 .input-item {
   width: 170px;
   height: 30px;
@@ -44,8 +62,9 @@
   height: 34px;
   width: calc(100vw - 210px -15px);
   background: #eee;
-  padding: 8px 1rem;
+  padding: 8px;
   margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
   font-weight: 700;
   font-size: 13px;
 }
@@ -53,30 +72,33 @@
 .result-content {
   margin-top: 18x;
   width: calc(100vw - 210px -15px);
-  margin-left: 10px;
+  margin-left: 20px;
 }
-
+/* 予算入力情報 */
+th.top-budgets {
+  width: 150px;
+}
+th.width-budgets {
+  width: calc(100%- 90px);
+}
 .table-head {
-  height: 45px;
+  height: 40px;
   background-color: #eee;
 }
 .search-column {
-  width: 260px;
-  height: 45x;
+  height: 40x;
   text-align: center;
   border: #dee2e6 solid 1px;
 }
 
 .budgets-value {
-  width: 260px;
-  height: 45px;
+  height: 40px;
   text-align: center;
   border: #dee2e6 solid 1px;
 }
 
 .last-month {
-  width: 260px;
-  height: 45px;
+  height: 40px;
   text-align: center;
   border: #dee2e6 solid 1px;
 }
@@ -90,4 +112,72 @@ th {
 td {
   color: #495057;
   font-size: 13px;
+}
+.input-group-append {
+  height: 28px;
+  width: 180px;
+  float: right;
+  margin-right: 15px;
+  border: 1px solid #c5c5c5;
+}
+.input-sale-append {
+  height: 28px;
+  width: 130px;
+  float: right;
+  margin-right: 15px;
+  border: 1px solid #c5c5c5;
+}
+/* 売上管理 */
+.sale-day {
+  border: #dee2e6 solid 1px;
+  text-align: center;
+  color: #4a4a4a;
+  height: 40px;
+  font-size: 13px;
+  font-weight: 700;
+}
+.sale-input-head {
+  height: 40px;
+  border: #dee2e6 solid 1px;
+  text-align: center;
+}
+.sale-input {
+  height: 40px;
+  border: #dee2e6 solid 1px;
+  text-align: center;
+}
+.memo-input {
+  height: 40px;
+  border: #dee2e6 solid 1px;
+  text-align: center;
+}
+table {
+  table-layout: fixed;
+  width: 100%;
+}
+th.top-sale {
+  width: 130px;
+}
+th.top-weeks {
+  border: #dee2e6 solid 1px;
+  text-align: center;
+  color: #4a4a4a;
+  height: 40px;
+  font-size: 13px;
+  font-weight: 700;
+  width: 60px;
+}
+th.width30 {
+  width: calc(100%- 33px);
+}
+/* 臨時収入管理 */
+.input-memo {
+  height: 28px;
+  width: 90%;
+  border: 1px solid #c5c5c5;
+}
+.input-variable {
+  height: 28px;
+  width: 80%;
+  border: 1px solid #c5c5c5;
 }

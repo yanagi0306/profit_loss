@@ -94,6 +94,11 @@ a {
 }
 
 /* フォーム周り */
+label.certification {
+  font-size: 13px;
+  font-weight: 700;
+  width: 200px;
+}
 .form__wrapper {
   min-height: calc(100vh - 161px);
 }
@@ -144,66 +149,83 @@ a {
 /* サイドバー */
 .wrapper {
   display: flex;
-  height: calc(100vh - 60px - 3vh);
+  height: calc(100vh - 30px - 5px);
+}
+i {
+  margin-right: 10px;
 }
 .sidebar {
   background-color: #43618a;
   width: 210px;
-  height: calc(100vh - 60px - 3vh);
+  height: calc(100vh - 30px - 5px);
+  overflow: scroll;
 }
 .input_lists {
   padding-top: 20px;
+  margin-left: 0;
+  padding-left: 0;
 }
 .configuration_lists {
   padding-top: 20px;
+  margin-left: 0;
+  padding-left: 0;
 }
 
 .management_lists {
   padding-top: 20px;
+  margin-left: 0;
+  padding-left: 0;
 }
 .side_list {
   color: white;
   height: 50px;
   padding-left: 30px;
   font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 .link_list {
   font-size: 14px;
   color: white;
   text-decoration: none;
+  padding-left: 15px;
+}
+.side_list:hover {
+  background-color: #007eaf;
+}
+.link_list:visited {
+  color: inherit;
 }
 .side_list_table {
   border-top: 1px solid gray;
   color: white;
   height: 50px;
-  padding-left: 10px;
+  padding-left: 20px;
   font-size: 16px;
   padding-top: 15px;
-  margin-bottom: 20px;
-}
-.side_list_table_top {
-  color: white;
-  height: 50px;
-  padding-left: 10px;
-  font-size: 16px;
 }
 
 /* メイン */
 .main {
   width: calc(100vw - 210px);
   height: calc(100vh - 60px - 3vh);
+  overflow: scroll;
 }
 /* フッター */
 
 .footer {
   background-color: #999;
   padding: 10px 0;
-  height: 3vh;
+  height: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .copyright {
-  text-align: center;
   color: #fff;
   font-size: 10px;
+  margin-top: 15px;
 }
 
 /* タブレット対応 */
