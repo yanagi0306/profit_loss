@@ -26,6 +26,7 @@
 - has_many :achievements
 - has_many :budgets
 - belongs_to :company
+- has_many :budgets_day_ratio
 
 
 ## Budgetsテーブル
@@ -147,10 +148,11 @@
 | friday              | integer    | null:false                     |
 | saturday            | integer    | null:false                     |
 | holiday             | integer    | null:false                     |
-
+| store               | references | null:false,foreign_key: true              |
 
 
 ### Association
 
 
 - has_many :budgets
+- belongs_to :store

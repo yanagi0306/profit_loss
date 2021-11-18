@@ -14,7 +14,7 @@ class Stores::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    binding.pry
+    FactoryBot.create(:budgets_day_ratio, store_id: current_store.id)
   end
 
   # GET /resource/edit

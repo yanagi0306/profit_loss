@@ -1,4 +1,4 @@
 class BudgetsDayRatio < ApplicationRecord
   has_many :budgets
-  has_many :fixed_costs
+  belongs_to :store
 end

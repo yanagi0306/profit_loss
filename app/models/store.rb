@@ -9,6 +9,7 @@ class Store < ApplicationRecord
   belongs_to :company
   has_many :budgets
   has_many :achievements
+  has_many :budgets_day_ratios
   validates :name, presence: true
   validates :name, uniqueness: true
 end

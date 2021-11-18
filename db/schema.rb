@@ -62,8 +62,10 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
     t.integer "friday", null: false
     t.integer "saturday", null: false
     t.integer "holiday", null: false
+    t.bigint "store_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["store_id"], name: "index_budgets_day_ratios_on_store_id"
   end
 
   create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -128,6 +130,7 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
   add_foreign_key "achievements", "stores"
   add_foreign_key "budgets", "Budgets_day_ratios"
   add_foreign_key "budgets", "stores"
+  add_foreign_key "budgets_day_ratios", "stores"
   add_foreign_key "incomes", "achievements"
   add_foreign_key "sales", "achievements"
   add_foreign_key "stores", "companies"
