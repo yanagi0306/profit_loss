@@ -7,22 +7,22 @@
       <%= form_with model:@store,url: store_registration_path, local: true do |f| %>
 
       <div class="field">
-        <%= f.label :email, "メールアドレス" %><br />
+        <%= f.label :email, "メールアドレス" ,class:"certification"%><br />
         <%= f.email_field :email, id:"user_email", autofocus: true, autocomplete: "email" %>
       </div>
 
       <div class="field">
-        <%= f.label :password, "パスワード（6文字以上）" %><br />
+        <%= f.label :password, "パスワード（6文字以上）" ,class:"certification"%><br />
         <%= f.password_field :password, id:"user_password", autocomplete: "new-password" %>
       </div>
 
       <div class="field">
-        <%= f.label :password_confirmation, "パスワード再入力" %><br />
+        <%= f.label :password_confirmation, "パスワード再入力" ,class:"certification"%><br />
         <%= f.password_field :password_confirmation, id:"user_password_confirmation", autocomplete: "new-password" %>
       </div>
 
       <div class="field">
-        <%= f.label :name, "店舗名" %><br />
+        <%= f.label :name, "店舗名" ,class:"certification"%><br />
         <%= f.text_field :name, id:"user_name" %>
       </div>
       <div class="field" hidden>
