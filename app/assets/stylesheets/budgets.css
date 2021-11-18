@@ -73,6 +73,7 @@ label {
   margin-top: 18x;
   width: calc(100vw - 210px -15px);
   margin-left: 20px;
+  overflow-x: scroll;
 }
 /* 予算入力情報 */
 th.top-budgets {
@@ -119,6 +120,7 @@ td {
   float: right;
   margin-right: 15px;
   border: 1px solid #c5c5c5;
+  padding-right: 11px;
 }
 .input-sale-append {
   height: 28px;

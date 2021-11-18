@@ -5,6 +5,7 @@
       曜日別予算比率入力情報
     </div>
   </div>
+  <%= form_with model: @budgets_day_ratio,url:budgets_day_ratios_path,local: true do |f| %>
   <div class="result-content">
     <table class="budgets-table">
       <tr class='table-head'>
@@ -19,43 +20,55 @@
       </tr>
       <tr>
         <td class='search-column'>月曜日</td>
-        <td class='budgets-value'><input type="text" class="input-group-append text-end"></td>
-        <td class="last-month">70</td>
+        <td class='budgets-value'>
+          <%= f.text_field :monday, class: 'input-group-append text-end',value:@now_store_ratio.monday%></td>
+        <td class="last-month"><%=@now_store_ratio.monday%></td>
       </tr>
       <tr>
         <td class='search-column'>火曜日</td>
-        <td class='budgets-value'><input type="text" class="input-group-append text-end"></td>
-        <td class="last-month">75</td>
+        <td class='budgets-value'>
+          <%= f.text_field :tuesday, class: 'input-group-append text-end',value:@now_store_ratio.tuesday%>
+        </td>
+        <td class="last-month"><%=@now_store_ratio.tuesday%></td>
       </tr>
       <tr>
         <td class='search-column'>水曜日</td>
-        <td class='budgets-value'><input type="text" class="input-group-append text-end"></td>
-        <td class="last-month">80</td>
+        <td class='budgets-value'>
+          <%= f.text_field :wednesday, class: 'input-group-append text-end',value:@now_store_ratio.wednesday%>
+        </td>
+        <td class="last-month"><%=@now_store_ratio.wednesday%></td>
       </tr>
       <tr>
         <td class='search-column'>木曜日</td>
-        <td class='budgets-value'><input type="text" class="input-group-append text-end"></td>
-        <td class="last-month">75</td>
+        <td class='budgets-value'>
+          <%= f.text_field :thursday, class: 'input-group-append text-end',value:@now_store_ratio.thursday%>
+        </td>
+        <td class="last-month"><%=@now_store_ratio.thursday%></td>
       </tr>
       <tr>
         <td class='search-column'>金曜日</td>
-        <td class='budgets-value'><input type="text" class="input-group-append text-end"></td>
-        <td class="last-month">90</td>
+        <td class='budgets-value'>
+          <%= f.text_field :friday, class: 'input-group-append text-end',value:@now_store_ratio.friday%></td>
+        <td class="last-month"><%=@now_store_ratio.saturday%></td>
       </tr>
       <tr>
         <td class='search-column'>土曜日</td>
-        <td class='budgets-value'><input type="text" class="input-group-append text-end"></td>
-        <td class="last-month">110</td>
+        <td class='budgets-value'>
+          <%= f.text_field :saturday, class: 'input-group-append text-end',value:@now_store_ratio.saturday%>
+        </td>
+        <td class="last-month"><%=@now_store_ratio.saturday%></td>
       </tr>
       <tr>
         <td class='search-column'>祝日</td>
-        <td class='budgets-value'><input type="text" class="input-group-append text-end"></td>
-        <td class="last-month">120</td>
+        <td class='budgets-value'>
+          <%= f.text_field :holiday, class: 'input-group-append text-end',value:@now_store_ratio.holiday%>
+        </td>
+        <td class="last-month"><%=@now_store_ratio.holiday%></td>
       </tr>
-
     </table>
   </div>
   <div class="form-group-btn">
-    <input type="button" class="form__btn" value="登録">
+    <%= f.submit "登録" ,class:"form__btn", id:"button" %>
   </div>
+  <% end %>
 </div>
