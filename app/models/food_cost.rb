@@ -1,0 +1,2 @@
+class FoodCost < ApplicationRecord
+end

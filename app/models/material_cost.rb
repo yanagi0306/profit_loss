@@ -1,0 +1,2 @@
+class MaterialCost < ApplicationRecord
+end
