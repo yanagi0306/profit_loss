@@ -3,24 +3,14 @@ class BudgetsDayRatiosController < ApplicationController
 
   def index
     @budgets_day_ratio = BudgetsDayRatio.new
-    @now_store_ratio =
-      BudgetsDayRatio
-        .where(store_id: current_store.id)
-        .order(created_at: :desc)
-        .limit(1)
-        .first_or_initialize
+    now_ratio
   end
   def create
     @budgets_day_ratio = BudgetsDayRatio.new(ratio_params)
     if @budgets_day_ratio.save
       redirect_to budgets_day_ratios_path
     else
-      @now_store_ratio =
-        BudgetsDayRatio
-          .where(store_id: current_store.id)
-          .order(created_at: :desc)
-          .limit(1)
-          .first_or_initialize
+      now_ratio
       render :index
     end
   end
@@ -43,5 +33,13 @@ class BudgetsDayRatiosController < ApplicationController
         :holiday,
       )
       .merge(store_id: current_store.id)
+  end
+  def now_ratio
+    @now_store_ratio =
+      BudgetsDayRatio
+        .where(store_id: current_store.id)
+        .order(created_at: :desc)[
+        0
+      ]
   end
 end
