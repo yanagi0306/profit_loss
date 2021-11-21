@@ -26,7 +26,6 @@
 - has_many :achievements
 - has_many :budgets
 - belongs_to :company
-- has_many :budgets_day_ratio
 
 
 ## Budgetsテーブル
@@ -39,7 +38,7 @@
 | dinner_value                | integer    |                               |
 | interest_income             | integer    |                               |
 | miscellaneous_income        | integer    |                               |
-| overtime_cmployee_cost      | integer    |                               |
+| overtime_employee_cost      | integer    |                               |
 | social_insurance_part       | integer    |                               |
 | communications_variable     | integer    |                               |
 | publicity_variable          | integer    |                               |
@@ -64,11 +63,11 @@
 | credit_fixed                | integer    |                               |
 | delivery_variable           | integer    |                               |
 | rent                        | integer    |                               |
-| cmployee_cost               | integer    |                               |
+| employee_cost               | integer    |                               |
 | director_cost               | integer    |                               |
 | company_interest            | integer    |                               |
-| empinterest_payment         | integer    |                               |
-| social_insurance_cmployee   | integer    |                               |
+| interest_payment            | integer    |                               |
+| social_insurance_employee   | integer    |                               |
 | resident_tax                | integer    |                               |
 | pos_system                  | integer    |                               |
 | garbage_variable            | integer    |                               |
@@ -97,7 +96,7 @@
 | dinner_value                | integer    |                               |
 | interest_income             | integer    |                               |
 | miscellaneous_income        | integer    |                               |
-| overtime_cmployee_cost      | integer    |                               |
+| overtime_employee_cost      | integer    |                               |
 | social_insurance_part       | integer    |                               |
 | communications_variable     | integer    |                               |
 | publicity_variable          | integer    |                               |
@@ -122,11 +121,11 @@
 | credit_fixed                | integer    |                               |
 | delivery_variable           | integer    |                               |
 | rent                        | integer    |                               |
-| cmployee_cost               | integer    |                               |
+| employee_cost               | integer    |                               |
 | director_cost               | integer    |                               |
 | company_interest            | integer    |                               |
-| empinterest_payment         | integer    |                               |
-| social_insurance_cmployee   | integer    |                               |
+| interest_payment            | integer    |                               |
+| social_insurance_employee   | integer    |                               |
 | resident_tax                | integer    |                               |
 | pos_system                  | integer    |                               |
 | garbage_variable            | integer    |                               |
@@ -138,10 +137,13 @@
 
 
 
+
 ### Association
 
-- has_one :income
-- has_one :variable_cost
+- has_many :income
+- has_many :food_costs
+- has_many :material_costs
+- has_many :variable_cost
 - belongs_to :store
 
 
@@ -184,7 +186,7 @@
 | price              | integer    | null:false                     |
 | ymd                | date       | null:false,unique:true         |
 | achievement        | references | null: false, foreign_key: true |
-| purchasing_category| references | null: false, foreign_key: true |
+| food_category      | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -212,13 +214,13 @@
 | price              | integer    | null:false                     |
 | ymd                | date       | null:false,unique:true         |
 | achievement        | references | null: false, foreign_key: true |
-| purchasing_category| references | null: false, foreign_key: true |
+| material_category  | references | null: false, foreign_key: true |
 
 ### Association
 
 
 - belongs_to :achievement
-- belongs_to :purchasing_category
+- belongs_to :material_category
 
 ## material_categorysテーブル
 
@@ -260,11 +262,9 @@
 | friday              | integer    | null:false                     |
 | saturday            | integer    | null:false                     |
 | holiday             | integer    | null:false                     |
-| store               | references | null:false,foreign_key: true   |
 
 
 ### Association
 
 
 - has_many :budgets
-- belongs_to :store
