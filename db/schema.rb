@@ -14,18 +14,47 @@ ActiveRecord::Schema.define(version: 2021_11_21_111455) do
 
   create_table "achievements", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "ymd", null: false
+    t.integer "sale_value"
+    t.integer "lunch_value"
+    t.integer "dinner_value"
+    t.integer "interest_income"
+    t.integer "miscellaneous_income"
+    t.integer "overtime_employee_cost"
+    t.integer "social_insurance_part"
+    t.integer "communications_variable"
+    t.integer "publicity_variable"
+    t.integer "social"
+    t.integer "meeting"
+    t.integer "traveling"
+    t.integer "selling_administration_cost"
+    t.integer "garbage_variable"
+    t.integer "car_variable"
+    t.integer "clean_variable"
+    t.integer "credit_variable"
+    t.integer "delivery_variable"
+    t.integer "electric"
     t.integer "water"
     t.integer "gas"
-    t.integer "electric"
-    t.integer "income"
-    t.integer "sales"
-    t.integer "lunch_sales"
-    t.integer "dinner_sales"
-    t.integer "part_cost"
-    t.integer "food_cost"
-    t.integer "other"
-    t.integer "employee_cost"
+    t.integer "power"
+    t.integer "welfare_fixed"
+    t.integer "communications_fixed"
+    t.integer "publicity_fixed"
+    t.integer "clean_fixed"
+    t.integer "car_fixed"
+    t.integer "credit_fixed"
+    t.integer "delivery_fixed"
     t.integer "rent"
+    t.integer "employee_cost"
+    t.integer "director_cost"
+    t.integer "company_interest"
+    t.integer "interest_payment"
+    t.integer "social_insurance_employee"
+    t.integer "resident_tax"
+    t.integer "pos_system"
+    t.integer "garbage_fixed"
+    t.integer "borrowing"
+    t.integer "tax_counsellor"
+    t.integer "labor_counsellor"
     t.bigint "store_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -34,23 +63,52 @@ ActiveRecord::Schema.define(version: 2021_11_21_111455) do
 
   create_table "budgets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "ymd", null: false
+    t.integer "sale_value"
+    t.integer "lunch_value"
+    t.integer "dinner_value"
+    t.integer "interest_income"
+    t.integer "miscellaneous_income"
+    t.integer "overtime_employee_cost"
+    t.integer "social_insurance_part"
+    t.integer "communications_variable"
+    t.integer "publicity_variable"
+    t.integer "social"
+    t.integer "meeting"
+    t.integer "traveling"
+    t.integer "selling_administration_cost"
+    t.integer "garbage_variable"
+    t.integer "car_variable"
+    t.integer "clean_variable"
+    t.integer "credit_variable"
+    t.integer "delivery_variable"
+    t.integer "electric"
     t.integer "water"
     t.integer "gas"
-    t.integer "electric"
-    t.integer "income"
-    t.integer "sales"
-    t.integer "lunch_sales"
-    t.integer "dinner_sales"
-    t.integer "part_cost"
-    t.integer "food_cost"
-    t.integer "other"
-    t.integer "employee_cost"
+    t.integer "power"
+    t.integer "welfare_fixed"
+    t.integer "communications_fixed"
+    t.integer "publicity_fixed"
+    t.integer "clean_fixed"
+    t.integer "car_fixed"
+    t.integer "credit_fixed"
+    t.integer "delivery_fixed"
     t.integer "rent"
+    t.integer "employee_cost"
+    t.integer "director_cost"
+    t.integer "company_interest"
+    t.integer "interest_payment"
+    t.integer "social_insurance_employee"
+    t.integer "resident_tax"
+    t.integer "pos_system"
+    t.integer "garbage_fixed"
+    t.integer "borrowing"
+    t.integer "tax_counsellor"
+    t.integer "labor_counsellor"
     t.bigint "store_id", null: false
-    t.bigint "Budgets_day_ratio_id", null: false
+    t.bigint "budgets_day_ratio_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["Budgets_day_ratio_id"], name: "index_budgets_on_Budgets_day_ratio_id"
+    t.index ["budgets_day_ratio_id"], name: "index_budgets_on_budgets_day_ratio_id"
     t.index ["store_id"], name: "index_budgets_on_store_id"
   end
 
@@ -101,7 +159,7 @@ ActiveRecord::Schema.define(version: 2021_11_21_111455) do
   create_table "incomes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "price", null: false
     t.date "ymd", null: false
-    t.string "memo"
+    t.string "income_category_id", null: false
     t.bigint "achievement_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -162,7 +220,7 @@ ActiveRecord::Schema.define(version: 2021_11_21_111455) do
   end
 
   add_foreign_key "achievements", "stores"
-  add_foreign_key "budgets", "Budgets_day_ratios"
+  add_foreign_key "budgets", "budgets_day_ratios"
   add_foreign_key "budgets", "stores"
   add_foreign_key "budgets_day_ratios", "stores"
   add_foreign_key "food_costs", "achievements"

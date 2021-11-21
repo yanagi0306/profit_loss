@@ -186,7 +186,7 @@
 | price              | integer    | null:false                     |
 | ymd                | date       | null:false,unique:true         |
 | achievement        | references | null: false, foreign_key: true |
-| food_category| references | null: false, foreign_key: true |
+| food_category      | references | null: false, foreign_key: true |
 
 ### Association
 

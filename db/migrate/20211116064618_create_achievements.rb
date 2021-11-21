@@ -30,7 +30,7 @@ class CreateAchievements < ActiveRecord::Migration[6.0]
       t.integer :clean_fixed
       t.integer :car_fixed
       t.integer :credit_fixed
-      t.integer :delivery_variable
+      t.integer :delivery_fixed
       t.integer :rent
       t.integer :employee_cost
       t.integer :director_cost
@@ -39,7 +39,7 @@ class CreateAchievements < ActiveRecord::Migration[6.0]
       t.integer :social_insurance_employee
       t.integer :resident_tax
       t.integer :pos_system
-      t.integer :garbage_variable
+      t.integer :garbage_fixed
       t.integer :borrowing
       t.integer :tax_counsellor
       t.integer :labor_counsellor
