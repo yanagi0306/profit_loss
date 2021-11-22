@@ -25,6 +25,10 @@
         <%= f.label :name, "店舗名" ,class:"certification"%><br />
         <%= f.text_field :name, id:"user_name" %>
       </div>
+      <div class="field">
+        <%= f.label :name, "開業年" ,class:"certification"%><br />
+        <%= f.text_field :opening_year, id:"user_name" %>
+      </div>
       <div class="field" hidden>
         <%= f.label :company_id, "id" %><br />
         <%= f.text_field :company_id,value:current_company.id%>
