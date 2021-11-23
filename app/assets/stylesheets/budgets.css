@@ -44,12 +44,7 @@ label {
   display: flex;
   justify-content: center;
 }
-/* #search_store {
-  margin-left: 132px;
-}
-#search_year {
-  margin-left: 105px;
-} */
+
 .input-item {
   width: 170px;
   height: 30px;
@@ -71,7 +66,6 @@ label {
 
 .result-content {
   margin-top: 18x;
-  width: calc(100vw - 210px -15px);
   margin-left: 20px;
   overflow-x: scroll;
 }
@@ -83,7 +77,7 @@ th.width-budgets {
   width: calc(100%- 90px);
 }
 .table-head {
-  height: 40px;
+  height: 38px;
   background-color: #eee;
 }
 .search-column {
@@ -103,9 +97,7 @@ th.width-budgets {
   text-align: center;
   border: #dee2e6 solid 1px;
 }
-.budgets-table {
-  border-collapse: collapse;
-}
+
 th {
   color: #495057;
   font-size: 13px;
@@ -130,18 +122,39 @@ td {
   border: 1px solid #c5c5c5;
 }
 /* 売上管理 */
-.sale-day {
+.incomes-table {
+  width: 473px;
+}
+.incomes_record {
+  height: 50px;
+}
+.incomes-day {
+  border: #dee2e6 solid 1px;
+  text-align: center;
+  color: #4a4a4a;
+  font-size: 13px;
+  font-weight: 700;
+  width: 90px;
+}
+.incomes-week {
   border: #dee2e6 solid 1px;
   text-align: center;
   color: #4a4a4a;
   height: 40px;
   font-size: 13px;
   font-weight: 700;
+  width: 69px;
 }
-.sale-input-head {
-  height: 40px;
+.incomes-column {
+  width: 157px;
   border: #dee2e6 solid 1px;
   text-align: center;
+}
+.incomes-input {
+  height: 33px;
+  width: 120px;
+  border: 1px solid #c5c5c5;
+  padding-right: 11px;
 }
 .sale-input {
   height: 40px;
@@ -156,21 +169,6 @@ td {
 table {
   table-layout: fixed;
   width: 100%;
-}
-th.top-sale {
-  width: 130px;
-}
-th.top-weeks {
-  border: #dee2e6 solid 1px;
-  text-align: center;
-  color: #4a4a4a;
-  height: 40px;
-  font-size: 13px;
-  font-weight: 700;
-  width: 60px;
-}
-th.width30 {
-  width: calc(100%- 33px);
 }
 /* 臨時収入管理 */
 .input-memo {
