@@ -37,28 +37,28 @@
   <div class="result-content">
     <table class="incomes-table">
       <tr class='table-head'>
-        <th class='incomes-day' id="selected_month"></th>
+        <th class='incomes-day' id="selected_month"><%=@selected_year%>年</th>
         <th class='incomes-week'>曜日</th>
         <% IncomeCategory.data.map{|i| i[:name]}.each do |n|%>
         <th class='incomes-column'><%=n%></th>
         <% end %>
       </tr>
-      <% @month_period.each do |i|%>
-      <% if HolidayJapan.check(i) || i.wday == 0%>
+
+      <% @selected_dates.each do |ymd|%>
+      <% if HolidayJapan.check(ymd) || ymd.wday == 0%>
       <tr class='incomes_record' style='background-color:#FFDDCB'>
-        <% elsif i.wday == 6 %>
+        <% elsif ymd.wday == 6 %>
       <tr class='incomes_record' style='background-color:#BBE2E8'>
         <% else %>
       <tr class='incomes_record'>
         <% end %>
-        <td class='incomes-day'><%=@this_month%> / <%= i.day%></td>
-        <td class='incomes-week'><%=@wday[i.wday]%></td>
+        <td class='incomes-day'><%=ymd.month%> / <%= ymd.day%></td>
+        <td class='incomes-week'><%=@wday[ymd.wday]%></td>
+        <% IncomeCategory.data.each do |category_id|%>
         <td class='incomes-column'>
           <input type="text" class="incomes-input text-end">
         </td>
-        <td class='incomes-column'>
-          <input type="text" class="incomes-input text-end">
-        </td>
+        <% end %>
       </tr>
       <% end %>
 
