@@ -25,14 +25,16 @@ class Income < ApplicationRecord
     last_day = first_day + 1.month - 1.day
     month_range = first_day..last_day
     category_ids = IncomeCategory.data.map { |i| i[:id] }
+    getter = []
     incomes = []
+    achievements = []
     month_range.each do |day|
+      day_incomes = []
       new_achievement = Achievement.new(ymd: day, store_id: current_store.id)
       unless new_achievement.save
         new_achievement =
           Achievement.where(ymd: day, store_id: current_store.id)[0]
       end
-
       category_ids.each do |id|
         new_income =
           Income.new(
@@ -51,19 +53,13 @@ class Income < ApplicationRecord
               0
             ]
         end
-        incomes.push(new_income)
+        day_incomes.push(new_income)
       end
+      achievements.push(new_achievement)
+      incomes.push(day_incomes)
     end
-    return incomes
+    getter.push(achievements)
+    incomes.each { |income| getter.push(income) }
+    return getter
   end
-  # def incomes_by_day(incomes)
-  #   incomes_by_day = []
-  #   category_ids = IncomeCategory.data.map { |i| i[:id] }
-  #   selected_dates = incomes.map { |i| i[:ymd] }.uniq
-  #   selected_dates.each do |date|
-  #     incomes_by_day.push(incomes.where(ymd: date))
-  #   end
-  # end
-
-  private
 end
