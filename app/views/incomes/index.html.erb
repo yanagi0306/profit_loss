@@ -44,17 +44,17 @@
         <% end %>
       </tr>
 
-      <% @selected_dates.each do |ymd|%>
-      <% if HolidayJapan.check(ymd) || ymd.wday == 0%>
+      <% @incomes.each do |incomes|%>
+      <% if HolidayJapan.check(incomes[0][:ymd]) || incomes[0][:ymd].wday == 0%>
       <tr class='incomes_record' style='background-color:#FFDDCB'>
-        <% elsif ymd.wday == 6 %>
+        <% elsif incomes[0][:ymd].wday == 6 %>
       <tr class='incomes_record' style='background-color:#BBE2E8'>
         <% else %>
       <tr class='incomes_record'>
         <% end %>
-        <td class='incomes-day'><%=ymd.month%> / <%= ymd.day%></td>
-        <td class='incomes-week'><%=@wday[ymd.wday]%></td>
-        <% IncomeCategory.data.each do |category_id|%>
+        <td class='incomes-day'><%=incomes[0][:ymd].month%> / <%= incomes[0][:ymd].day%></td>
+        <td class='incomes-week'><%=@wday[incomes[0][:ymd].wday]%></td>
+        <% incomes.each do |income|%>
         <td class='incomes-column'>
           <input type="text" class="incomes-input text-end">
         </td>

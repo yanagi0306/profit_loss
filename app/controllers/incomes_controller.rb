@@ -3,11 +3,12 @@ class IncomesController < ApplicationController
   before_action :today_date_getter
 
   def index
-    selected_getter(@this_year, @this_month, current_store)
+    selected_instance_getter(@this_year, @this_month, current_store.id)
+
   end
 
   def search
-    selected_getter(params[:year], params[:month], current_store)
+    selected_instance_getter(params[:year], params[:month], current_store.id)
   end
   # def updates
   #   @incomes = Income.search(params[:year], params[:month], current_store)
@@ -30,12 +31,13 @@ class IncomesController < ApplicationController
     @category_names =IncomeCategory.data.map{|i| i[:name]}
   end
 
-  def selected_getter(year,month,current_store)
-    @incomes = Income.search(year, month, current_store).delete_at(0)
-    @achievements = Income.search(year, month, current_store)[0]
+  def selected_instance_getter(year,month,current_store)
+    @achievements = Income.search_getter(year, month, current_store)[0]
     @selected_dates = @achievements.map{|i| i[:ymd]}
     @selected_year = @selected_dates[0].year
     @selected_month = @selected_dates[0].month
+    @incomes = Income.search_getter(year, month, current_store)
+    @incomes.delete_at(0)
   end
 
   def check

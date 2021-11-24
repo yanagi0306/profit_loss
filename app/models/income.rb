@@ -19,7 +19,7 @@ class Income < ApplicationRecord
               greater_than_or_equal_to: 0,
             }
 
-  def self.search(year, month, current_store)
+  def self.search_getter(year, month, current_store)
     select_month = Date.new(year.to_i, month.to_i)
     first_day = select_month.beginning_of_month
     last_day = first_day + 1.month - 1.day
@@ -30,10 +30,10 @@ class Income < ApplicationRecord
     achievements = []
     month_range.each do |day|
       day_incomes = []
-      new_achievement = Achievement.new(ymd: day, store_id: current_store.id)
+      new_achievement = Achievement.new(ymd: day, store_id: current_store)
       unless new_achievement.save
         new_achievement =
-          Achievement.where(ymd: day, store_id: current_store.id)[0]
+          Achievement.where(ymd: day, store_id: current_store)[0]
       end
       category_ids.each do |id|
         new_income =
@@ -54,12 +54,14 @@ class Income < ApplicationRecord
             ]
         end
         day_incomes.push(new_income)
+
       end
       achievements.push(new_achievement)
       incomes.push(day_incomes)
+
     end
     getter.push(achievements)
-    incomes.each { |income| getter.push(income) }
+    incomes.each { |day_incomes| getter.push(day_incomes) }
     return getter
   end
 end
