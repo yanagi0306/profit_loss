@@ -10,6 +10,7 @@
 
   <div class="search">
     <%= form_with(url: search_incomes_path, local: true, method: :get, class: "search-form") do |f| %>
+
     <div class="form-group">
       <div class="form-label">
         <label>指定年月</label>
@@ -43,8 +44,9 @@
         <th class='incomes-column'><%=n%></th>
         <% end %>
       </tr>
+      <%= form_with(url: updates_incomes_path, local: true, method: :patch, class: "search-form") do |f| %>
 
-      <% @incomes.each do |incomes|%>
+      <% @incomes_by_category.each do |incomes|%>
       <% if HolidayJapan.check(incomes[0][:ymd]) || incomes[0][:ymd].wday == 0%>
       <tr class='incomes_record' style='background-color:#FFDDCB'>
         <% elsif incomes[0][:ymd].wday == 6 %>
@@ -54,10 +56,17 @@
         <% end %>
         <td class='incomes-day'><%=incomes[0][:ymd].month%> / <%= incomes[0][:ymd].day%></td>
         <td class='incomes-week'><%=@wday[incomes[0][:ymd].wday]%></td>
+
         <% incomes.each do |income|%>
+        <%= f.fields_for('incomes[]',income) do |fh|%>
         <td class='incomes-column'>
-          <input type="text" class="incomes-input text-end">
+          <%= fh.text_field :price, class: "incomes-input text-end" %>
+          <%= fh.hidden_field :id%>
+          <%= fh.hidden_field :ymd%>
+          <%= fh.hidden_field :income_category_id%>
+          <%# <input type="text" class="incomes-input text-end"> %>
         </td>
+        <% end %>
         <% end %>
       </tr>
       <% end %>
@@ -66,6 +75,9 @@
     </table>
   </div>
   <div class="form-group-btn">
-    <input type="button" class="form__btn" value="登録">
+
+    <%= f.submit "登録", class: "form__btn" %>
   </div>
+
+  <% end %>
 </div>
