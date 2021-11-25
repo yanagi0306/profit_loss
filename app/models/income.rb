@@ -36,6 +36,7 @@ class Income < ApplicationRecord
       else
         new_achievement = Achievement.create(ymd: day, store_id: current_store)
       end
+      achievements.push(new_achievement)
       category_ids.each do |id|
         new_income =
           Income.new(
@@ -54,13 +55,11 @@ class Income < ApplicationRecord
               0
             ]
         end
-        day_incomes.push(new_income)
+        incomes.push(new_income)
       end
-      achievements.push(new_achievement)
-      incomes.push(day_incomes)
     end
     getter.push(achievements)
-    incomes.each { |day_incomes| getter.push(day_incomes) }
+    getter.push(incomes)
     return getter
   end
 end

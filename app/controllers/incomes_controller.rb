@@ -3,10 +3,13 @@ class IncomesController < ApplicationController
   before_action :today_date_getter
   respond_to :html
 
-  def index
+  def edit
     initial_index
+
+
+
   end
-  def updates
+  def update
     params_date
     success = true
     income_params.to_unsafe_h.each do |id, income_param|
@@ -21,10 +24,10 @@ class IncomesController < ApplicationController
     end
     if success == false
       initial_index
-      render :index
+      render :edit
 
     else
-      redirect_to incomes_path(year: @params_ymd.year, month: @params_ymd.month)
+      redirect_to edit_incomes_path(year: @params_ymd.year, month: @params_ymd.month)
     end
   end
 
@@ -53,14 +56,14 @@ class IncomesController < ApplicationController
     @this_month = @now.month
     @year_range = current_store.opening_year..@this_year
     @category_ids = IncomeCategory.data.map { |i| i[:id] }
+    @category_length = @category_ids.length
     @category_names = IncomeCategory.data.map { |i| i[:name] }
   end
 
   def selected_instance_getter(year, month, current_store)
     getter = Income.search_getter(year, month, current_store)
     @achievements = getter.delete_at(0)
-    @incomes_by_category = getter
-    @incomes = getter.flatten
+    @incomes = getter.delete_at(0)
     @selected_dates = @achievements.map { |i| i[:ymd] }
     @selected_year = @selected_dates[0].year
     @selected_month = @selected_dates[0].month

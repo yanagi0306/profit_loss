@@ -12,15 +12,9 @@ Rails.application.routes.draw do
   root to: 'stores#index'
 
   resources :stores, only: [:index]
-  resources :budgets, only: [:index]
+  resource :budgets,only: [:edit,:update]
   resources :budgets_day_ratios, only: [:index]
-  resources :achievements, only: [:index]
-  resources :incomes,only: [:index] do
-    collection do
-      get 'search'
-      patch 'updates'
-    end
-  end
-  resources :sales, only: [:index]
-  resources :variable_costs, only: [:index]
+  resource :incomes,only: [:edit,:update]
+  resource :sales, only: [:edit,:update]
+  resource :variable_costs, only: [:edit,:update]
 end
