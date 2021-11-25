@@ -1,3 +1,7 @@
 class SalesController < ApplicationController
-  def index; end
+  def index
+
+  binding.pry
+
+  end
 end

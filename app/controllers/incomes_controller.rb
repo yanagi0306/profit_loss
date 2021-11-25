@@ -4,33 +4,37 @@ class IncomesController < ApplicationController
   respond_to :html
 
   def index
-    selected_instance_getter(@this_year, @this_month, current_store.id)
-  end
-
-  def search
-    selected_instance_getter(params[:year], params[:month], current_store.id)
+    if params[:year].present? && params[:month].present?
+      @getter =
+        selected_instance_getter(
+          params[:year],
+          params[:month],
+          current_store.id,
+        )
+    else
+      @getter =
+        selected_instance_getter(@this_year, @this_month, current_store.id)
+    end
   end
   def updates
     params_date
-    selected_instance_getter(
-      @params_ymd.year,
-      @params_ymd.month,
-      current_store.id,
-    )
-    @incomes =
-      income_params.to_unsafe_h.map do |id, income_params|
-        income = Income.find(id)
-        income.update_attributes(income_params)
-        income
+    income_params.to_unsafe_h.each do |id, income_param|
+      income = Income.find(income_param[:id].to_i)
+      income.update_attributes(income_param)
+      column = income.income_category.achievement_column_name
+      achievement = Achievement.find(income[:achievement_id])
+      unless income[:price] == achievement[column]
+        achievement[column] = income[:price]
+        achievement.save
       end
-      redirect_to incomes_path
-    # respond_with(@incomes, location: search_incomes_path)
+    end
+    redirect_to incomes_path(year: @params_ymd.year, month: @params_ymd.month)
   end
 
   private
 
   def income_params
-    params.permit(incomes: [:id, :ymd, :income_category_id, :price])[:incomes]
+    params.permit(incomes: %i[id ymd income_category_id price])[:incomes]
   end
 
   def params_date
@@ -48,12 +52,12 @@ class IncomesController < ApplicationController
   end
 
   def selected_instance_getter(year, month, current_store)
-    @achievements = Income.search_getter(year, month, current_store)[0]
+    getter = Income.search_getter(year, month, current_store)
+    @achievements = getter.delete_at(0)
+    @incomes_by_category = getter
     @selected_dates = @achievements.map { |i| i[:ymd] }
     @selected_year = @selected_dates[0].year
     @selected_month = @selected_dates[0].month
-    @incomes_by_category = Income.search_getter(year, month, current_store)
-    @incomes_by_category.delete_at(0)
   end
 
   def check
