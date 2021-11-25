@@ -8,6 +8,7 @@ class CreateBudgetsDayRatios < ActiveRecord::Migration[6.0]
       t.integer :friday, null: false
       t.integer :saturday, null: false
       t.integer :holiday, null: false
+      t.references :store, null: false, foreign_key: true
       t.timestamps
     end
   end

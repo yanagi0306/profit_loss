@@ -7,6 +7,7 @@ class DeviseCreateStores < ActiveRecord::Migration[6.0]
       t.string :email, null: false, default: ''
       t.string :encrypted_password, null: false, default: ''
       t.string :name, null: false, unique: true
+      t.integer :opening_year, null: false
       t.references :company, type: :bigint, null: false, foreign_key: true
 
       ## Recoverable

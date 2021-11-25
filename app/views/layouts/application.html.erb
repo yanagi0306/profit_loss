@@ -7,11 +7,14 @@
   <%= csp_meta_tag %>
 
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
   <%= javascript_pack_tag 'application' %>
+  <%= javascript_pack_tag controller_name %>
   <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 </head>
 
 <body>
+
   <header class="header">
 
     <div class="nav">
@@ -40,10 +43,10 @@
       <ul class="input_lists">
         <li class="side_list_table">
           <i class="fa fa-home" aria-hidden="true"></i>店舗収支管理</li>
-        <li class="side_list"><%=link_to '売上管理',sales_path, class: :link_list%></li>
-        <li class="side_list"><%=link_to '臨時収入管理',incomes_path, class: :link_list%></li>
-        <li class="side_list"><%=link_to '固定費管理',budgets_path, class: :link_list%></li>
-        <li class="side_list"><%=link_to '変動費',variable_costs_path, class: :link_list%></li>
+        <li class="side_list"><%=link_to '売上管理',edit_sales_path, class: :link_list%></li>
+        <li class="side_list"><%=link_to '臨時収入管理',edit_incomes_path, class: :link_list%></li>
+        <li class="side_list"><%=link_to '固定費管理',edit_budgets_path, class: :link_list%></li>
+        <li class="side_list"><%=link_to '変動費',edit_variable_costs_path, class: :link_list%></li>
       </ul>
       <ul class="configuration_lists">
         <li class="side_list_table"><i class="fa fa-cog" aria-hidden="true"></i>店舗管理設定</li>

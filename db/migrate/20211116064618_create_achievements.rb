@@ -15,7 +15,7 @@ class CreateAchievements < ActiveRecord::Migration[6.0]
       t.integer :meeting
       t.integer :traveling
       t.integer :selling_administration_cost
-      t.integer :garbage_variable
+      t.integer :garbage_variableえいt
       t.integer :car_variable
       t.integer :clean_variable
       t.integer :credit_variable

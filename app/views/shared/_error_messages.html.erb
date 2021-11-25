@@ -1,0 +1,10 @@
+<% unless error_messages.blank? %>
+<div class="error-alert">
+  <ul>
+
+    <% error_messages.each do |message| %>
+    <li class='error-message'><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>

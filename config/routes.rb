@@ -12,10 +12,9 @@ Rails.application.routes.draw do
   root to: 'stores#index'
 
   resources :stores, only: [:index]
-  resources :budgets, only: %i[index update create]
-  resources :budgets_day_ratios, only: %i[index create]
-  resources :achievements, only: [:create]
-  resources :incomes, only: %i[index create update]
-  resources :sales, only: %i[index create update]
-  resources :variable_costs, only: %i[index create update]
+  resource :budgets,only: [:edit,:update]
+  resources :budgets_day_ratios, only: [:index]
+  resource :incomes,only: [:edit,:update]
+  resource :sales, only: [:edit,:update]
+  resource :variable_costs, only: [:edit,:update]
 end

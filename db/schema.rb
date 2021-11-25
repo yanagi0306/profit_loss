@@ -120,7 +120,7 @@ ActiveRecord::Schema.define(version: 2021_11_21_111455) do
     t.integer "friday", null: false
     t.integer "saturday", null: false
     t.integer "holiday", null: false
-    t.bigint "store_id"
+    t.bigint "store_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["store_id"], name: "index_budgets_day_ratios_on_store_id"
@@ -198,6 +198,7 @@ ActiveRecord::Schema.define(version: 2021_11_21_111455) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "name", null: false
+    t.integer "opening_year", null: false
     t.bigint "company_id", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"

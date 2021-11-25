@@ -8,7 +8,6 @@ require("@rails/ujs").start();
 require("@rails/activestorage").start();
 require("channels");
 require("japanese-holidays");
-require("budget");
 import "bootstrap";
 import "../stylesheets/application";
 
