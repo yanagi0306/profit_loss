@@ -4,6 +4,34 @@ class IncomesController < ApplicationController
   respond_to :html
 
   def index
+    initial_index
+  end
+  def updates
+    params_date
+    success = true
+    income_params.to_unsafe_h.each do |id, income_param|
+      income = Income.find(income_param[:id].to_i)
+      unless income.update_attributes(income_param)
+        success = false
+      end
+      column = income.income_category.achievement_column_name
+      achievement = Achievement.find(income[:achievement_id])
+      unless income[:price] == achievement[column]
+        achievement[column] = income[:price]
+        achievement.save
+      end
+    end
+    if success == false
+      initial_index
+      render :index
+    else
+      redirect_to incomes_path(year: @params_ymd.year, month: @params_ymd.month)
+    end
+  end
+
+  private
+
+  def initial_index
     if params[:year].present? && params[:month].present?
       @getter =
         selected_instance_getter(
@@ -16,22 +44,6 @@ class IncomesController < ApplicationController
         selected_instance_getter(@this_year, @this_month, current_store.id)
     end
   end
-  def updates
-    params_date
-    income_params.to_unsafe_h.each do |id, income_param|
-      income = Income.find(income_param[:id].to_i)
-      income.update_attributes(income_param)
-      column = income.income_category.achievement_column_name
-      achievement = Achievement.find(income[:achievement_id])
-      unless income[:price] == achievement[column]
-        achievement[column] = income[:price]
-        achievement.save
-      end
-    end
-    redirect_to incomes_path(year: @params_ymd.year, month: @params_ymd.month)
-  end
-
-  private
 
   def income_params
     params.permit(incomes: %i[id ymd income_category_id price])[:incomes]

@@ -30,10 +30,11 @@ class Income < ApplicationRecord
     achievements = []
     month_range.each do |day|
       day_incomes = []
-      new_achievement = Achievement.new(ymd: day, store_id: current_store)
-      unless new_achievement.save
+      if Achievement.exists?(ymd: day)
         new_achievement =
           Achievement.where(ymd: day, store_id: current_store)[0]
+      else
+        new_achievement = Achievement.create(ymd: day, store_id: current_store)
       end
       category_ids.each do |id|
         new_income =
@@ -54,11 +55,9 @@ class Income < ApplicationRecord
             ]
         end
         day_incomes.push(new_income)
-
       end
       achievements.push(new_achievement)
       incomes.push(day_incomes)
-
     end
     getter.push(achievements)
     incomes.each { |day_incomes| getter.push(day_incomes) }
