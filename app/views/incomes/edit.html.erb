@@ -33,7 +33,7 @@
       臨時収入情報
     </div>
   </div>
-
+<%=render 'shared/error_messages', error_messages: @error_messages%>
 
   <div class="result-content">
     <%=form_with(model:@incomes,url:incomes_path, local: true, method: :patch, class: "search-form") do |f| %>

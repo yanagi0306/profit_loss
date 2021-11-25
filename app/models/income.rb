@@ -62,4 +62,6 @@ class Income < ApplicationRecord
     getter.push(incomes)
     return getter
   end
+
+
 end

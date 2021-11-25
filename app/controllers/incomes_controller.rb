@@ -5,16 +5,20 @@ class IncomesController < ApplicationController
 
   def edit
     initial_index
-
-
-
   end
   def update
     params_date
-    success = true
+    @error_messages = []
     income_params.to_unsafe_h.each do |id, income_param|
       income = Income.find(income_param[:id].to_i)
-      success = false unless income.update_attributes(income_param)
+
+      unless income.update_attributes(income_param)
+        error_message =
+          "エラー！！#{income[:ymd].month} / #{income[:ymd].day} #{income.income_category.name}の入力に誤りがあり更新できませんでした！"
+        @error_messages.push(error_message)
+        next
+      end
+
       column = income.income_category.achievement_column_name
       achievement = Achievement.find(income[:achievement_id])
       unless income[:price] == achievement[column]
@@ -22,12 +26,14 @@ class IncomesController < ApplicationController
         achievement.save
       end
     end
-    if success == false
+    unless @error_messages.empty?
       initial_index
       render :edit
-
     else
-      redirect_to edit_incomes_path(year: @params_ymd.year, month: @params_ymd.month)
+      redirect_to edit_incomes_path(
+                    year: @params_ymd.year,
+                    month: @params_ymd.month,
+                  )
     end
   end
 
@@ -42,11 +48,15 @@ class IncomesController < ApplicationController
   end
 
   def income_params
-    params.permit(incomes: %i[id ymd income_category_id price])[:incomes]
+    params
+      .require(:income)
+      .permit(incomes: %i[id ymd income_category_id price])[
+      :incomes
+    ]
   end
 
   def params_date
-    @params_ymd = Income.find(params[:incomes].keys[0])[:ymd]
+    @params_ymd = Income.find(params[:income][:incomes].keys[0])[:ymd]
   end
 
   def today_date_getter

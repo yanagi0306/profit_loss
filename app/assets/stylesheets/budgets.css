@@ -181,3 +181,15 @@ table {
   width: 80%;
   border: 1px solid #c5c5c5;
 }
+/* エラーメッセージ */
+.error-alert {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5vh;
+}
+
+.error-message {
+  font-size: 15px;
+  list-style: none;
+  color: rgb(182, 48, 0);
+}
