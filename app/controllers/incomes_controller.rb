@@ -11,9 +11,7 @@ class IncomesController < ApplicationController
     success = true
     income_params.to_unsafe_h.each do |id, income_param|
       income = Income.find(income_param[:id].to_i)
-      unless income.update_attributes(income_param)
-        success = false
-      end
+      success = false unless income.update_attributes(income_param)
       column = income.income_category.achievement_column_name
       achievement = Achievement.find(income[:achievement_id])
       unless income[:price] == achievement[column]
@@ -24,6 +22,7 @@ class IncomesController < ApplicationController
     if success == false
       initial_index
       render :index
+
     else
       redirect_to incomes_path(year: @params_ymd.year, month: @params_ymd.month)
     end
@@ -33,15 +32,9 @@ class IncomesController < ApplicationController
 
   def initial_index
     if params[:year].present? && params[:month].present?
-      @getter =
-        selected_instance_getter(
-          params[:year],
-          params[:month],
-          current_store.id,
-        )
+      selected_instance_getter(params[:year], params[:month], current_store.id)
     else
-      @getter =
-        selected_instance_getter(@this_year, @this_month, current_store.id)
+      selected_instance_getter(@this_year, @this_month, current_store.id)
     end
   end
 
@@ -67,6 +60,7 @@ class IncomesController < ApplicationController
     getter = Income.search_getter(year, month, current_store)
     @achievements = getter.delete_at(0)
     @incomes_by_category = getter
+    @incomes = getter.flatten
     @selected_dates = @achievements.map { |i| i[:ymd] }
     @selected_year = @selected_dates[0].year
     @selected_month = @selected_dates[0].month

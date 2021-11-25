@@ -36,6 +36,7 @@
 
 
   <div class="result-content">
+  <%= form_with(url: updates_incomes_path, local: true, method: :patch, class: "search-form") do |f| %>
     <table class="incomes-table">
       <tr class='table-head'>
         <th class='incomes-day' id="selected_month"><%=@selected_year%>年</th>
@@ -44,7 +45,7 @@
         <th class='incomes-column'><%=n%></th>
         <% end %>
       </tr>
-      <%= form_with(url: updates_incomes_path, local: true, method: :patch, class: "search-form") do |f| %>
+
 
       <% @incomes_by_category.each do |incomes|%>
       <% if HolidayJapan.check(incomes[0][:ymd]) || incomes[0][:ymd].wday == 0%>
