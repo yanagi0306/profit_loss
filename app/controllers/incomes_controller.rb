@@ -1,33 +1,15 @@
 class IncomesController < ApplicationController
   before_action :check
   before_action :today_date_getter
-  respond_to :html
 
   def edit
-    initial_index
+    initial_edit
   end
   def update
     params_date
-    @error_messages = []
-    income_params.to_unsafe_h.each do |id, income_param|
-      income = Income.find(income_param[:id].to_i)
-
-      unless income.update_attributes(income_param)
-        error_message =
-          "エラー！ #{income[:ymd].month} / #{income[:ymd].day} #{income.income_category.name}の入力に誤りがあり更新できませんでした！"
-        @error_messages.push(error_message)
-        next
-      end
-
-      column = income.income_category.achievement_column_name
-      achievement = Achievement.find(income[:achievement_id])
-      unless income[:price] == achievement[column]
-        achievement[column] = income[:price]
-        achievement.save
-      end
-    end
+    @error_messages = Income.update_incomes(income_params)
     unless @error_messages.empty?
-      initial_index
+      initial_edit
       render :edit
     else
       redirect_to edit_incomes_path(
@@ -39,7 +21,7 @@ class IncomesController < ApplicationController
 
   private
 
-  def initial_index
+  def initial_edit
     if params[:year].present? && params[:month].present?
       selected_instance_getter(params[:year], params[:month], current_store.id)
     else
