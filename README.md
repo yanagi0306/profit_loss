@@ -55,6 +55,9 @@
 | water                       | integer    |                               |
 | gas                         | integer    |                               |
 | power                       | integer    |                               |
+| food_cost                   | integer    |                               |
+| material_cost               | integer    |                               |
+| interest_payment            | integer    |                               |
 | welfare_fixed               | integer    |                               |
 | communications_fixed        | integer    |                               |
 | publicity_fixed             | integer    |                               |
@@ -66,7 +69,6 @@
 | employee_cost               | integer    |                               |
 | director_cost               | integer    |                               |
 | company_interest            | integer    |                               |
-| interest_payment            | integer    |                               |
 | social_insurance_employee   | integer    |                               |
 | resident_tax                | integer    |                               |
 | pos_system                  | integer    |                               |
@@ -113,6 +115,9 @@
 | water                       | integer    |                               |
 | gas                         | integer    |                               |
 | power                       | integer    |                               |
+| food_cost                   | integer    |                               |
+| material_cost               | integer    |                               |
+| interest_payment            | integer    |                               |
 | welfare_fixed               | integer    |                               |
 | communications_fixed        | integer    |                               |
 | publicity_fixed             | integer    |                               |
@@ -124,7 +129,6 @@
 | employee_cost               | integer    |                               |
 | director_cost               | integer    |                               |
 | company_interest            | integer    |                               |
-| interest_payment            | integer    |                               |
 | social_insurance_employee   | integer    |                               |
 | resident_tax                | integer    |                               |
 | pos_system                  | integer    |                               |
@@ -139,17 +143,15 @@
 
 
 ### Association
-
-- has_many :income
-- has_many :food_costs
-- has_many :material_costs
-- has_many :variable_cost
+- has_one :sale
+- has_many :incomes
+- has_many :variable_costs
 - belongs_to :store
 
 
 
 
-## incomesテーブル
+## Incomesテーブル
 
 | Colum              | Type       | Options                       |
 | ------------------ | ---------- | ----------------------------- |
@@ -163,7 +165,7 @@
 - belongs_to :achievement
 
 
-## salesテーブル
+## Salesテーブル
 
 | Colum              | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
@@ -177,62 +179,6 @@
 
 
 - belongs_to :achievement
-
-
-## food_costsテーブル
-
-| Colum              | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| price              | integer    | null:false                     |
-| ymd                | date       | null:false,unique:true         |
-| achievement        | references | null: false, foreign_key: true |
-| food_category      | references | null: false, foreign_key: true |
-
-### Association
-
-
-- belongs_to :achievement
-- belongs_to :food_category
-
-## food_categorysテーブル
-
-| Colum              | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| name               | string     | null:false,unique:true         |
-
-
-### Association
-
-
-- has_many :food_costs
-
-
-## material_costsテーブル
-
-| Colum              | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| price              | integer    | null:false                     |
-| ymd                | date       | null:false,unique:true         |
-| achievement        | references | null: false, foreign_key: true |
-| material_category  | references | null: false, foreign_key: true |
-
-### Association
-
-
-- belongs_to :achievement
-- belongs_to :material_category
-
-## material_categorysテーブル
-
-| Colum              | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| name               | string     | null:false,unique:true         |
-
-
-### Association
-
-
-- has_many :material_categorys
 
 
 
