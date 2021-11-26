@@ -33,11 +33,12 @@
       臨時収入情報
     </div>
   </div>
-<%=render 'shared/error_messages', error_messages: @error_messages%>
+  <%=render 'shared/error_messages', error_messages: @error_messages%>
 
-  <div class="result-content">
-    <%=form_with(model:@incomes,url:incomes_path, local: true, method: :patch, class: "search-form") do |f| %>
-    <table class="incomes-table">
+
+  <%=form_with(model:@incomes,url:incomes_path, local: true, method: :patch, class: "search-form") do |f| %>
+  <div class="table-all">
+    <table class='upper-table'>
       <tr class='table-head'>
         <th class='incomes-day' id="selected_month"><%=@selected_year%>年</th>
         <th class='incomes-week'>曜日</th>
@@ -45,61 +46,64 @@
         <th class='incomes-column'><%=n%></th>
         <%end %>
       </tr>
+    </table>
+
+      <table class='under-table'>
 
 
-      <%@incomes.each_with_index do |income,index|%>
+        <%@incomes.each_with_index do |income,index|%>
 
-      <% if index.modulo(@category_length)== 0 %>
+        <% if index.modulo(@category_length)== 0 %>
 
-      <%if HolidayJapan.check(income[:ymd]) || income[:ymd].wday == 0%>
-      <tr class='incomes_record' style='background-color:#FFDDCB'>
-        <%elsif income[:ymd].wday == 6 %>
-      <tr class='incomes_record' style='background-color:#BBE2E8'>
-        <%else %>
-      <tr class='incomes_record'>
+        <%if HolidayJapan.check(income[:ymd]) || income[:ymd].wday == 0%>
+        <tr class='incomes_record' style='background-color:#FFDDCB'>
+          <%elsif income[:ymd].wday == 6 %>
+        <tr class='incomes_record' style='background-color:#BBE2E8'>
+          <%else %>
+        <tr class='incomes_record'>
+          <%end %>
+
+          <td class='incomes-day'><%=income[:ymd].month%> / <%= income[:ymd].day%></td>
+          <td class='incomes-week'><%=@wday[income[:ymd].wday]%></td>
+
+
+          <td class='incomes-column'>
+            <%=f.fields_for('incomes[]',income) do |fh| %>
+            <%= fh.text_field :price, class: "incomes-input text-end" %>
+            <%= fh.hidden_field :id%>
+            <%= fh.hidden_field :ymd%>
+            <%= fh.hidden_field :income_category_id%>
+          </td>
+          <% end %>
+          <% elsif index.modulo(@category_length)!=@category_length - 1 %>
+          <td class='incomes-column'>
+            <%=f.fields_for('incomes[]',income) do |fh| %>
+            <%= fh.text_field :price, class: "incomes-input text-end" %>
+            <%= fh.hidden_field :id%>
+            <%= fh.hidden_field :ymd%>
+            <%= fh.hidden_field :income_category_id%>
+          </td>
+          <% end %>
+          <% else %>
+          <td class='incomes-column'>
+            <%=f.fields_for('incomes[]',income) do |fh| %>
+            <%= fh.text_field :price, class: "incomes-input text-end" %>
+            <%= fh.hidden_field :id%>
+            <%= fh.hidden_field :ymd%>
+            <%= fh.hidden_field :income_category_id%>
+          </td>
+          <% end %>
+        </tr>
+        <% end %>
+
         <%end %>
 
-        <td class='incomes-day'><%=income[:ymd].month%> / <%= income[:ymd].day%></td>
-        <td class='incomes-week'><%=@wday[income[:ymd].wday]%></td>
 
+      </table>
 
-        <td class='incomes-column'>
-          <%=f.fields_for('incomes[]',income) do |fh| %>
-          <%= fh.text_field :price, class: "incomes-input text-end" %>
-          <%= fh.hidden_field :id%>
-          <%= fh.hidden_field :ymd%>
-          <%= fh.hidden_field :income_category_id%>
-        </td>
-        <% end %>
-        <% elsif index.modulo(@category_length)!=@category_length - 1 %>
-        <td class='incomes-column'>
-          <%=f.fields_for('incomes[]',income) do |fh| %>
-          <%= fh.text_field :price, class: "incomes-input text-end" %>
-          <%= fh.hidden_field :id%>
-          <%= fh.hidden_field :ymd%>
-          <%= fh.hidden_field :income_category_id%>
-        </td>
-        <% end %>
-        <% else %>
-        <td class='incomes-column'>
-          <%=f.fields_for('incomes[]',income) do |fh| %>
-          <%= fh.text_field :price, class: "incomes-input text-end" %>
-          <%= fh.hidden_field :id%>
-          <%= fh.hidden_field :ymd%>
-          <%= fh.hidden_field :income_category_id%>
-        </td>
-        <% end %>
-
-      </tr>
-
-
-      <% end %>
-
-      <%end %>
-
-
-    </table>
   </div>
+
+
   <div class="form-group-btn">
 
     <%= f.submit "登録", class: "form__btn" %>

@@ -1,5 +1,4 @@
 .budgets-wrapper {
-  width: calc(100vw - 210px);
   padding: 15px;
 }
 .main-content-title-wrap {
@@ -64,11 +63,6 @@ label {
   font-size: 13px;
 }
 
-.result-content {
-  margin-top: 18x;
-  margin-left: 20px;
-  overflow-x: scroll;
-}
 /* 予算入力情報 */
 th.top-budgets {
   width: 150px;
@@ -76,10 +70,7 @@ th.top-budgets {
 th.width-budgets {
   width: calc(100%- 90px);
 }
-.table-head {
-  height: 38px;
-  background-color: #eee;
-}
+
 .search-column {
   height: 40x;
   text-align: center;
@@ -122,9 +113,7 @@ td {
   border: 1px solid #c5c5c5;
 }
 /* 売上管理 */
-.incomes-table {
-  width: 473px;
-}
+
 .incomes_record {
   height: 50px;
 }
@@ -166,10 +155,7 @@ td {
   border: #dee2e6 solid 1px;
   text-align: center;
 }
-table {
-  table-layout: fixed;
-  width: 100%;
-}
+
 /* 臨時収入管理 */
 .input-memo {
   height: 28px;
@@ -192,4 +178,31 @@ table {
   font-size: 15px;
   list-style: none;
   color: rgb(182, 48, 0);
+}
+.upper-table {
+  width: 473px;
+  position: sticky;
+  top: 0
+}
+.under-table {
+  display:block;
+  width: 473px;
+  overflow-y: auto;
+}
+.table-head {
+  height: 38px;
+  background-color: #eee;
+
+  margin-top: 18x;
+  margin-left: 20px;
+}
+
+
+.table-all {
+  display:block;
+  width: 473px;
+  height: 65vh;
+  margin-top: 18x;
+  margin-left: 20px;
+  overflow: auto;
 }
