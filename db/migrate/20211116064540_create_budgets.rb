@@ -1,6 +1,37 @@
 class CreateBudgets < ActiveRecord::Migration[6.0]
   def change
     create_table :budgets do |t|
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       t.date :ymd, null: false, unique: true
       t.integer :sale_value
       t.integer :lunch_value
@@ -24,6 +55,9 @@ class CreateBudgets < ActiveRecord::Migration[6.0]
       t.integer :water
       t.integer :gas
       t.integer :power
+      t.integer :food_cost
+      t.integer :material_cost
+      t.integer :interest_payment
       t.integer :welfare_fixed
       t.integer :communications_fixed
       t.integer :publicity_fixed
@@ -35,7 +69,6 @@ class CreateBudgets < ActiveRecord::Migration[6.0]
       t.integer :employee_cost
       t.integer :director_cost
       t.integer :company_interest
-      t.integer :interest_payment
       t.integer :social_insurance_employee
       t.integer :resident_tax
       t.integer :pos_system
