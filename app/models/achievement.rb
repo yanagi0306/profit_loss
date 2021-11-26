@@ -1,8 +1,7 @@
 class Achievement < ApplicationRecord
-  has_many :income
-  has_many :food_costs
-  has_many :material_costs
-  has_many :variable_cost
+  has_many :incomes
+  has_many :variable_costs
+  has_many :sales
   belongs_to :store
 
   validates :store_id, presence: { message: 'としてログインされていません' }
