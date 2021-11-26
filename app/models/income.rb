@@ -63,5 +63,25 @@ class Income < ApplicationRecord
     return getter
   end
 
+  def self.update_incomes(income_params)
+    error_messages = []
+    income_params.to_unsafe_h.each do |id, income_param|
+      income = Income.find(income_param[:id].to_i)
 
+      unless income.update_attributes(income_param)
+        error_message =
+          "エラー！ #{income[:ymd].month} / #{income[:ymd].day} #{income.income_category.name}の入力に誤りがあり更新できませんでした！"
+        error_messages.push(error_message)
+        next
+      end
+
+      column = income.income_category.achievement_column_name
+      achievement = Achievement.find(income[:achievement_id])
+      unless income[:price] == achievement[column]
+        achievement[column] = income[:price]
+        achievement.save
+      end
+    end
+    return error_messages
+  end
 end
