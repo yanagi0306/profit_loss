@@ -1,5 +1,6 @@
-.budgets-wrapper {
+content-wrapper {
   padding: 15px;
+  overflow-y:auto;
 }
 .main-content-title-wrap {
   display: flex;
@@ -172,6 +173,7 @@ td {
   display: flex;
   justify-content: center;
   margin-bottom: 5vh;
+  display: contents;
 }
 
 .error-message {
