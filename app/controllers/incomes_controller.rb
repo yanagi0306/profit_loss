@@ -14,7 +14,7 @@ class IncomesController < ApplicationController
 
       unless income.update_attributes(income_param)
         error_message =
-          "エラー！！#{income[:ymd].month} / #{income[:ymd].day} #{income.income_category.name}の入力に誤りがあり更新できませんでした！"
+          "エラー！ #{income[:ymd].month} / #{income[:ymd].day} #{income.income_category.name}の入力に誤りがあり更新できませんでした！"
         @error_messages.push(error_message)
         next
       end
