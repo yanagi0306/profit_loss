@@ -30,11 +30,7 @@ class IncomesController < ApplicationController
   end
 
   def income_params
-    params
-      .require(:income)
-      .permit(incomes: %i[id ymd income_category_id price])[
-      :incomes
-    ]
+    params.require(:income).permit(incomes: [:price])[:incomes]
   end
 
   def params_date

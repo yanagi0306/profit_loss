@@ -1,41 +1,10 @@
 class CreateBudgets < ActiveRecord::Migration[6.0]
   def change
     create_table :budgets do |t|
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       t.date :ymd, null: false, unique: true
-      t.integer :sale_value
-      t.integer :lunch_value
-      t.integer :dinner_value
+      t.integer :sale
+      t.integer :lunch_sale
+      t.integer :dinner_sale
       t.integer :interest_income
       t.integer :miscellaneous_income
       t.integer :overtime_employee_cost

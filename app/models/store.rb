@@ -11,7 +11,11 @@ class Store < ApplicationRecord
   has_many :budgets
   has_many :achievements
   has_many :budgets_day_ratios
+  has_many :incomes
+  has_many :sales
+  has_many :variables
 
   validates :name, presence: true
   validates :name, uniqueness: true
+
 end

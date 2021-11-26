@@ -1,13 +1,14 @@
 class Sale < ApplicationRecord
   belongs_to :achievement
+  belongs_to :store
 
-  validates :total_price_match?
+  # validates :total_price_match?
   validates :ymd, uniqueness: { scope: :achievement_id }
-  validate :ymd, presence: { message: 'が未入力です' }
+  validates :ymd, presence: { message: 'が未入力です' }
   validates :achievement_id, presence: { message: 'と紐付いていません' }
-  validates :price,
-            :lunch_sales,
-            :dinner_sales,
+  validates :sale,
+            :lunch_sale,
+            :dinner_sale,
             numericality: {
               only_integer: true,
               greater_than_or_equal_to: 0,
@@ -31,22 +32,39 @@ class Sale < ApplicationRecord
       end
       achievements.push(new_achievement)
 
-      new_income =
-        Income.new(
+      new_sale =
+        Sale.new(
           ymd: day,
           achievement_id: new_achievement.id,
-          price: 0,
-          lunch_sales: 0,
-          dinner_sales: 0,
+          sale: 0,
+          lunch_sale: 0,
+          dinner_sale: 0,
+          store_id: current_store,
         )
-      unless new_income.save
-        new_income =
-          Income.where(ymd: day, achievement_id: new_achievement.id)[0]
+      unless new_sale.save
+        new_sale = Sale.where(ymd: day, achievement_id: new_achievement.id)[0]
       end
-      incomes.push(new_income)
+      sales.push(new_sale)
     end
     getter.push(achievements)
-    getter.push(incomes)
+    getter.push(sales)
     return getter
+  end
+
+  def self.update_sales(sale_params)
+    error_messages = []
+    sale_params.to_unsafe_h.each do |id, sale_param|
+      sale = Sale.find(id)
+
+      unless sale.update_attributes(sale_param)
+        error_message =
+          "エラー！ #{sale[:ymd].month} / #{sale[:ymd].day}の入力に誤りがあり更新できませんでした！"
+        error_messages.push(error_message)
+        next
+      end
+      achievement = Achievement.find(sale[:achievement_id])
+      achievement.update_attributes(sale_param)
+    end
+    return error_messages
   end
 end
