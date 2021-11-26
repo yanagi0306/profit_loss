@@ -4,4 +4,3 @@ class IncomeCategory < ActiveHash::Base
   include ActiveHash::Associations
   has_many :incomes
 end
-2545

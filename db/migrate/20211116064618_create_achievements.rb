@@ -15,7 +15,7 @@ class CreateAchievements < ActiveRecord::Migration[6.0]
       t.integer :meeting
       t.integer :traveling
       t.integer :selling_administration_cost
-      t.integer :garbage_variableえいt
+      t.integer :garbage_variable
       t.integer :car_variable
       t.integer :clean_variable
       t.integer :credit_variable
@@ -24,6 +24,9 @@ class CreateAchievements < ActiveRecord::Migration[6.0]
       t.integer :water
       t.integer :gas
       t.integer :power
+      t.integer :food_cost
+      t.integer :material_cost
+      t.integer :interest_payment
       t.integer :welfare_fixed
       t.integer :communications_fixed
       t.integer :publicity_fixed
@@ -35,7 +38,6 @@ class CreateAchievements < ActiveRecord::Migration[6.0]
       t.integer :employee_cost
       t.integer :director_cost
       t.integer :company_interest
-      t.integer :interest_payment
       t.integer :social_insurance_employee
       t.integer :resident_tax
       t.integer :pos_system

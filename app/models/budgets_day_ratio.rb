@@ -1,6 +1,7 @@
 class BudgetsDayRatio < ApplicationRecord
   has_many :budgets
   belongs_to :store
+
   validates :monday,
             :tuesday,
             :wednesday,
