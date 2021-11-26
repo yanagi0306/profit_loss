@@ -3,7 +3,7 @@ class Income < ApplicationRecord
   belongs_to :achievement
   belongs_to :income_category
 
-  validates :ymd, presence: true, uniqueness: { scope: :income_category_id }
+  validates :ymd, presence: true, uniqueness: { scope: [:income_category_id, :achievement_id]}
   validates :achievement_id, presence: { message: 'と紐付いていません' }
   validates :income_category_id, presence: { message: 'が選択されていません' }
   validates :income_category_id,
