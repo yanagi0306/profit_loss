@@ -8,5 +8,5 @@ class Company < ApplicationRecord
          :validatable
   has_many :stores, dependent: :destroy
   validates :name, presence: true
-  validates :name, uniqueness: true
+  validates :name, uniqueness: { case_sensitive: true }
 end

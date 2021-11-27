@@ -2,7 +2,7 @@ class Sale < ApplicationRecord
   belongs_to :achievement
   belongs_to :store
 
-  # validates :total_price_match?
+  validate :sale_check
   validates :ymd, uniqueness: { scope: :achievement_id }
   validates :ymd, presence: { message: 'が未入力です' }
   validates :achievement_id, presence: { message: 'と紐付いていません' }
@@ -14,6 +14,12 @@ class Sale < ApplicationRecord
               greater_than_or_equal_to: 0,
             }
 
+
+  def sale_check
+   unless sale == lunch_sale+dinner_sale
+    errors.add(:base, '入力された数値が不正です')
+   end
+  end
   def self.search_getter(year, month, current_store)
     select_month = Date.new(year.to_i, month.to_i)
     first_day = select_month.beginning_of_month
