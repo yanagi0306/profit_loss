@@ -61,4 +61,3 @@ gem 'font-awesome-rails'
 gem 'pry-rails'
 gem 'active_hash'
 gem 'holiday_japan'
-gem "jquery-rails"

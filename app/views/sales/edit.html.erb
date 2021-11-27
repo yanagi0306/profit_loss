@@ -66,7 +66,8 @@
         <td class='day'><%=sale[:ymd].month%> / <%= sale[:ymd].day%></td>
         <td class='weeks'><%=@wday[sale[:ymd].wday]%></td>
         <td class='column'>
-          <%= fh.text_field :sale, :class=> "input text-end sale_field",id:"#{index}sale"%> </td>
+          <%= fh.text_field :sale, :class=> "input text-end sale_field",id:"#{index}sale"%>
+        </td>
         <td class='column'>
           <%= fh.text_field :lunch_sale, class: "input text-end lunch_field",id:"#{index}lunch"%>
         </td>
