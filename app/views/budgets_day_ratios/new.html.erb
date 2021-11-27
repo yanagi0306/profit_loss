@@ -1,0 +1,106 @@
+<div class="content-wrapper">
+  <div class="main-content-title-wrap">
+    閲覧・編集
+    <div class="sub-buttons">
+      <div id="add_up_down" class="d-inline">
+        <a href="" class="info">CSVアップロード</a>
+      </div>
+    </div>
+  </div>
+<div class="result-wrapper">
+    <div class="result-title">
+      店舗予算比率情報
+    </div>
+  </div>
+  <%=render 'shared/error_messages', error_messages: @error_messages%>
+
+
+  <%=form_with(model:@budgets_day_ratio,url:budgets_day_ratios_path, local: true, method: :post, class: "search-form") do |f| %>
+  <div class="incomes-table-all">
+    <table class='upper-table'>
+      <tr class='table-head'>
+        <th class='day' id="selected_month">曜日</th>
+        <th class='column'>曜日別予算比率</th>
+        <th class='column'>現在の予算比率</th>
+      </tr>
+    </table>
+
+    <table class='under-table'>
+
+    <tr class='record' style='background-color:#FFDDCB'>
+    <td class='day'>日曜日</td>
+      <td class='column'>100</td>
+      <td class='column'>100</td>
+    </tr>
+
+    <tr class='record'>
+    <td class='day'>月曜日</td>
+      <td class='column'>
+        <%= f.text_field :monday, {class: "input text-end",value:@new_ratio[:monday]} %>
+     </td>
+      <td class='column'><%=@new_ratio[:monday] %></td>
+    </tr>
+
+    <tr class='record'>
+    <td class='day'>火曜日</td>
+      <td class='column'>
+        <%= f.text_field :tuesday, {class: "input text-end",value:@new_ratio[:tuesday]} %>
+     </td>
+      <td class='column'><%=@new_ratio[:tuesday] %></td>
+    </tr>
+
+    <tr class='record'>
+    <td class='day'>水曜日</td>
+      <td class='column'>
+        <%= f.text_field :wednesday, {class: "input text-end",value:@new_ratio[:wednesday]} %>
+     </td>
+      <td class='column'><%=@new_ratio[:wednesday] %></td>
+    </tr>
+
+    <tr class='record'>
+    <td class='day'>木曜日</td>
+      <td class='column'>
+        <%= f.text_field :thursday, {class: "input text-end",value:@new_ratio[:thursday]} %>
+     </td>
+      <td class='column'><%=@new_ratio[:thursday] %></td>
+    </tr>
+
+    <tr class='record'>
+    <td class='day'>金曜日</td>
+      <td class='column'>
+        <%= f.text_field :friday, {class: "input text-end",value:@new_ratio[:friday]} %>
+     </td>
+      <td class='column'><%=@new_ratio[:friday] %></td>
+    </tr>
+
+    <tr class='record' style='background-color:#BBE2E8'>
+    <td class='day'>土曜日</td>
+      <td class='column'>
+        <%= f.text_field :saturday, {class: "input text-end",value:@new_ratio[:saturday]} %>
+     </td>
+      <td class='column'><%=@new_ratio[:saturday] %></td>
+    </tr>
+
+    <tr class='record'style='background-color:#FFDDCB'>
+    <td class='day'>祝日</td>
+      <td class='column'>
+        <%= f.text_field :holiday, {class: "input text-end",value:@new_ratio[:holiday]} %>
+     </td>
+      <td class='column'><%=@new_ratio[:holiday] %></td>
+    </tr>
+
+    </table>
+  </div>
+
+
+  <div class="form-group-btn">
+
+    <%= f.submit "登録", class: "form__btn" %>
+  </div>
+
+  <%end %>
+
+
+
+
+</div>

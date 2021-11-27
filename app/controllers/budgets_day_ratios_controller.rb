@@ -1,17 +1,28 @@
 class BudgetsDayRatiosController < ApplicationController
   before_action :check
 
-  def index
-    @budgets_day_ratio = BudgetsDayRatio.new
-    now_ratio
+  def new
+    @new_ratio = BudgetsDayRatio
+    .where(store_id: current_store.id)
+    .order(created_at: :desc)[
+    0
+  ]
+    @budgets_day_ratio = BudgetsDayRatio.new()
+
   end
   def create
+
     @budgets_day_ratio = BudgetsDayRatio.new(ratio_params)
     if @budgets_day_ratio.save
-      redirect_to budgets_day_ratios_path
+      redirect_to new_budgets_day_ratio_path
     else
-      now_ratio
-      render :index
+      @error_messages =['入力に誤りがあり更新できませんでした！']
+      @new_ratio= BudgetsDayRatio
+      .where(store_id: current_store.id)
+      .order(created_at: :desc)[
+      0
+    ]
+      render :new
     end
   end
 
