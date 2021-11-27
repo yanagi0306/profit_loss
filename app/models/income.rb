@@ -2,10 +2,15 @@ class Income < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :achievement
   belongs_to :income_category
+  belongs_to :store
 
-  validates :ymd, presence: true, uniqueness: { scope: :income_category_id }
-  validates :achievement_id, presence: { message: 'と紐付いていません' }
-  validates :income_category_id, presence: { message: 'が選択されていません' }
+  validates :ymd,
+            presence: true,
+            uniqueness: {
+              scope: %i[income_category_id store_id],
+            }
+  validates :achievement_id, :store_id, presence: true
+  validates :income_category_id, presence: true
   validates :income_category_id,
             numericality: {
               only_integer: true,
@@ -29,7 +34,6 @@ class Income < ApplicationRecord
     incomes = []
     achievements = []
     month_range.each do |day|
-      day_incomes = []
       if Achievement.exists?(ymd: day)
         new_achievement =
           Achievement.where(ymd: day, store_id: current_store)[0]
@@ -44,6 +48,7 @@ class Income < ApplicationRecord
             income_category_id: id,
             achievement_id: new_achievement.id,
             price: 0,
+            store_id: current_store,
           )
         unless new_income.save
           new_income =
@@ -51,6 +56,7 @@ class Income < ApplicationRecord
               ymd: day,
               income_category_id: id,
               achievement_id: new_achievement.id,
+              store_id: current_store,
             )[
               0
             ]
@@ -66,7 +72,7 @@ class Income < ApplicationRecord
   def self.update_incomes(income_params)
     error_messages = []
     income_params.to_unsafe_h.each do |id, income_param|
-      income = Income.find(income_param[:id].to_i)
+      income = Income.find(id)
 
       unless income.update_attributes(income_param)
         error_message =

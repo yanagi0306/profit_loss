@@ -14,9 +14,9 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
 
   create_table "achievements", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "ymd", null: false
-    t.integer "sale_value"
-    t.integer "lunch_value"
-    t.integer "dinner_value"
+    t.integer "sale"
+    t.integer "lunch_sale"
+    t.integer "dinner_sale"
     t.integer "interest_income"
     t.integer "miscellaneous_income"
     t.integer "overtime_employee_cost"
@@ -36,6 +36,9 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
     t.integer "water"
     t.integer "gas"
     t.integer "power"
+    t.integer "food_cost"
+    t.integer "material_cost"
+    t.integer "interest_payment"
     t.integer "welfare_fixed"
     t.integer "communications_fixed"
     t.integer "publicity_fixed"
@@ -47,7 +50,6 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
     t.integer "employee_cost"
     t.integer "director_cost"
     t.integer "company_interest"
-    t.integer "interest_payment"
     t.integer "social_insurance_employee"
     t.integer "resident_tax"
     t.integer "pos_system"
@@ -63,9 +65,9 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
 
   create_table "budgets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "ymd", null: false
-    t.integer "sale_value"
-    t.integer "lunch_value"
-    t.integer "dinner_value"
+    t.integer "sale"
+    t.integer "lunch_sale"
+    t.integer "dinner_sale"
     t.integer "interest_income"
     t.integer "miscellaneous_income"
     t.integer "overtime_employee_cost"
@@ -85,6 +87,9 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
     t.integer "water"
     t.integer "gas"
     t.integer "power"
+    t.integer "food_cost"
+    t.integer "material_cost"
+    t.integer "interest_payment"
     t.integer "welfare_fixed"
     t.integer "communications_fixed"
     t.integer "publicity_fixed"
@@ -96,7 +101,6 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
     t.integer "employee_cost"
     t.integer "director_cost"
     t.integer "company_interest"
-    t.integer "interest_payment"
     t.integer "social_insurance_employee"
     t.integer "resident_tax"
     t.integer "pos_system"
@@ -144,20 +148,24 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
     t.date "ymd", null: false
     t.string "income_category_id", null: false
     t.bigint "achievement_id", null: false
+    t.bigint "store_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["achievement_id"], name: "index_incomes_on_achievement_id"
+    t.index ["store_id"], name: "index_incomes_on_store_id"
   end
 
   create_table "sales", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "ymd", null: false
-    t.integer "price", null: false
-    t.integer "lunch_sales", null: false
-    t.integer "dinner_sales", null: false
+    t.integer "sale", null: false
+    t.integer "lunch_sale", null: false
+    t.integer "dinner_sale", null: false
     t.bigint "achievement_id", null: false
+    t.bigint "store_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["achievement_id"], name: "index_sales_on_achievement_id"
+    t.index ["store_id"], name: "index_sales_on_store_id"
   end
 
   create_table "stores", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -181,9 +189,11 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
     t.integer "variable_category_id", null: false
     t.date "ymd", null: false
     t.bigint "achievement_id", null: false
+    t.bigint "store_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["achievement_id"], name: "index_variable_costs_on_achievement_id"
+    t.index ["store_id"], name: "index_variable_costs_on_store_id"
   end
 
   add_foreign_key "achievements", "stores"
@@ -191,7 +201,10 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
   add_foreign_key "budgets", "stores"
   add_foreign_key "budgets_day_ratios", "stores"
   add_foreign_key "incomes", "achievements"
+  add_foreign_key "incomes", "stores"
   add_foreign_key "sales", "achievements"
+  add_foreign_key "sales", "stores"
   add_foreign_key "stores", "companies"
   add_foreign_key "variable_costs", "achievements"
+  add_foreign_key "variable_costs", "stores"
 end

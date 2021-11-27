@@ -1,20 +1,70 @@
 class Sale < ApplicationRecord
   belongs_to :achievement
+  belongs_to :store
 
-  validates :total_price_match?
-  validates :ymd, uniqueness: true
-  validate :price,
-           :ymd,
-           :lunch_sales,
-           :dinner_sales,
-           presence: {
-             message: 'が未入力です',
-           }
+  # validates :total_price_match?
+  validates :ymd, uniqueness: { scope: :achievement_id }
+  validates :ymd, presence: { message: 'が未入力です' }
+  validates :achievement_id, presence: { message: 'と紐付いていません' }
+  validates :sale,
+            :lunch_sale,
+            :dinner_sale,
+            numericality: {
+              only_integer: true,
+              greater_than_or_equal_to: 0,
+            }
 
-  private
+  def self.search_getter(year, month, current_store)
+    select_month = Date.new(year.to_i, month.to_i)
+    first_day = select_month.beginning_of_month
+    last_day = first_day + 1.month - 1.day
+    month_range = first_day..last_day
 
-  def total_price_match?
-    return unless price == lunch_sales + dinner_sales
-    errors.add(:base, '売上入力に失敗しました')
+    getter = []
+    sales = []
+    achievements = []
+    month_range.each do |day|
+      if Achievement.exists?(ymd: day)
+        new_achievement =
+          Achievement.where(ymd: day, store_id: current_store)[0]
+      else
+        new_achievement = Achievement.create(ymd: day, store_id: current_store)
+      end
+      achievements.push(new_achievement)
+
+      new_sale =
+        Sale.new(
+          ymd: day,
+          achievement_id: new_achievement.id,
+          sale: 0,
+          lunch_sale: 0,
+          dinner_sale: 0,
+          store_id: current_store,
+        )
+      unless new_sale.save
+        new_sale = Sale.where(ymd: day, achievement_id: new_achievement.id)[0]
+      end
+      sales.push(new_sale)
+    end
+    getter.push(achievements)
+    getter.push(sales)
+    return getter
+  end
+
+  def self.update_sales(sale_params)
+    error_messages = []
+    sale_params.to_unsafe_h.each do |id, sale_param|
+      sale = Sale.find(id)
+
+      unless sale.update_attributes(sale_param)
+        error_message =
+          "エラー！ #{sale[:ymd].month} / #{sale[:ymd].day}の入力に誤りがあり更新できませんでした！"
+        error_messages.push(error_message)
+        next
+      end
+      achievement = Achievement.find(sale[:achievement_id])
+      achievement.update_attributes(sale_param)
+    end
+    return error_messages
   end
 end

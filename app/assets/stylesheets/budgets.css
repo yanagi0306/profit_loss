@@ -1,6 +1,6 @@
-content-wrapper {
+.content-wrapper {
   padding: 15px;
-  overflow-y:auto;
+  overflow-y: auto;
 }
 .main-content-title-wrap {
   display: flex;
@@ -50,9 +50,7 @@ label {
   height: 30px;
   font-size: 13px;
 }
-.budgets-title {
-  font-size: 15px;
-}
+/* 入力フォームtable関係 */
 .result-title {
   height: 34px;
   width: calc(100vw - 210px -15px);
@@ -63,62 +61,10 @@ label {
   font-weight: 700;
   font-size: 13px;
 }
-
-/* 予算入力情報 */
-th.top-budgets {
-  width: 150px;
-}
-th.width-budgets {
-  width: calc(100%- 90px);
-}
-
-.search-column {
-  height: 40x;
-  text-align: center;
-  border: #dee2e6 solid 1px;
-}
-
-.budgets-value {
-  height: 40px;
-  text-align: center;
-  border: #dee2e6 solid 1px;
-}
-
-.last-month {
-  height: 40px;
-  text-align: center;
-  border: #dee2e6 solid 1px;
-}
-
-th {
-  color: #495057;
-  font-size: 13px;
-}
-td {
-  color: #495057;
-  font-size: 13px;
-}
-.input-group-append {
-  height: 28px;
-  width: 180px;
-  float: right;
-  margin-right: 15px;
-  border: 1px solid #c5c5c5;
-  padding-right: 11px;
-}
-.input-sale-append {
-  height: 28px;
-  width: 130px;
-  float: right;
-  margin-right: 15px;
-  border: 1px solid #c5c5c5;
-}
-/* 売上管理 */
-
-.incomes_record {
+.record {
   height: 50px;
 }
-.incomes-day {
+.day {
   border: #dee2e6 solid 1px;
   text-align: center;
   color: #4a4a4a;
@@ -126,7 +72,7 @@ td {
   font-weight: 700;
   width: 90px;
 }
-.incomes-week {
+.weeks {
   border: #dee2e6 solid 1px;
   text-align: center;
   color: #4a4a4a;
@@ -135,60 +81,23 @@ td {
   font-weight: 700;
   width: 69px;
 }
-.incomes-column {
+.column {
   width: 157px;
   border: #dee2e6 solid 1px;
   text-align: center;
 }
-.incomes-input {
+.input {
   height: 33px;
   width: 120px;
   border: 1px solid #c5c5c5;
   padding-right: 11px;
 }
-.sale-input {
-  height: 40px;
-  border: #dee2e6 solid 1px;
-  text-align: center;
-}
-.memo-input {
-  height: 40px;
-  border: #dee2e6 solid 1px;
-  text-align: center;
-}
-
-/* 臨時収入管理 */
-.input-memo {
-  height: 28px;
-  width: 90%;
-  border: 1px solid #c5c5c5;
-}
-.input-variable {
-  height: 28px;
-  width: 80%;
-  border: 1px solid #c5c5c5;
-}
-/* エラーメッセージ */
-.error-alert {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 5vh;
-  display: contents;
-}
-
-.error-message {
-  font-size: 15px;
-  list-style: none;
-  color: rgb(182, 48, 0);
-}
 .upper-table {
-  width: 473px;
   position: sticky;
-  top: 0
+  top: 0;
 }
 .under-table {
-  display:block;
-  width: 473px;
+  display: block;
   overflow-y: auto;
 }
 .table-head {
@@ -199,12 +108,32 @@ td {
   margin-left: 20px;
 }
 
-
-.table-all {
-  display:block;
+.incomes-table-all {
+  display: block;
   width: 473px;
   height: 65vh;
   margin-top: 18x;
   margin-left: 20px;
-  overflow: auto;
+  overflow-x: auto;
+}
+.sales-table-all {
+  display: block;
+  width: 700px;
+  height: 65vh;
+  margin-top: 18x;
+  margin-left: 20px;
+  overflow-x: auto;
+}
+
+/* エラーメッセージ */
+.error-alert {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5vh;
+  display: contents;
+}
+.error-message {
+  font-size: 15px;
+  list-style: none;
+  color: rgb(182, 48, 0);
 }

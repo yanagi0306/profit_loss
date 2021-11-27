@@ -1,6 +1,8 @@
 class VariableCost < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :achievement
   belongs_to :variable_category
+  belongs_to :store
 
   validate :price, :ymd, presence: { message: 'が未入力です' }
   validates :ymd, uniqueness: true
