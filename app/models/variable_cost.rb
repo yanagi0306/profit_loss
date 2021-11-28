@@ -33,11 +33,6 @@ class VariableCost < ApplicationRecord
               message: 'を選択してください',
             }, allow_blank: true
 
-  def variable_check
-    unless variable == lunch_variable + dinner_variable
-      errors.add(:base, '入力された数値が不正です')
-    end
-  end
   def self.search_getter(year, month, current_store)
     select_month = Date.new(year.to_i, month.to_i)
     first_day = select_month.beginning_of_month
@@ -45,7 +40,7 @@ class VariableCost < ApplicationRecord
     month_range = first_day..last_day
 
     getter = []
-    variables = []
+    variable_costs = []
     achievements = []
     month_range.each do |day|
       if Achievement.exists?(ymd: day)
@@ -56,36 +51,36 @@ class VariableCost < ApplicationRecord
       end
       achievements.push(new_achievement)
 
-      new_variable =
-        Variable.new(
+      new_variable_cost =
+        VariableCost.new(
           ymd: day,
           achievement_id: new_achievement.id,
           store_id: current_store,
         )
-      unless new_variable.save
-        new_variable =
-          Variable.where(ymd: day, achievement_id: new_achievement.id)[0]
+      unless new_variable_cost.save
+        new_variable_cost =
+        VariableCost.where(ymd: day, achievement_id: new_achievement.id)[0]
       end
-      variables.push(new_variable)
+      variable_costs.push(new_variable_cost)
     end
     getter.push(achievements)
-    getter.push(variables)
+    getter.push(variable_costs)
     return getter
   end
 
-  def self.update_variables(variable_params)
+  def self.update_variable_costs(variable_cost_params)
     error_messages = []
-    variable_params.to_unsafe_h.each do |id, variable_param|
-      variable = Variable.find(id)
+    variable_cost_params.to_unsafe_h.each do |id, variable_cost_param|
+      variable_cost = VariableCost.find(id)
 
-      unless variable.update_attributes(variable_param)
+      unless variable_cost.update_attributes(variable_cost_param)
         error_message =
-          "エラー！ #{variable[:ymd].month} / #{variable[:ymd].day}の入力に誤りがあり更新できませんでした！"
+          "エラー！ #{variable_cost[:ymd].month} / #{variable_cost[:ymd].day}の入力に誤りがあり更新できませんでした！"
         error_messages.push(error_message)
         next
       end
-      achievement = Achievement.find(variable[:achievement_id])
-      achievement.update_attributes(variable_param)
+      achievement = Achievement.find(variable_cost[:achievement_id])
+      achievement.update_attributes(variable_cost_param)
     end
     return error_messages
   end

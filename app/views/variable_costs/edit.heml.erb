@@ -9,7 +9,7 @@
   </div>
 
   <div class="search">
-    <%= form_with(url: edit_variable_path, local: true, method: :get, class: "search-form") do |f| %>
+    <%= form_with(url: edit_variable_costs_path, local: true, method: :get, class: "search-form") do |f| %>
 
     <div class="form-group">
       <div class="form-label">
@@ -18,6 +18,8 @@
       <div class="form-inline">
         <div class="inline-center">
           <%= f.select :year,options_for_select(@year_range.map{|i| ["#{i}年",i] },@selected_year),{},{ autofocus: 'true', class: 'input-item text-end',id:"year"}%>
+          <span>/</span>
+          <%= f.select :month,options_for_select((1..12).map{|i| ["#{i}月",i] },@selected_month),{},{ autofocus: 'true', class: 'input-item',id:"month"}%>
         </div>
       </div>
     </div>
@@ -27,9 +29,8 @@
       </div>
       <div class="form-inline">
         <div class="inline-center">
-          <%= f.select :selected_target,options_for_select(@year_range.map{|i| ["#{i}年",i] },@selected_year),{},{ autofocus: 'true', class: 'input-item text-end',id:"year"}%>
-          <span>/</span>
-          <%= f.select :month,options_for_select((1..12).map{|i| ["#{i}月",i] },@selected_month),{},{ autofocus: 'true', class: 'input-item',id:"month"}%>
+          <%= f.select :selected_targets_num,options_for_select(@inputs.map{|i| i.keys[0] },0),{},{ autofocus: 'true', class: 'input-item text-end'}%>
+
         </div>
       </div>
     </div>
@@ -38,6 +39,7 @@
     </div>
     <% end %>
   </div>
+
   <div class="result-wrapper">
     <div class="result-title">
       臨時収入情報
