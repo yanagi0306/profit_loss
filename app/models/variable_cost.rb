@@ -1,7 +1,6 @@
 class VariableCost < ApplicationRecord
-  extend ActiveHash::Associations::ActiveRecordExtensions
+
   belongs_to :achievement
-  belongs_to :variable_category
   belongs_to :store
 
   validate :price, :ymd, presence: { message: 'が未入力です' }
@@ -11,8 +10,8 @@ class VariableCost < ApplicationRecord
   validates :variable_category_id,
             numericality: {
               only_integer: true,
-              greater_than_or_equal_to: 1,
-              less_than_or_equal_to: 18,
+              greater_than_or_equal_to: 0,
+              less_than_or_equal_to: 10000000,
               message: 'を選択してください',
             }
 end

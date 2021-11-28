@@ -15,13 +15,13 @@ class Store < ApplicationRecord
   has_many :sales
   has_many :variables
 
-  validates :name,:opening_year ,presence: true
+  validates :name, :opening_year, presence: true
   validates :name, uniqueness: { case_sensitive: true }
   validates :opening_year,
             numericality: {
               only_integer: true,
-              greater_than_or_equal_to: 1500,
-              less_than_or_equal_to: 2021
+              greater_than_or_equal_to: 2000,
+              less_than_or_equal_to: Date.today.year.to_i,
               # message: 'の入力された数値が不正です'
             },
             allow_blank: true
