@@ -1,17 +1,92 @@
 class VariableCost < ApplicationRecord
-
   belongs_to :achievement
   belongs_to :store
 
-  validate :price, :ymd, presence: { message: 'が未入力です' }
+  validate :ymd, presence: true
   validates :ymd, uniqueness: true
   validates :achievement_id, presence: { message: 'と紐付いていません' }
-  validates :variable_category_id, presence: { message: 'が選択されていません' }
-  validates :variable_category_id,
+  validates :food_cost,
+            :material_cost,
+            :pert_cost,
+            :miscellaneous_cost,
+            :delivery_commission,
+            :electric,
+            :water,
+            :gas,
+            :power,
+            :communications_variable,
+            :publicity_variable,
+            :garbage_variable,
+            :car_variable,
+            :credit_variable,
+            :clean_variable,
+            :overtime_employee_cost,
+            :social_insurance_part,
+            :meeting,
+            :traveling,
+            :selling_administration_cost,
+            :interest_payment,
             numericality: {
               only_integer: true,
               greater_than_or_equal_to: 0,
-              less_than_or_equal_to: 10000000,
+              less_than_or_equal_to: 5_000_000,
               message: 'を選択してください',
-            }
+            }, allow_blank: true
+
+  def variable_check
+    unless variable == lunch_variable + dinner_variable
+      errors.add(:base, '入力された数値が不正です')
+    end
+  end
+  def self.search_getter(year, month, current_store)
+    select_month = Date.new(year.to_i, month.to_i)
+    first_day = select_month.beginning_of_month
+    last_day = first_day + 1.month - 1.day
+    month_range = first_day..last_day
+
+    getter = []
+    variables = []
+    achievements = []
+    month_range.each do |day|
+      if Achievement.exists?(ymd: day)
+        new_achievement =
+          Achievement.where(ymd: day, store_id: current_store)[0]
+      else
+        new_achievement = Achievement.create(ymd: day, store_id: current_store)
+      end
+      achievements.push(new_achievement)
+
+      new_variable =
+        Variable.new(
+          ymd: day,
+          achievement_id: new_achievement.id,
+          store_id: current_store,
+        )
+      unless new_variable.save
+        new_variable =
+          Variable.where(ymd: day, achievement_id: new_achievement.id)[0]
+      end
+      variables.push(new_variable)
+    end
+    getter.push(achievements)
+    getter.push(variables)
+    return getter
+  end
+
+  def self.update_variables(variable_params)
+    error_messages = []
+    variable_params.to_unsafe_h.each do |id, variable_param|
+      variable = Variable.find(id)
+
+      unless variable.update_attributes(variable_param)
+        error_message =
+          "エラー！ #{variable[:ymd].month} / #{variable[:ymd].day}の入力に誤りがあり更新できませんでした！"
+        error_messages.push(error_message)
+        next
+      end
+      achievement = Achievement.find(variable[:achievement_id])
+      achievement.update_attributes(variable_param)
+    end
+    return error_messages
+  end
 end

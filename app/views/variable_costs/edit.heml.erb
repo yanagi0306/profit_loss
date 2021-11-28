@@ -1,0 +1,97 @@
+<div class="content-wrapper">
+  <div class="main-content-title-wrap">
+    閲覧・編集
+    <div class="sub-buttons">
+      <div class="d-inline">
+        <a href="" class="info">CSVアップロード</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="search">
+    <%= form_with(url: edit_variable_path, local: true, method: :get, class: "search-form") do |f| %>
+
+    <div class="form-group">
+      <div class="form-label">
+        <label>指定年月</label>
+      </div>
+      <div class="form-inline">
+        <div class="inline-center">
+          <%= f.select :year,options_for_select(@year_range.map{|i| ["#{i}年",i] },@selected_year),{},{ autofocus: 'true', class: 'input-item text-end',id:"year"}%>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-label">
+        <label>対象</label>
+      </div>
+      <div class="form-inline">
+        <div class="inline-center">
+          <%= f.select :selected_target,options_for_select(@year_range.map{|i| ["#{i}年",i] },@selected_year),{},{ autofocus: 'true', class: 'input-item text-end',id:"year"}%>
+          <span>/</span>
+          <%= f.select :month,options_for_select((1..12).map{|i| ["#{i}月",i] },@selected_month),{},{ autofocus: 'true', class: 'input-item',id:"month"}%>
+        </div>
+      </div>
+    </div>
+    <div class="form-group-btn">
+      <%= f.submit "検索" ,class:"form__btn" %>
+    </div>
+    <% end %>
+  </div>
+  <div class="result-wrapper">
+    <div class="result-title">
+      臨時収入情報
+    </div>
+  </div>
+  <%=render 'shared/error_messages', error_messages: @error_messages%>
+
+
+  <%=form_with(model:@sales,url:sales_path, local: true, method: :patch, class: "search-form") do |f| %>
+  <div class="sales-table-all">
+    <table class='upper-table'>
+      <tr class='table-head'>
+        <th class='day' id="selected_month"><%=@selected_year%>年</th>
+        <th class='weeks'>曜日</th>
+        <%@input_columns.each do |n|%>
+        <th class='column'><%=n%></th>
+        <%end %>
+      </tr>
+    </table>
+
+    <table class='under-table'>
+
+
+      <%@sales.each_with_index do |sale,index|%>
+
+      <%=f.fields_for('sales[]',sale) do |fh| %>
+
+      <%if HolidayJapan.check(sale[:ymd]) || sale[:ymd].wday == 0%>
+      <tr class='record' style='background-color:#FFDDCB'>
+        <%elsif sale[:ymd].wday == 6 %>
+      <tr class='record' style='background-color:#BBE2E8'>
+        <%else %>
+      <tr class='record'>
+        <%end %>
+
+        <td class='day'><%=sale[:ymd].month%> / <%= sale[:ymd].day%></td>
+        <td class='weeks'><%=@wday[sale[:ymd].wday]%></td>
+        <td class='column'>
+          <%= fh.text_field :sale, :class=> "input text-end sale_field",id:"#{index}sale"%>
+        </td>
+        <td class='column'>
+          <%= fh.text_field :lunch_sale, class: "input text-end lunch_field",id:"#{index}lunch"%>
+        </td>
+        <td class='column'>
+          <%= fh.text_field :dinner_sale, class: "input text-end dinner_field",id:"#{index}dinner"%>
+        </td>
+      </tr>
+      <%end %>
+      <% end %>
+    </table>
+  </div>
+  <div class="form-group-btn">
+    <%= f.submit "登録", class: "form__btn" %>
+  </div>
+  <%end %>
+</div>
+<input type="hidden" id="lastDay" value="<%= @last_day %>">

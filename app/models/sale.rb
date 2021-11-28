@@ -12,14 +12,13 @@ class Sale < ApplicationRecord
             numericality: {
               only_integer: true,
               greater_than_or_equal_to: 0,
-              less_than_or_equal_to: 3000000,
+              less_than_or_equal_to: 3_000_000,
             }
 
-
   def sale_check
-   unless sale == lunch_sale+dinner_sale
-    errors.add(:base, '入力された数値が不正です')
-   end
+    unless sale == lunch_sale + dinner_sale
+      errors.add(:base, '入力された数値が不正です')
+    end
   end
   def self.search_getter(year, month, current_store)
     select_month = Date.new(year.to_i, month.to_i)
