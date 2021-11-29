@@ -1,9 +1,13 @@
 class VariableCost < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
+
   belongs_to :achievement
   belongs_to :store
 
-  validate :ymd, presence: true
-  validates :ymd, uniqueness: true
+  validates :ymd,
+  presence: true,
+  uniqueness: {
+    scope: %i[store_id]}
   validates :achievement_id, presence: { message: 'と紐付いていません' }
   validates :food_cost,
             :material_cost,
@@ -31,9 +35,13 @@ class VariableCost < ApplicationRecord
               greater_than_or_equal_to: 0,
               less_than_or_equal_to: 5_000_000,
               message: 'を選択してください',
-            }, allow_blank: true
+            },
+            allow_blank: true
 
   def self.search_getter(year, month, current_store)
+
+
+
     select_month = Date.new(year.to_i, month.to_i)
     first_day = select_month.beginning_of_month
     last_day = first_day + 1.month - 1.day
@@ -59,7 +67,7 @@ class VariableCost < ApplicationRecord
         )
       unless new_variable_cost.save
         new_variable_cost =
-        VariableCost.where(ymd: day, achievement_id: new_achievement.id)[0]
+          VariableCost.where(ymd: day, achievement_id: new_achievement.id)[0]
       end
       variable_costs.push(new_variable_cost)
     end
@@ -68,9 +76,10 @@ class VariableCost < ApplicationRecord
     return getter
   end
 
-  def self.update_variable_costs(variable_cost_params)
+  def self.update_variable_costs(params)
     error_messages = []
-    variable_cost_params.to_unsafe_h.each do |id, variable_cost_param|
+    params.to_unsafe_h.each do |id, variable_cost_param|
+
       variable_cost = VariableCost.find(id)
 
       unless variable_cost.update_attributes(variable_cost_param)
@@ -84,4 +93,6 @@ class VariableCost < ApplicationRecord
     end
     return error_messages
   end
+
+
 end

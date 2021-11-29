@@ -25,7 +25,7 @@ class IncomesController < ApplicationController
     if params[:year].present? && params[:month].present?
       selected_instance_getter(params[:year], params[:month], current_store.id)
     else
-      selected_instance_getter(@this_year, @this_month, current_store.id)
+      selected_instance_getter(Date.today.year, Date.today.month, current_store.id)
     end
   end
 
@@ -38,11 +38,8 @@ class IncomesController < ApplicationController
   end
 
   def today_date_getter
-    @now = Date.today
     @wday = %w[日 月 火 水 木 金 土]
-    @this_year = @now.year
-    @this_month = @now.month
-    @year_range = current_store.opening_year..@this_year
+    @year_range = current_store.opening_year..Date.today.year
     @category_ids = IncomeCategory.data.map { |i| i[:id] }
     @category_length = @category_ids.length
     @category_names = IncomeCategory.data.map { |i| i[:name] }
@@ -52,9 +49,9 @@ class IncomesController < ApplicationController
     getter = Income.search_getter(year, month, current_store)
     @achievements = getter.delete_at(0)
     @incomes = getter.delete_at(0)
-    @selected_dates = @achievements.map { |i| i[:ymd] }
-    @selected_year = @selected_dates[0].year
-    @selected_month = @selected_dates[0].month
+    selected_dates = @achievements.map { |i| i[:ymd] }
+    @selected_year = selected_dates[0].year
+    @selected_month = selected_dates[0].month
   end
 
   def check

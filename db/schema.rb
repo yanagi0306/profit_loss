@@ -188,27 +188,27 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
 
   create_table "variable_costs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "ymd", null: false
-    t.integer "overtime_employee_cost", default: 0
-    t.integer "social_insurance_part", default: 0
-    t.integer "meeting", default: 0
-    t.integer "traveling", default: 0
-    t.integer "selling_administration_cost", default: 0
-    t.integer "interest_payment", default: 0
+    t.integer "food_cost", default: 0
+    t.integer "material_cost", default: 0
+    t.integer "pert_cost", default: 0
+    t.integer "miscellaneous_cost", default: 0
+    t.integer "delivery_commission", default: 0
+    t.integer "electric", default: 0
+    t.integer "water", default: 0
+    t.integer "gas", default: 0
+    t.integer "power", default: 0
     t.integer "communications_variable", default: 0
     t.integer "publicity_variable", default: 0
     t.integer "garbage_variable", default: 0
     t.integer "car_variable", default: 0
     t.integer "credit_variable", default: 0
     t.integer "clean_variable", default: 0
-    t.integer "electric", default: 0
-    t.integer "water", default: 0
-    t.integer "gas", default: 0
-    t.integer "power", default: 0
-    t.integer "food_cost", default: 0
-    t.integer "material_cost", default: 0
-    t.integer "pert_cost", default: 0
-    t.integer "miscellaneous_cost", default: 0
-    t.integer "delivery_commission", default: 0
+    t.integer "overtime_employee_cost", default: 0
+    t.integer "social_insurance_part", default: 0
+    t.integer "meeting", default: 0
+    t.integer "traveling", default: 0
+    t.integer "selling_administration_cost", default: 0
+    t.integer "interest_payment", default: 0
     t.bigint "achievement_id", null: false
     t.bigint "store_id", null: false
     t.datetime "created_at", precision: 6, null: false

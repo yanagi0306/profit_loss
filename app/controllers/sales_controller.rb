@@ -25,7 +25,7 @@ class SalesController < ApplicationController
     if params[:year].present? && params[:month].present?
       selected_instance_getter(params[:year], params[:month], current_store.id)
     else
-      selected_instance_getter(@this_year, @this_month, current_store.id)
+      selected_instance_getter(Date.today.year, Date.today.month, current_store.id)
     end
   end
 
@@ -42,11 +42,8 @@ class SalesController < ApplicationController
   end
 
   def today_date_getter
-    @now = Date.today
     @wday = %w[日 月 火 水 木 金 土]
-    @this_year = @now.year
-    @this_month = @now.month
-    @year_range = current_store.opening_year..@this_year
+    @year_range = current_store.opening_year..Date.today.year
     @input_columns = ['店舗売上','ランチ売上','ディナー売上']
   end
   def selected_instance_getter(year, month, current_store)

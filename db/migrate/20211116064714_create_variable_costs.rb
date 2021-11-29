@@ -31,9 +31,6 @@ class CreateVariableCosts < ActiveRecord::Migration[6.0]
 
 
 
-
-
-
       t.references :achievement, null: false, foreign_key: true
       t.references :store, null: false, foreign_key: true
       t.timestamps
