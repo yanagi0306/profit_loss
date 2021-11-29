@@ -17,9 +17,9 @@
       </div>
       <div class="form-inline">
         <div class="inline-center">
-          <%= f.select :year,options_for_select(@year_range.map{|i| ["#{i}年",i] },@selected_year),{},{ autofocus: 'true', class: 'input-item text-end',id:"year"}%>
+          <%= f.select :year,options_for_select(@year_range.map{|i| ["#{i}年",i] },@selected_dates[0].year),{},{ autofocus: 'true', class: 'input-item text-end',id:"year"}%>
           <span>/</span>
-          <%= f.select :month,options_for_select((1..12).map{|i| ["#{i}月",i] },@selected_month),{},{ autofocus: 'true', class: 'input-item',id:"month"}%>
+          <%= f.select :month,options_for_select((1..12).map{|i| ["#{i}月",i] },@selected_dates[0].month),{},{ autofocus: 'true', class: 'input-item',id:"month"}%>
         </div>
       </div>
     </div>
@@ -29,7 +29,7 @@
       </div>
       <div class="form-inline">
         <div class="form-inline_left">
-        <%= f.collection_select(:target_num,Targets.all,:id,:name,{},{autofocus: 'true', class: 'input-item text-end'})%>
+          <%= f.collection_select(:target_num,Targets.all,:id,:name,{selected: @target_num},{autofocus: 'true', class: 'input-item text-end'})%>
 
 
         </div>
@@ -61,7 +61,7 @@
   <div class="variables-table-all">
     <table class='upper-table'>
       <tr class='table-head'>
-        <th class='day' id="selected_month"><%=@selected_year%>年</th>
+        <th class='day' id="selected_month"><%=@selected_dates[0].year%>年</th>
         <th class='weeks'>曜日</th>
         <%@target_column.each do |n|%>
         <th class='variable-column'><%=n[:ja_name]%></th>
@@ -86,18 +86,11 @@
 
         <td class='day'><%=variable_cost[:ymd].month%> / <%= variable_cost[:ymd].day%></td>
         <td class='weeks'><%=@wday[variable_cost[:ymd].wday]%></td>
-        <%if params[:target_num].nil? || params[:target_num].to_i == 0%>
-        <%=render  partial:'variable_costs/days', locals: { fh: fh }%>
-        <% elsif  params[:target_num].to_i ==1%>
-        <%=render  partial:'variable_costs/utilities' , locals: { fh: fh }%>
-        <% elsif params[:target_num].to_i == 2 %>
-        <%=render  partial:'variable_costs/fixed_add' , locals: { fh: fh }%>
-        <% else %>
-        <%=render  partial:'variable_costs/miscellaneous', locals: { fh: fh }%>
-        <% end %>
+
+    <%= render partial:'column',collection:@columns, locals: { fh: fh}%>
       </tr>
 
-      <%= %>
+
       <%end %>
       <% end %>
       <%= hidden_field_tag :target_num, @target_num %>

@@ -76,6 +76,7 @@ class VariableCostsController < ApplicationController
     @last_day = @selected_dates.last.day
     @target_num = target_num
     @target_column = @target_columns[target_num]
+    @columns = @target_column.map { |i| i[:name].to_sym }
   end
   def check
     redirect_to root_path unless store_signed_in?
