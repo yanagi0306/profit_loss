@@ -14,49 +14,50 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
 
   create_table "achievements", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "ymd", null: false
-    t.integer "sale"
-    t.integer "lunch_sale"
-    t.integer "dinner_sale"
-    t.integer "interest_income"
-    t.integer "miscellaneous_income"
-    t.integer "overtime_employee_cost"
-    t.integer "social_insurance_part"
-    t.integer "communications_variable"
-    t.integer "publicity_variable"
-    t.integer "social"
-    t.integer "meeting"
-    t.integer "traveling"
-    t.integer "selling_administration_cost"
-    t.integer "garbage_variable"
-    t.integer "car_variable"
-    t.integer "clean_variable"
-    t.integer "credit_variable"
-    t.integer "delivery_variable"
-    t.integer "electric"
-    t.integer "water"
-    t.integer "gas"
-    t.integer "power"
-    t.integer "food_cost"
-    t.integer "material_cost"
-    t.integer "interest_payment"
-    t.integer "welfare_fixed"
-    t.integer "communications_fixed"
-    t.integer "publicity_fixed"
-    t.integer "clean_fixed"
-    t.integer "car_fixed"
-    t.integer "credit_fixed"
-    t.integer "delivery_fixed"
-    t.integer "rent"
-    t.integer "employee_cost"
-    t.integer "director_cost"
-    t.integer "company_interest"
-    t.integer "social_insurance_employee"
-    t.integer "resident_tax"
-    t.integer "pos_system"
-    t.integer "garbage_fixed"
-    t.integer "borrowing"
-    t.integer "tax_counsellor"
-    t.integer "labor_counsellor"
+    t.integer "sale", default: 0
+    t.integer "lunch_sale", default: 0
+    t.integer "dinner_sale", default: 0
+    t.integer "interest_income", default: 0
+    t.integer "miscellaneous_income", default: 0
+    t.integer "overtime_employee_cost", default: 0
+    t.integer "social_insurance_part", default: 0
+    t.integer "meeting", default: 0
+    t.integer "traveling", default: 0
+    t.integer "selling_administration_cost", default: 0
+    t.integer "interest_payment", default: 0
+    t.integer "communications_variable", default: 0
+    t.integer "publicity_variable", default: 0
+    t.integer "garbage_variable", default: 0
+    t.integer "car_variable", default: 0
+    t.integer "credit_variable", default: 0
+    t.integer "clean_variable", default: 0
+    t.integer "electric", default: 0
+    t.integer "water", default: 0
+    t.integer "gas", default: 0
+    t.integer "power", default: 0
+    t.integer "food_cost", default: 0
+    t.integer "material_cost", default: 0
+    t.integer "pert_cost", default: 0
+    t.integer "miscellaneous_cost", default: 0
+    t.integer "delivery_commission", default: 0
+    t.integer "welfare_fixed", default: 0
+    t.integer "communications_fixed", default: 0
+    t.integer "publicity_fixed", default: 0
+    t.integer "clean_fixed", default: 0
+    t.integer "car_fixed", default: 0
+    t.integer "credit_fixed", default: 0
+    t.integer "delivery_fixed", default: 0
+    t.integer "rent", default: 0
+    t.integer "employee_cost", default: 0
+    t.integer "director_cost", default: 0
+    t.integer "company_interest", default: 0
+    t.integer "social_insurance_employee", default: 0
+    t.integer "resident_tax", default: 0
+    t.integer "pos_system", default: 0
+    t.integer "garbage_fixed", default: 0
+    t.integer "borrowing", default: 0
+    t.integer "tax_counsellor", default: 0
+    t.integer "labor_counsellor", default: 0
     t.bigint "store_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -65,49 +66,50 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
 
   create_table "budgets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "ymd", null: false
-    t.integer "sale"
-    t.integer "lunch_sale"
-    t.integer "dinner_sale"
-    t.integer "interest_income"
-    t.integer "miscellaneous_income"
-    t.integer "overtime_employee_cost"
-    t.integer "social_insurance_part"
-    t.integer "communications_variable"
-    t.integer "publicity_variable"
-    t.integer "social"
-    t.integer "meeting"
-    t.integer "traveling"
-    t.integer "selling_administration_cost"
-    t.integer "garbage_variable"
-    t.integer "car_variable"
-    t.integer "clean_variable"
-    t.integer "credit_variable"
-    t.integer "delivery_variable"
-    t.integer "electric"
-    t.integer "water"
-    t.integer "gas"
-    t.integer "power"
-    t.integer "food_cost"
-    t.integer "material_cost"
-    t.integer "interest_payment"
-    t.integer "welfare_fixed"
-    t.integer "communications_fixed"
-    t.integer "publicity_fixed"
-    t.integer "clean_fixed"
-    t.integer "car_fixed"
-    t.integer "credit_fixed"
-    t.integer "delivery_fixed"
-    t.integer "rent"
-    t.integer "employee_cost"
-    t.integer "director_cost"
-    t.integer "company_interest"
-    t.integer "social_insurance_employee"
-    t.integer "resident_tax"
-    t.integer "pos_system"
-    t.integer "garbage_fixed"
-    t.integer "borrowing"
-    t.integer "tax_counsellor"
-    t.integer "labor_counsellor"
+    t.integer "sale", default: 0
+    t.integer "lunch_sale", default: 0
+    t.integer "dinner_sale", default: 0
+    t.integer "interest_income", default: 0
+    t.integer "miscellaneous_income", default: 0
+    t.integer "overtime_employee_cost", default: 0
+    t.integer "social_insurance_part", default: 0
+    t.integer "meeting", default: 0
+    t.integer "traveling", default: 0
+    t.integer "selling_administration_cost", default: 0
+    t.integer "interest_payment", default: 0
+    t.integer "communications_variable", default: 0
+    t.integer "publicity_variable", default: 0
+    t.integer "garbage_variable", default: 0
+    t.integer "car_variable", default: 0
+    t.integer "credit_variable", default: 0
+    t.integer "clean_variable", default: 0
+    t.integer "electric", default: 0
+    t.integer "water", default: 0
+    t.integer "gas", default: 0
+    t.integer "power", default: 0
+    t.integer "food_cost", default: 0
+    t.integer "material_cost", default: 0
+    t.integer "pert_cost", default: 0
+    t.integer "miscellaneous_cost", default: 0
+    t.integer "delivery_commission", default: 0
+    t.integer "welfare_fixed", default: 0
+    t.integer "communications_fixed", default: 0
+    t.integer "publicity_fixed", default: 0
+    t.integer "clean_fixed", default: 0
+    t.integer "car_fixed", default: 0
+    t.integer "credit_fixed", default: 0
+    t.integer "delivery_fixed", default: 0
+    t.integer "rent", default: 0
+    t.integer "employee_cost", default: 0
+    t.integer "director_cost", default: 0
+    t.integer "company_interest", default: 0
+    t.integer "social_insurance_employee", default: 0
+    t.integer "resident_tax", default: 0
+    t.integer "pos_system", default: 0
+    t.integer "garbage_fixed", default: 0
+    t.integer "borrowing", default: 0
+    t.integer "tax_counsellor", default: 0
+    t.integer "labor_counsellor", default: 0
     t.bigint "store_id", null: false
     t.bigint "budgets_day_ratio_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -144,7 +146,7 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
   end
 
   create_table "incomes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "price", null: false
+    t.integer "price", default: 0, null: false
     t.date "ymd", null: false
     t.string "income_category_id", null: false
     t.bigint "achievement_id", null: false
@@ -159,7 +161,7 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
     t.date "ymd", null: false
     t.integer "sale", null: false
     t.integer "lunch_sale", null: false
-    t.integer "dinner_sale", null: false
+    t.integer "dinner_sale"
     t.bigint "achievement_id", null: false
     t.bigint "store_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -185,9 +187,28 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
   end
 
   create_table "variable_costs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "price", null: false
-    t.integer "variable_category_id", null: false
     t.date "ymd", null: false
+    t.integer "food_cost", default: 0
+    t.integer "material_cost", default: 0
+    t.integer "pert_cost", default: 0
+    t.integer "miscellaneous_cost", default: 0
+    t.integer "delivery_commission", default: 0
+    t.integer "electric", default: 0
+    t.integer "water", default: 0
+    t.integer "gas", default: 0
+    t.integer "power", default: 0
+    t.integer "communications_variable", default: 0
+    t.integer "publicity_variable", default: 0
+    t.integer "garbage_variable", default: 0
+    t.integer "car_variable", default: 0
+    t.integer "credit_variable", default: 0
+    t.integer "clean_variable", default: 0
+    t.integer "overtime_employee_cost", default: 0
+    t.integer "social_insurance_part", default: 0
+    t.integer "meeting", default: 0
+    t.integer "traveling", default: 0
+    t.integer "selling_administration_cost", default: 0
+    t.integer "interest_payment", default: 0
     t.bigint "achievement_id", null: false
     t.bigint "store_id", null: false
     t.datetime "created_at", precision: 6, null: false

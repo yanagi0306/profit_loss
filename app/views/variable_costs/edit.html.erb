@@ -1,0 +1,105 @@
+<div class="content-wrapper">
+  <div class="main-content-title-wrap">
+    閲覧・編集
+    <div class="sub-buttons">
+      <div class="d-inline">
+        <a href="" class="info">CSVアップロード</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="search">
+    <%= form_with(url: edit_variable_costs_path, local: true, method: :get) do |f| %>
+
+    <div class="form-group">
+      <div class="form-label">
+        <label>指定年月</label>
+      </div>
+      <div class="form-inline">
+        <div class="inline-center">
+          <%= f.select :year,options_for_select(@year_range.map{|i| ["#{i}年",i] },@selected_dates[0].year),{},{ autofocus: 'true', class: 'input-item text-end',id:"year"}%>
+          <span>/</span>
+          <%= f.select :month,options_for_select((1..12).map{|i| ["#{i}月",i] },@selected_dates[0].month),{},{ autofocus: 'true', class: 'input-item',id:"month"}%>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-label">
+        <label>対象</label>
+      </div>
+      <div class="form-inline">
+        <div class="form-inline_left">
+          <%= f.collection_select(:target_num,Targets.all,:id,:name,{selected: @target_num},{autofocus: 'true', class: 'input-item text-end'})%>
+
+
+        </div>
+      </div>
+    </div>
+    <div class="form-group-btn">
+      <%= f.submit "検索" ,class:"form__btn" %>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="result-wrapper">
+    <div class="result-title">
+      変動費情報
+    </div>
+  </div>
+
+
+
+
+  <%=render 'shared/error_messages', error_messages: @error_messages%>
+
+
+  <%=form_with(model:@variable_costs,url:variable_costs_path, local: true, method: :patch) do |f| %>
+
+
+
+
+  <div class="variables-table-all">
+    <table class='upper-table'>
+      <tr class='table-head'>
+        <th class='day' id="selected_month"><%=@selected_dates[0].year%>年</th>
+        <th class='weeks'>曜日</th>
+        <%@target_column.each do |n|%>
+        <th class='variable-column'><%=n[:ja_name]%></th>
+        <%end %>
+      </tr>
+    </table>
+
+    <table class='under-table'>
+
+
+      <%@variable_costs.each_with_index do |variable_cost,index|%>
+
+      <%=f.fields_for('variable_costs[]',variable_cost) do |fh| %>
+
+      <%if HolidayJapan.check(variable_cost[:ymd]) || variable_cost[:ymd].wday == 0%>
+      <tr class='record' style='background-color:#FFDDCB'>
+        <%elsif variable_cost[:ymd].wday == 6 %>
+      <tr class='record' style='background-color:#BBE2E8'>
+        <%else %>
+      <tr class='record'>
+        <%end %>
+
+        <td class='day'><%=variable_cost[:ymd].month%> / <%= variable_cost[:ymd].day%></td>
+        <td class='weeks'><%=@wday[variable_cost[:ymd].wday]%></td>
+
+    <%= render partial:'column',collection:@columns, locals: { fh: fh}%>
+      </tr>
+
+
+      <%end %>
+      <% end %>
+      <%= hidden_field_tag :target_num, @target_num %>
+    </table>
+  </div>
+  <div class="form-group-btn">
+    <%= f.submit "登録", class: "form__btn" %>
+  </div>
+  <%end %>
+
+</div>
+<input type="hidden" id="lastDay" value="<%= @last_day %>">

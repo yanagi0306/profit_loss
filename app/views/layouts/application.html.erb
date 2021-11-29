@@ -13,62 +13,63 @@
 </head>
 
 <body>
+  <div class='content'>
+    <header class="header">
 
-  <header class="header">
-
-    <div class="nav">
-      <div class="nav__left">
-        <%# <button id="menu-btn" class="active">
+      <div class="nav">
+        <div class="nav__left">
+          <%# <button id="menu-btn" class="active">
         </button> %>
-        <%= link_to image_tag("logo.png", class: :logo), root_path %>
-      </div>
-      <% if store_signed_in?%>
-      <div class="nav__right">
-        <span class="company_nu"><%=current_store.company.name%></span>
-        <span class="store_nu"> <%=current_store.name%> </span>
-        <%= link_to "ログアウト", destroy_store_session_path,method: :delete, class: :nav__logout %>
-      </div>
-      <% elsif company_signed_in?%>
-      <div class="nav__right">
-        <span class="company_nu"><%=current_company.name%></span>
-        <%= link_to "店舗としてログイン", new_store_session_path, class: :nav__logout %>
-        <%= link_to "ログアウト", destroy_company_session_path,method: :delete, class: :nav__logout %>
-      </div>
-      <% end %>
-    </div>
-  </header>
-  <div class="wrapper">
-    <div class="sidebar">
-      <ul class="input_lists">
-        <li class="side_list_table">
-          <i class="fa fa-home" aria-hidden="true"></i>店舗収支管理</li>
-        <li class="side_list"><%=link_to '売上管理',edit_sales_path, class: :link_list%></li>
-        <li class="side_list"><%=link_to '臨時収入管理',edit_incomes_path, class: :link_list%></li>
-        <li class="side_list"><%=link_to '固定費管理',edit_budgets_path, class: :link_list%></li>
-        <li class="side_list"><%=link_to '変動費',edit_variable_costs_path, class: :link_list%></li>
-      </ul>
-      <ul class="configuration_lists">
-        <li class="side_list_table"><i class="fa fa-cog" aria-hidden="true"></i>店舗管理設定</li>
-        <% if company_signed_in? %>
-        <li class="side_list"><%=link_to '新規出店',new_store_registration_path, class: :link_list%></li>
+          <%= link_to image_tag("logo.png", class: :logo), root_path %>
+        </div>
+        <% if store_signed_in?%>
+        <div class="nav__right">
+          <span class="company_nu"><%=current_store.company.name%></span>
+          <span class="store_nu"> <%=current_store.name%> </span>
+          <%= link_to "ログアウト", destroy_store_session_path,method: :delete, class: :nav__logout %>
+        </div>
+        <% elsif company_signed_in?%>
+        <div class="nav__right">
+          <span class="company_nu"><%=current_company.name%></span>
+          <%= link_to "店舗としてログイン", new_store_session_path, class: :nav__logout %>
+          <%= link_to "ログアウト", destroy_company_session_path,method: :delete, class: :nav__logout %>
+        </div>
         <% end %>
-        <li class="side_list"><%=link_to '予算管理',budgets_path, class: :link_list%></li>
-        <li class="side_list"><%=link_to '予算比率管理',new_budgets_day_ratio_path, class: :link_list%></li>
-      </ul>
-      <ul class="management_lists">
-        <li class="side_list_table"><i class="fa fa-calculator" aria-hidden="true"></i>店舗分析</li>
-        <li class="side_list"><%=link_to '売上実績管理',new_store_registration_path, class: :link_list%></li>
-        <li class="side_list"><%=link_to 'Zチャート',new_store_registration_path, class: :link_list%></li>
-        <li class="side_list"><%=link_to '簡易PL',new_store_registration_path, class: :link_list%></li>
-      </ul>
+      </div>
+    </header>
+    <div class="wrapper">
+      <div class="sidebar">
+        <ul class="input_lists">
+          <li class="side_list_table">
+            <i class="fa fa-home" aria-hidden="true"></i>店舗収支管理</li>
+          <li class="side_list"><%=link_to '売上管理',edit_sales_path, class: :link_list%></li>
+          <li class="side_list"><%=link_to '臨時収入管理',edit_incomes_path, class: :link_list%></li>
+          <li class="side_list"><%=link_to '固定費管理',edit_budgets_path, class: :link_list%></li>
+          <li class="side_list"><%=link_to '変動費',edit_variable_costs_path, class: :link_list%></li>
+        </ul>
+        <ul class="configuration_lists">
+          <li class="side_list_table"><i class="fa fa-cog" aria-hidden="true"></i>店舗管理設定</li>
+          <% if company_signed_in? %>
+          <li class="side_list"><%=link_to '新規出店',new_store_registration_path, class: :link_list%></li>
+          <% end %>
+          <li class="side_list"><%=link_to '予算管理',budgets_path, class: :link_list%></li>
+          <li class="side_list"><%=link_to '予算比率管理',new_budgets_day_ratio_path, class: :link_list%></li>
+        </ul>
+        <ul class="management_lists">
+          <li class="side_list_table"><i class="fa fa-calculator" aria-hidden="true"></i>店舗分析</li>
+          <li class="side_list"><%=link_to '売上実績管理',new_store_registration_path, class: :link_list%></li>
+          <li class="side_list"><%=link_to 'Zチャート',new_store_registration_path, class: :link_list%></li>
+          <li class="side_list"><%=link_to '簡易PL',new_store_registration_path, class: :link_list%></li>
+        </ul>
+      </div>
+      <div class="main">
+        <%= yield %>
+      </div>
     </div>
-    <div class="main">
-      <%= yield %>
-    </div>
+    <footer class="footer">
+      <p class="copyright">Copyright © FOOD JOURNAL All rights reserved.</p>
+    </footer>
   </div>
-  <footer class="footer">
-    <p class="copyright">Copyright © FOOD JOURNAL All rights reserved.</p>
-  </footer>
 </body>
 
 </html>

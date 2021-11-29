@@ -22,6 +22,8 @@ class Income < ApplicationRecord
             numericality: {
               only_integer: true,
               greater_than_or_equal_to: 0,
+              less_than_or_equal_to: 10000000,
+
             }
 
   def self.search_getter(year, month, current_store)

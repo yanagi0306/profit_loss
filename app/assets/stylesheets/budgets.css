@@ -1,6 +1,8 @@
 .content-wrapper {
   padding: 15px;
-  overflow-y: auto;
+  overflow: auto;
+  width: 100%;
+  height: 100%;
 }
 .main-content-title-wrap {
   display: flex;
@@ -20,40 +22,42 @@ label {
   width: 60px;
 }
 .form-group {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   display: flex;
 }
 .form-inline {
   display: flex;
   justify-content: center;
-  width: 1300px;
+  width: 100%;
   position: relative;
   right: 29px;
 }
 .form-inline-store {
   display: flex;
   justify-content: center;
-  width: 1300px;
+  width: 100%;
   position: relative;
   right: 120px;
 }
 .form-group-btn {
-  margin-top: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   display: flex;
   justify-content: center;
 }
 
 .input-item {
   width: 170px;
-  height: 30px;
-  font-size: 13px;
+  height: 33px;
+  font-size: 13.5px;
+  border: 1px solid #ced4da;
+  padding: 0.375rem 0.75rem;
+  color: #495057;
+  border-radius: 0.3rem;
 }
 /* 入力フォームtable関係 */
 .result-title {
   height: 34px;
-  width: calc(100vw - 210px -15px);
+  width: 100%;
   background: #eee;
   padding: 8px;
   margin-bottom: 0.5rem;
@@ -61,8 +65,12 @@ label {
   font-weight: 700;
   font-size: 13px;
 }
+.result-wrapper {
+  width: 100%;
+}
 .record {
   height: 50px;
+
 }
 .day {
   border: #dee2e6 solid 1px;
@@ -71,6 +79,7 @@ label {
   font-size: 13px;
   font-weight: 700;
   width: 90px;
+
 }
 .weeks {
   border: #dee2e6 solid 1px;
@@ -80,49 +89,83 @@ label {
   font-size: 13px;
   font-weight: 700;
   width: 69px;
+
 }
 .column {
   width: 157px;
   border: #dee2e6 solid 1px;
   text-align: center;
+
+}
+.variable-column {
+  width: 130px;
+  border: #dee2e6 solid 1px;
+  text-align: center;
+
 }
 .input {
   height: 33px;
   width: 120px;
   border: 1px solid #c5c5c5;
   padding-right: 11px;
+  border-radius: 0.3rem;
+
+}
+.input_variable {
+  height: 33px;
+  width: 100px;
+  border: 1px solid #c5c5c5;
+  padding-right: 11px;
+  border-radius: 0.3rem;
+
 }
 .upper-table {
-  position: sticky;
-  top: 0;
+
+  height: 33px;
 }
 .under-table {
   display: block;
-  overflow-y: auto;
+  height: calc(65vh - 100px);
+
+  overflow-y: scroll;
 }
 .table-head {
   height: 38px;
   background-color: #eee;
 
+}
+.variables-table-all {
+  display: block;
+  height: 63vh;
   margin-top: 18x;
   margin-left: 20px;
-}
+  width:calc(100vh - 100px);
+  min-width:810px;
 
+}
 .incomes-table-all {
   display: block;
-  width: 473px;
-  height: 65vh;
+  height: 63vh;
   margin-top: 18x;
   margin-left: 20px;
-  overflow-x: auto;
+  width:calc(100vh - 100px);
+  min-width:810px;
+
+
 }
 .sales-table-all {
   display: block;
-  width: 700px;
-  height: 65vh;
+  height: 63vh;
   margin-top: 18x;
   margin-left: 20px;
-  overflow-x: auto;
+  width:calc(100vh - 100px);
+  min-width:810px;
+
+}
+/* 変動費管理 */
+.form-inline_left {
+  position: relative;
+  right: 92px;
 }
 
 /* エラーメッセージ */

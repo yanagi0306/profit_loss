@@ -76,6 +76,7 @@
 | borrowing                   | integer    |                               |
 | tax_counsellor              | integer    |                               |
 | labor_counsellor            | integer    |                               |
+| miscellaneous_income        | integer    |                               |
 | store                       | references | null:false,foreign_key: true  |
 | budget_day_ratio            | references | null:false,foreign_key: true  |
 
