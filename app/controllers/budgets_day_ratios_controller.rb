@@ -13,6 +13,11 @@ class BudgetsDayRatiosController < ApplicationController
   def create
 
     @budgets_day_ratio = BudgetsDayRatio.new(ratio_params)
+
+    BudgetsDayRatio.check_params(params,current_store.id)
+
+    binding.pry
+
     if @budgets_day_ratio.save
       redirect_to new_budgets_day_ratio_path
     else

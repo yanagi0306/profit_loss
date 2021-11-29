@@ -27,4 +27,21 @@ class BudgetsDayRatio < ApplicationRecord
             },
             allow_blank: true
   validates :store_id, presence: { message: 'としてログインされていません' }
+
+  def self.check_params(params,current_store)
+    weeks = %i[monday tuesday wednesday thursday friday saturday holiday]
+    now_ratio =
+      BudgetsDayRatio
+        .where(store_id: current_store)
+        .order(updated_at: :desc)[
+        0
+      ]
+    weeks.each do |week|
+      if params[:budgets_day_ratio][week].to_i == now_ratio[week]
+        return false
+      end
+
+    end
+    return true
+  end
 end
