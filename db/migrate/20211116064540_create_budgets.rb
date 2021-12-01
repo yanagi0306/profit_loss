@@ -30,12 +30,12 @@ class CreateBudgets < ActiveRecord::Migration[6.0]
 
 
 
-      t.integer :communications_variable, default: 0
-      t.integer :publicity_variable, default: 0
-      t.integer :garbage_variable, default: 0
-      t.integer :car_variable, default: 0
-      t.integer :credit_variable, default: 0
-      t.integer :clean_variable, default: 0
+      # t.integer :communications_variable, default: 0
+      # t.integer :publicity_variable, default: 0
+      # t.integer :garbage_variable, default: 0
+      # t.integer :car_variable, default: 0
+      # t.integer :credit_variable, default: 0
+      # t.integer :clean_variable, default: 0
 
 
 

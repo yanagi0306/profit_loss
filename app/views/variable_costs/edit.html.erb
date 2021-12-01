@@ -87,6 +87,7 @@
         <td class='day'><%=variable_cost[:ymd].month%> / <%= variable_cost[:ymd].day%></td>
         <td class='weeks'><%=@wday[variable_cost[:ymd].wday]%></td>
 
+
     <%= render partial:'column',collection:@columns, locals: { fh: fh}%>
       </tr>
 

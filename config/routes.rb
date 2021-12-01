@@ -11,7 +11,11 @@ Rails.application.routes.draw do
              }
   root to: 'stores#index'
 
-  resources :stores, only: [:index]
+  resources :stores, only: [:index] do
+    member do
+      get 'search'
+    end
+  end
   resource :budgets,only: [:edit,:update]
   resources :budgets_day_ratios, only: [:new,:create]
   resource :incomes,only: [:edit,:update]
