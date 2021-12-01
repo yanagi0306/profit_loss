@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
   end
 
   create_table "budgets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.date "month", null: false
+    t.date "ymd", null: false
     t.integer "sale", default: 0
     t.integer "customers_number", default: 0
     t.integer "lunch_sale", default: 0

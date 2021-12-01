@@ -4,10 +4,7 @@ class VariableCost < ApplicationRecord
   belongs_to :achievement
   belongs_to :store
 
-  validates :ymd,
-  presence: true,
-  uniqueness: {
-    scope: %i[store_id]}
+  validates :ymd, presence: true, uniqueness: { scope: %i[store_id] }
   validates :achievement_id, presence: { message: 'と紐付いていません' }
   validates :food_cost,
             :material_cost,
@@ -39,9 +36,6 @@ class VariableCost < ApplicationRecord
             allow_blank: true
 
   def self.search_getter(year, month, current_store)
-
-
-
     select_month = Date.new(year.to_i, month.to_i)
     first_day = select_month.beginning_of_month
     last_day = first_day + 1.month - 1.day
@@ -51,7 +45,7 @@ class VariableCost < ApplicationRecord
     variable_costs = []
     achievements = []
     month_range.each do |day|
-      if Achievement.exists?(ymd: day)
+      if Achievement.exists?(ymd: day, store_id: current_store)
         new_achievement =
           Achievement.where(ymd: day, store_id: current_store)[0]
       else
@@ -79,7 +73,6 @@ class VariableCost < ApplicationRecord
   def self.update_variable_costs(params)
     error_messages = []
     params.to_unsafe_h.each do |id, variable_cost_param|
-
       variable_cost = VariableCost.find(id)
 
       unless variable_cost.update_attributes(variable_cost_param)
@@ -93,6 +86,4 @@ class VariableCost < ApplicationRecord
     end
     return error_messages
   end
-
-
 end

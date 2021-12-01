@@ -216,7 +216,7 @@ i {
 
 /* メイン */
 .main {
-  width: calc(100% - 210px);
+  width:100%;
   height: calc(100vh - 60px - 20px);
   overflow-y:scroll;
 }
@@ -229,6 +229,7 @@ i {
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 .copyright {
   color: #fff;
