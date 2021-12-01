@@ -15,10 +15,20 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
   create_table "achievements", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "ymd", null: false
     t.integer "sale", default: 0
+    t.integer "customers_number", default: 0
     t.integer "lunch_sale", default: 0
     t.integer "dinner_sale", default: 0
     t.integer "interest_income", default: 0
     t.integer "miscellaneous_income", default: 0
+    t.integer "food_cost", default: 0
+    t.integer "material_cost", default: 0
+    t.integer "pert_cost", default: 0
+    t.integer "miscellaneous_cost", default: 0
+    t.integer "delivery_commission", default: 0
+    t.integer "electric", default: 0
+    t.integer "water", default: 0
+    t.integer "gas", default: 0
+    t.integer "power", default: 0
     t.integer "overtime_employee_cost", default: 0
     t.integer "social_insurance_part", default: 0
     t.integer "meeting", default: 0
@@ -31,22 +41,12 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
     t.integer "car_variable", default: 0
     t.integer "credit_variable", default: 0
     t.integer "clean_variable", default: 0
-    t.integer "electric", default: 0
-    t.integer "water", default: 0
-    t.integer "gas", default: 0
-    t.integer "power", default: 0
-    t.integer "food_cost", default: 0
-    t.integer "material_cost", default: 0
-    t.integer "pert_cost", default: 0
-    t.integer "miscellaneous_cost", default: 0
-    t.integer "delivery_commission", default: 0
-    t.integer "welfare_fixed", default: 0
     t.integer "communications_fixed", default: 0
     t.integer "publicity_fixed", default: 0
-    t.integer "clean_fixed", default: 0
+    t.integer "garbage_fixed", default: 0
     t.integer "car_fixed", default: 0
     t.integer "credit_fixed", default: 0
-    t.integer "delivery_fixed", default: 0
+    t.integer "clean_fixed", default: 0
     t.integer "rent", default: 0
     t.integer "employee_cost", default: 0
     t.integer "director_cost", default: 0
@@ -54,7 +54,8 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
     t.integer "social_insurance_employee", default: 0
     t.integer "resident_tax", default: 0
     t.integer "pos_system", default: 0
-    t.integer "garbage_fixed", default: 0
+    t.integer "welfare_fixed", default: 0
+    t.integer "delivery_fixed", default: 0
     t.integer "borrowing", default: 0
     t.integer "tax_counsellor", default: 0
     t.integer "labor_counsellor", default: 0
@@ -67,10 +68,20 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
   create_table "budgets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "ymd", null: false
     t.integer "sale", default: 0
+    t.integer "customers_number", default: 0
     t.integer "lunch_sale", default: 0
     t.integer "dinner_sale", default: 0
     t.integer "interest_income", default: 0
     t.integer "miscellaneous_income", default: 0
+    t.integer "food_cost", default: 0
+    t.integer "material_cost", default: 0
+    t.integer "pert_cost", default: 0
+    t.integer "miscellaneous_cost", default: 0
+    t.integer "delivery_commission", default: 0
+    t.integer "electric", default: 0
+    t.integer "water", default: 0
+    t.integer "gas", default: 0
+    t.integer "power", default: 0
     t.integer "overtime_employee_cost", default: 0
     t.integer "social_insurance_part", default: 0
     t.integer "meeting", default: 0
@@ -83,22 +94,12 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
     t.integer "car_variable", default: 0
     t.integer "credit_variable", default: 0
     t.integer "clean_variable", default: 0
-    t.integer "electric", default: 0
-    t.integer "water", default: 0
-    t.integer "gas", default: 0
-    t.integer "power", default: 0
-    t.integer "food_cost", default: 0
-    t.integer "material_cost", default: 0
-    t.integer "pert_cost", default: 0
-    t.integer "miscellaneous_cost", default: 0
-    t.integer "delivery_commission", default: 0
-    t.integer "welfare_fixed", default: 0
     t.integer "communications_fixed", default: 0
     t.integer "publicity_fixed", default: 0
-    t.integer "clean_fixed", default: 0
+    t.integer "garbage_fixed", default: 0
     t.integer "car_fixed", default: 0
     t.integer "credit_fixed", default: 0
-    t.integer "delivery_fixed", default: 0
+    t.integer "clean_fixed", default: 0
     t.integer "rent", default: 0
     t.integer "employee_cost", default: 0
     t.integer "director_cost", default: 0
@@ -106,7 +107,8 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
     t.integer "social_insurance_employee", default: 0
     t.integer "resident_tax", default: 0
     t.integer "pos_system", default: 0
-    t.integer "garbage_fixed", default: 0
+    t.integer "welfare_fixed", default: 0
+    t.integer "delivery_fixed", default: 0
     t.integer "borrowing", default: 0
     t.integer "tax_counsellor", default: 0
     t.integer "labor_counsellor", default: 0

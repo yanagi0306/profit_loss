@@ -1,0 +1,97 @@
+<div class="content-wrapper">
+  <div class="main-content-title-wrap">
+    閲覧・編集
+    <div class="sub-buttons">
+      <div class="d-inline">
+        <a href="" class="info">CSVアップロード</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="search">
+    <%= form_with(url: edit_budgets_path, local: true, method: :get) do |f| %>
+
+    <div class="form-group">
+      <div class="form-label">
+        <label>指定年月</label>
+      </div>
+      <div class="form-inline">
+        <div class="inline-center">
+
+          <%= f.select :year,options_for_select(@year_range.map{|i| ["#{i}年",i] },@ymd.year),{},{ autofocus: 'true', class: 'input-item text-end',id:"year"}%>
+          <span>/</span>
+          <%= f.select :month,options_for_select((1..12).map{|i| ["#{i}月",i] },@ymd.month),{},{ autofocus: 'true', class: 'input-item',id:"month"}%>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-label">
+        <label>対象</label>
+      </div>
+      <div class="form-inline">
+        <div class="form-inline_left">
+          <%= f.select :target_num,options_for_select(@targets.map{|i| [i[:name],i[:id]] },@target_num),{},{ autofocus: 'true', class: 'input-item text-end',id:"year"}%>
+
+
+
+        </div>
+      </div>
+    </div>
+    <div class="form-group-btn">
+      <%= f.submit "検索" ,class:"form__btn" %>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="result-wrapper">
+    <div class="result-title">
+      予算,固定費情報
+    </div>
+  </div>
+
+
+
+  <%=form_with(model:@budget,url:budgets_path, local: true, method: :patch, class: "search-form") do |f| %>
+
+  <div class="incomes-table-all">
+    <table class='upper-table'>
+      <tr class='table-head'>
+        <th class='day'>予算項目</th>
+        <th class='column'><%=@ymd.year%>年<%=@ymd.month%>月予算</th>
+        <th class='column'>先月の予算</th>
+      </tr>
+    </table>
+
+    <table class='under-table'>
+
+
+
+
+
+      <%@target_column.each do |column|%>
+      <tr class='record'>
+        <td class='day' style='background-color:#eeeeee'><%= column[:ja_name]%></td>
+        <td class='column'>
+          <%= f.text_field column[:name].to_sym, {class: "input text-end"} %>
+        </td>
+        <td class='column'><%= @budget[column[:name].to_sym]%></td>
+      </tr>
+      <% end %>
+
+
+    </table>
+  </div>
+  <%= hidden_field_tag :target_num, @target_num %>
+  <%= hidden_field_tag :id, @id %>
+
+  <div class="form-group-btn">
+
+    <%= f.submit "登録", class: "form__btn" %>
+  </div>
+
+  <%end %>
+
+
+
+
+</div>
