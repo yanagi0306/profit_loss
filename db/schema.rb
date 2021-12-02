@@ -15,14 +15,16 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
   create_table "achievements", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "ymd", null: false
     t.integer "sale", default: 0
-    t.integer "customers_number", default: 0
     t.integer "lunch_sale", default: 0
     t.integer "dinner_sale", default: 0
+    t.integer "lunch_number", default: 0
+    t.integer "dinner_number", default: 0
     t.integer "interest_income", default: 0
     t.integer "miscellaneous_income", default: 0
     t.integer "food_cost", default: 0
     t.integer "material_cost", default: 0
     t.integer "pert_cost", default: 0
+    t.integer "consumption_tax", default: 0
     t.integer "miscellaneous_cost", default: 0
     t.integer "delivery_commission", default: 0
     t.integer "electric", default: 0
@@ -68,14 +70,16 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
   create_table "budgets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "ymd", null: false
     t.integer "sale", default: 0
-    t.integer "customers_number", default: 0
     t.integer "lunch_sale", default: 0
     t.integer "dinner_sale", default: 0
+    t.integer "lunch_number", default: 0
+    t.integer "dinner_number", default: 0
     t.integer "interest_income", default: 0
     t.integer "miscellaneous_income", default: 0
     t.integer "food_cost", default: 0
     t.integer "material_cost", default: 0
     t.integer "pert_cost", default: 0
+    t.integer "consumption_tax", default: 0
     t.integer "miscellaneous_cost", default: 0
     t.integer "delivery_commission", default: 0
     t.integer "electric", default: 0
@@ -88,12 +92,6 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
     t.integer "traveling", default: 0
     t.integer "selling_administration_cost", default: 0
     t.integer "interest_payment", default: 0
-    t.integer "communications_variable", default: 0
-    t.integer "publicity_variable", default: 0
-    t.integer "garbage_variable", default: 0
-    t.integer "car_variable", default: 0
-    t.integer "credit_variable", default: 0
-    t.integer "clean_variable", default: 0
     t.integer "communications_fixed", default: 0
     t.integer "publicity_fixed", default: 0
     t.integer "garbage_fixed", default: 0
@@ -161,9 +159,11 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
 
   create_table "sales", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "ymd", null: false
-    t.integer "sale", null: false
-    t.integer "lunch_sale", null: false
-    t.integer "dinner_sale"
+    t.integer "sale", default: 0
+    t.integer "lunch_sale", default: 0
+    t.integer "dinner_sale", default: 0
+    t.integer "lunch_number", default: 0
+    t.integer "dinner_number", default: 0
     t.bigint "achievement_id", null: false
     t.bigint "store_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -193,6 +193,7 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
     t.integer "food_cost", default: 0
     t.integer "material_cost", default: 0
     t.integer "pert_cost", default: 0
+    t.integer "consumption_tax", default: 0
     t.integer "miscellaneous_cost", default: 0
     t.integer "delivery_commission", default: 0
     t.integer "electric", default: 0

@@ -11,9 +11,11 @@ class TargetBudgets
       { id: 0, name: 'sale', ja_name: '月間売上' },
       { id: 1, name: 'lunch_sale', ja_name: '月間ランチ' },
       { id: 2, name: 'dinner_sale', ja_name: '月間ディナー' },
-      { id: 3, name: 'customers_number', ja_name: '客数' },
-      { id: 4, name: 'interest_income', ja_name: '受取利息' },
-      { id: 5, name: 'miscellaneous_income', ja_name: '雑収入' },
+      { id: 3, name: 'lunch_number', ja_name: '月間ランチ客数' },
+      { id: 4, name: 'dinner_number', ja_name: '月間ディナー客数' },
+      { id: 5, name: 'customers_number', ja_name: '客数' },
+      { id: 6, name: 'interest_income', ja_name: '受取利息' },
+      { id: 7, name: 'miscellaneous_income', ja_name: '雑収入' },
     ]
   end
   def self.variable
@@ -32,7 +34,7 @@ class TargetBudgets
       { id: 11, name: 'meeting', ja_name: '会議費' },
       { id: 12, name: 'traveling', ja_name: '旅費交通費' },
       { id: 13, name: 'selling_administration_cost', ja_name: '販売管理費' },
-      { id: 14, name: 'interest_payment', ja_name: '受取利息' },
+      { id: 14, name: 'interest_payment', ja_name: '支払い利息' },
     ]
   end
   def self.fixed

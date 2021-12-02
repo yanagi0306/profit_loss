@@ -12,8 +12,17 @@ class Sale < ApplicationRecord
             numericality: {
               only_integer: true,
               greater_than_or_equal_to: 0,
-              less_than_or_equal_to: 3_000_000,
-            }
+              less_than_or_equal_to: 3000000,
+            },
+            allow_blank: true
+  validates :lunch_number,
+            :dinner_number,
+            numericality: {
+              only_integer: true,
+              greater_than_or_equal_to: 0,
+              less_than_or_equal_to: 1000,
+            },
+            allow_blank: true
 
   def sale_check
     unless sale == lunch_sale + dinner_sale
@@ -42,9 +51,6 @@ class Sale < ApplicationRecord
         Sale.new(
           ymd: day,
           achievement_id: new_achievement.id,
-          sale: 0,
-          lunch_sale: 0,
-          dinner_sale: 0,
           store_id: current_store,
         )
       unless new_sale.save

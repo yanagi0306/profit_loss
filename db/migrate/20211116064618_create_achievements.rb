@@ -2,13 +2,11 @@ class CreateAchievements < ActiveRecord::Migration[6.0]
   def change
     create_table :achievements do |t|
       t.date :ymd, null: false, unique: true, default: 0
-      t.date :ymd, null: false
       t.integer :sale, default: 0
-      t.integer :customers_number, default: 0
       t.integer :lunch_sale, default: 0
       t.integer :dinner_sale, default: 0
       t.integer :lunch_number,default:0
-      t.integer :dinner_umber,default:0
+      t.integer :dinner_number,default:0
       t.integer :interest_income, default: 0
       t.integer :miscellaneous_income, default: 0
 

@@ -39,6 +39,7 @@
     </header>
     <div class="wrapper">
       <div class="sidebar">
+        <% if store_signed_in?||company_signed_in?%>
         <ul class="input_lists">
           <li class="side_list_table">
             <i class="fa fa-home" aria-hidden="true"></i>店舗収支管理</li>
@@ -57,12 +58,18 @@
           <li class="side_list"><%=link_to '予算管理',edit_budgets_path, class: :link_list%></li>
           <li class="side_list"><%=link_to '予算比率管理',new_budgets_day_ratio_path, class: :link_list%></li>
         </ul>
+        <% if store_signed_in?%>
         <ul class="management_lists">
           <li class="side_list_table"><i class="fa fa-calculator" aria-hidden="true"></i>店舗分析</li>
-          <li class="side_list"><%=link_to '売上実績管理',search_store_path(id:current_store.id,year:Date.today.year,month:Date.today.month), class: :link_list%></li>
+
+          <li class="side_list">
+            <%=link_to '売上実績管理',search_store_path(id:current_store.id,year:Date.today.year,month:Date.today.month), class: :link_list%>
+          </li>
           <li class="side_list"><%=link_to 'Zチャート',new_store_registration_path, class: :link_list%></li>
           <li class="side_list"><%=link_to '簡易PL',new_store_registration_path, class: :link_list%></li>
         </ul>
+        <% end %>
+        <% end %>
       </div>
       <div class="main">
         <%= yield %>
