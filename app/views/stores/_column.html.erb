@@ -1,0 +1,7 @@
+<tr class="search-record">
+          <td class="category"></td>
+          <td class="subject">売上</td>
+          <td class="search-item"><%=patch_budget(column).to_s(:delimited)%></td>
+          <td class="search-item"><%=sum_achievement(column).to_s(:delimited)%></td>
+          <td class="search-item"><%=number_to_percentage(sum_achievement(column).quo(patch_budget(column)))%></td>
+        </tr>

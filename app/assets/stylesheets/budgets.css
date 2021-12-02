@@ -70,7 +70,6 @@ label {
 }
 .record {
   height: 50px;
-
 }
 .day {
   border: #dee2e6 solid 1px;
@@ -79,7 +78,6 @@ label {
   font-size: 13px;
   font-weight: 700;
   width: 90px;
-
 }
 .weeks {
   border: #dee2e6 solid 1px;
@@ -89,38 +87,32 @@ label {
   font-size: 13px;
   font-weight: 700;
   width: 69px;
-
 }
 .column {
   width: 157px;
   border: #dee2e6 solid 1px;
   text-align: center;
-
 }
 .variable-column {
   width: 130px;
   border: #dee2e6 solid 1px;
   text-align: center;
-
 }
 .input {
   height: 33px;
   width: 120px;
   border: 1px solid #c5c5c5;
-  padding-right: 11px;
+  padding: 11px;
   border-radius: 0.3rem;
-
 }
 .input_variable {
   height: 33px;
   width: 100px;
   border: 1px solid #c5c5c5;
-  padding-right: 11px;
+  padding: 11px;
   border-radius: 0.3rem;
-
 }
 .upper-table {
-
   height: 33px;
 }
 .under-table {
@@ -132,35 +124,30 @@ label {
 .table-head {
   height: 38px;
   background-color: #eee;
-
 }
 .variables-table-all {
   display: block;
   height: 63vh;
   margin-top: 18x;
   margin-left: 20px;
-  width:calc(100vh - 100px);
-  min-width:810px;
-
+  width: calc(100vh - 100px);
+  min-width: 810px;
 }
 .incomes-table-all {
   display: block;
   height: 63vh;
   margin-top: 18x;
   margin-left: 20px;
-  width:calc(100vh - 100px);
-  min-width:810px;
-
-
+  width: calc(100vh - 100px);
+  min-width: 810px;
 }
 .sales-table-all {
   display: block;
   height: 63vh;
   margin-top: 18x;
   margin-left: 20px;
-  width:calc(100vh - 100px);
-  min-width:810px;
-
+  width: calc(100vh - 100px);
+  min-width: 810px;
 }
 /* 変動費管理 */
 .form-inline_left {
@@ -179,4 +166,35 @@ label {
   font-size: 15px;
   list-style: none;
   color: rgb(182, 48, 0);
+}
+/* 実績 */
+.search-table-all {
+  width: 800px;
+  min-width: 800px;
+  height: 800px;
+  min-height: 800px;
+}
+.search-head{
+  height:30px;
+  width:650px;
+  background-color:#EEEEEE ;
+  border: 1px solid #dddddd;
+}
+.category{
+  width:120px;
+  text-align: center;
+  border: 1px solid #dddddd;
+
+
+}
+.subject{
+  width:80px;
+  text-align: center;
+  border: 1px solid #dddddd;
+  font-size:0.7rem;
+}
+.search-item{
+  width:150px;
+  text-align: center;
+  border: 1px solid #dddddd;
 }
