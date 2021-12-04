@@ -1,0 +1,11 @@
+<% if id % 2 == 1%>
+<tr class="search-record" style="background-color:#F9F9F9">
+<% else %>
+<tr class="search-record">
+<% end %>
+  <td class="category"></td>
+  <td class="subject"><%=name%></td>
+  <td class="search-item"><%=budget_columns(columns).to_s(:delimited)%></td>
+  <td class="search-item"><%=achievement_columns(columns).to_s(:delimited)%></td>
+  <td class="search-item"><%=percentage(achievement_columns(columns), budget_columns(columns))%></td>
+</tr>

@@ -1,0 +1,11 @@
+<% if id % 2 == 1%>
+<tr class="search-record" style="background-color:#F9F9F9">
+<% else %>
+<tr class="search-record">
+<% end %>
+  <td class="category"></td>
+  <td class="subject"><%=name%></td>
+  <td class="search-item"><%=patch_budget(variable).to_s(:delimited)%></td>
+  <td class="search-item"><%=(patch_budget(variable)+sum_achievement(fixed)).to_s(:delimited)%></td>
+  <td class="search-item"><%=comparison_percentage(patch_budget(variable)+sum_achievement(fixed),patch_budget(variable))%></td>
+</tr>

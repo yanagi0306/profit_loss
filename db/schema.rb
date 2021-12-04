@@ -92,6 +92,12 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
     t.integer "traveling", default: 0
     t.integer "selling_administration_cost", default: 0
     t.integer "interest_payment", default: 0
+    t.integer "communications_variable", default: 0
+    t.integer "publicity_variable", default: 0
+    t.integer "garbage_variable", default: 0
+    t.integer "car_variable", default: 0
+    t.integer "credit_variable", default: 0
+    t.integer "clean_variable", default: 0
     t.integer "communications_fixed", default: 0
     t.integer "publicity_fixed", default: 0
     t.integer "garbage_fixed", default: 0

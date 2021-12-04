@@ -8,7 +8,7 @@
     </div>
   </div>
   <div class="search">
-    <%= form_with(url: edit_budgets_path, local: true, method: :get) do |f| %>
+    <%= form_with(url: search_store_path(current_store.id), local: true, method: :get) do |f| %>
 
     <div class="form-group">
       <div class="form-label">
@@ -30,95 +30,102 @@
   </div>
   <div class="result-wrapper">
     <div class="result-title">
-      店舗売上実績情報
+      店舗実績情報
     </div>
   </div>
   <div class="search-table-all">
     <div class="search-table">
       <table class="search">
         <tr class='search-head'>
-          <th class='category'>カテゴリ</th>
-          <th class='subject'>科目</th>
-          <th class='search-item'><%=current_store.name%>予算</th>
-          <th class='search-item'><%=current_store.name%>実績</th>
-          <th class='search-item'><%=current_store.name%>達成率</th>
+          <th class='category text-center'>カテゴリ</th>
+          <th class='subject text-center'>科目</th>
+          <th class='search-item text-center'><%=current_store.name%>予算</th>
+          <th class='search-item text-center'><%=current_store.name%>実績</th>
+          <th class='search-item text-center'><%=current_store.name%>達成率</th>
         </tr>
 
-        <tr class="search-record">
-          <td class="category"></td>
-          <td class="subject">売上</td>
-          <td class="search-item"><%=patch_budget('sale').to_s(:delimited)%></td>
-          <td class="search-item"><%=sum_achievement('sale').to_s(:delimited)%></td>
-          <td class="search-item"><%=number_to_percentage(sum_achievement('sale').quo(patch_budget('sale')))%></td>
-        </tr>
 
-        <tr class="search-record">
-          <td class="category"></td>
-          <td class="subject">その他</td>
-          <td class="search-item">売上総予算</td>
-          <td class="search-item">売上総実績</td>
-          <td class="search-item">予算/実績</td>
-        </tr>
-
-        <tr class="search-record" style='background-color:#EEFFDD'>
-          <td class="category">売上</td>
+        <%= render partial: 'column', collection: TargetSearch.sales, as: "column" %>
+        <%= render partial: 'columns_collect', locals: {name:'来店客数',columns:TargetSearch.total_number,id:1} %>
+        <%= render partial: 'column', collection: TargetSearch.other_sales, as: "column" %>
+        <%= render partial: 'columns', locals: {name:'総売上',columns:TargetSearch.total_sales } %>
+        <%= render partial: 'column', collection: TargetSearch.costs, as: "column" %>
+        <%= render partial: 'columns', locals: {name:'総原価',columns:TargetSearch.total_costs } %>
+        <%= render partial: 'result', locals: {name:'粗利益',profit_columns:TargetSearch.total_sales,loss_columns:TargetSearch.total_costs } %>
+        <%= render partial: 'column', collection: TargetSearch.other, as: "column" %>
+        <%= render partial: 'columns_add', locals: {name:'通信費',fixed:"communications_fixed",variable:"communications_variable",id:0 } %>
+        <%= render partial: 'columns_add', locals: {name:'広告宣伝費',fixed:"publicity_fixed",variable:"publicity_variable" ,id:1} %>
+        <%= render partial: 'columns_add', locals: {name:'ゴミ処理費',fixed:"garbage_fixed",variable:"garbage_variable" ,id:0} %>
+        <%= render partial: 'columns_add', locals: {name:'車両管理費',fixed:"car_fixed",variable:"car_variable" ,id:1} %>
+        <%= render partial: 'columns_add', locals: {name:'クレジット管理費',fixed:"credit_fixed",variable:"credit_variable" ,id:0} %>
+        <%= render partial: 'columns_add', locals: {name:'衛生管理費',fixed:"clean_fixed",variable:"clean_variable" ,id:1} %>
+      <%= render partial: 'columns', locals: {name:'総販管費',columns:TargetSearch.total_other } %>
+      <%= render partial: 'result', locals: {name:'営業利益',profit_columns:TargetSearch.total_sales,loss_columns:TargetSearch.total_costs } %>
+        <tr class="search-record" style='background-color:#E7E4F6'>
+          <td class="category">KPI</td>
           <td class="subject"></td>
-          <td class="search-item">売上総予算</td>
-          <td class="search-item">売上総実績</td>
-          <td class="search-item">予算/実績</td>
+          <td class="search-item"></td>
+          <td class="search-item"></td>
+          <td class="search-item"></td>
+        </tr>
+        <tr class="search-record" >
+          <td class="category"></td>
+          <td class="subject">客単価</td>
+          <td class="search-item"><%=comparison(patch_budget('sale'),patch_budgets(TargetSearch.total_number)).floor%></td>
+          <td class="search-item"><%=comparison(sum_achievement('sale'),sum_achievements(TargetSearch.total_number)).floor%></td>
+          <td class="search-item"></td>
+        </tr>
+        <tr class="search-record" style='background-color:#F9F9F9'>
+          <td class="category"></td>
+          <td class="subject">ランチ客単価</td>
+          <td class="search-item"><%=comparison(patch_budget('lunch_sale'),patch_budget('lunch_number')).floor%></td>
+          <td class="search-item"><%=comparison(sum_achievement('lunch_sale'),sum_achievement('lunch_number')).floor%></td>
+          <td class="search-item"></td>
+        </tr>
+        <tr class="search-record">
+          <td class="category"></td>
+          <td class="subject">ディナー客単価</td>
+          <td class="search-item"><%=comparison(patch_budget('dinner_sale'),patch_budget('dinner_number')).floor%></td>
+          <td class="search-item"><%=comparison(sum_achievement('dinner_sale'),sum_achievement('dinner_number')).floor%></td>
+          <td class="search-item"></td>
+        </tr>
+        <tr class="search-record" style='background-color:#F9F9F9'>
+          <td class="category"></td>
+          <td class="subject">食材原材料比率</td>
+          <td class="search-item"><%=comparison_percentage(patch_budget('food_cost'),patch_budget('sale'))%></td>
+          <td class="search-item"><%=comparison_percentage(sum_achievement('food_cost'),sum_achievement('sale'))%></td>
+          <td class="search-item"></td>
+        </tr>
+        <tr class="search-record">
+          <td class="category"></td>
+          <td class="subject">総原材料比率</td>
+          <td class="search-item"><%=comparison_percentage(patch_budgets(['food_cost','material_cost']),patch_budget('sale'))%></td>
+          <td class="search-item"><%=comparison_percentage(sum_achievements(['food_cost','material_cost']),sum_achievement('sale'))%></td>
+          <td class="search-item"></td>
+        </tr>
+        <tr class="search-record" style='background-color:#F9F9F9'>
+          <td class="category"></td>
+          <td class="subject">人件費率</td>
+          <td class="search-item"><%=comparison_percentage(patch_budgets(TargetSearch.labor_costs),patch_budget('sale'))%></td>
+          <td class="search-item"><%=comparison_percentage(sum_achievements(TargetSearch.labor_costs),sum_achievement('sale'))%></td>
+          <td class="search-item"></td>
+        </tr>
+        <tr class="search-record">
+          <td class="category"></td>
+          <td class="subject">パート比率</td>
+          <td class="search-item"><%=comparison_percentage(patch_budget('pert_cost'),patch_budgets(TargetSearch.labor_costs))%></td>
+          <td class="search-item"><%=comparison_percentage(sum_achievement('pert_cost'),sum_achievements(TargetSearch.labor_costs))%></td>
+          <td class="search-item"></td>
+        </tr>
+        <tr class="search-record" style='background-color:#F9F9F9'>
+          <td class="category"></td>
+          <td class="subject">F/Lコスト率</td>
+         <td class="search-item"><%=comparison_percentage(patch_budgets(TargetSearch.total_costs),patch_budget('sale'))%></td>
+          <td class="search-item"><%=comparison_percentage(sum_achievements(TargetSearch.total_costs),sum_achievement('sale'))%></td>
+          <td class="search-item"></td>
         </tr>
 
 
-
-        <tr class="search-record">
-          <td class="category"></td>
-          <td class="subject">食材費</td>
-          <td class="search-item">食材費予算</td>
-          <td class="search-item">食材費実績</td>
-          <td class="search-item">予算/実績</td>
-        </tr>
-        <tr class="search-record">
-          <td class="category"></td>
-          <td class="subject">資材費</td>
-          <td class="search-item">資材費予算</td>
-          <td class="search-item">資材費実績</td>
-          <td class="search-item">予算/実績</td>
-        </tr>
-        <tr class="search-record">
-          <td class="category"></td>
-          <td class="subject">役員報酬</td>
-          <td class="search-item">役員報酬予算</td>
-          <td class="search-item">役員報酬実績</td>
-          <td class="search-item">予算/実績</td>
-        </tr>
-        <tr class="search-record">
-          <td class="category"></td>
-          <td class="subject">社員人件費</td>
-          <td class="search-item">社員人件費予算</td>
-          <td class="search-item">社員人件費実績</td>
-          <td class="search-item">予算/実績</td>
-        </tr>
-        <tr class="search-record">
-          <td class="category"></td>
-          <td class="subject">P人件費</td>
-          <td class="search-item">P人件費予算</td>
-          <td class="search-item">P人件費実績</td>
-          <td class="search-item">予算/実績</td>
-        </tr>
-        <tr class="search-record" style='background-color:#EEFFDD'>
-          <td class="category">総原価</td>
-          <td class="subject"></td>
-          <td class="search-item">総原価予算</td>
-          <td class="search-item">総原価実績</td>
-          <td class="search-item">予算/実績</td>
-        </tr>
-        <tr class="search-record" style='background-color:#FFEEE6'>
-          <td class="category">粗利益</td>
-          <td class="subject"></td>
-          <td class="search-item">粗利予算</td>
-          <td class="search-item">粗利実績</td>
-          <td class="search-item">予算/実績</td>
-        </tr>
 
       </table>
     </div>

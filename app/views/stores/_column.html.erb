@@ -1,7 +1,11 @@
+<% if column[:id] % 2 == 1%>
+<tr class="search-record" style='background-color:#F9F9F9'>
+<% else %>
 <tr class="search-record">
-          <td class="category"></td>
-          <td class="subject">売上</td>
-          <td class="search-item"><%=patch_budget(column).to_s(:delimited)%></td>
-          <td class="search-item"><%=sum_achievement(column).to_s(:delimited)%></td>
-          <td class="search-item"><%=number_to_percentage(sum_achievement(column).quo(patch_budget(column)))%></td>
-        </tr>
+<% end %>
+  <td class="category"></td>
+  <td class="subject"><%=column[:ja_name]%></td>
+  <td class="search-item"><%=@total_budget[column[:name].to_sym].floor.to_s(:delimited)%></td>
+  <td class="search-item"><%=@total_achievement[column[:name].to_sym].floor.to_s(:delimited)%></td>
+  <td class="search-item"><%=percentage(@total_achievement[column[:name].to_sym], @total_budget[column[:name].to_sym])%></td>
+</tr>

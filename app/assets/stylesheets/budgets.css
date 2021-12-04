@@ -169,32 +169,41 @@ label {
 }
 /* 実績 */
 .search-table-all {
-  width: 800px;
-  min-width: 800px;
+  width: 560px;
+  min-width: 530px;
   height: 800px;
   min-height: 800px;
 }
 .search-head{
-  height:30px;
+  height:23px;
   width:650px;
   background-color:#EEEEEE ;
   border: 1px solid #dddddd;
 }
 .category{
-  width:120px;
+  height:23px;
+  width:100px;
   text-align: center;
   border: 1px solid #dddddd;
-
-
+  font-size: 0.7rem;
+  padding: 0.1rem 0.3rem;
+  text-align: left;
 }
 .subject{
-  width:80px;
+  height:23px;
+  width:140px;
   text-align: center;
   border: 1px solid #dddddd;
   font-size:0.7rem;
+  padding: 0.1rem 0.3rem;
+  text-align: left;
 }
 .search-item{
-  width:150px;
+  height:23px;
+  width:130px;
   text-align: center;
   border: 1px solid #dddddd;
+  font-size:0.7rem;
+  padding: 0.1rem 0.3rem;
+  text-align: right;
 }
