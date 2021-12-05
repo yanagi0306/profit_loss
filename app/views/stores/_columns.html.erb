@@ -1,0 +1,8 @@
+<tr class="search-record" style='background-color:#EEFFDD'>
+  <td class="category"><%=name%></td>
+  <td class="subject"></td>
+
+  <td class="search-item"><%=budget_columns(columns).to_s(:delimited)%></td>
+  <td class="search-item"><%=achievement_columns(columns).to_s(:delimited)%></td>
+  <td class="search-item"><%=percentage(achievement_columns(columns), budget_columns(columns))%></td>
+</tr>

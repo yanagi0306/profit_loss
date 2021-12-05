@@ -1,0 +1,11 @@
+<% if id % 2 == 1%>
+<tr class="search-record" style="background-color:#F9F9F9">
+<% else %>
+<tr class="search-record">
+<% end %>
+  <td class="category"></td>
+  <td class="subject"><%=name%></td>
+  <td class="search-item"><%=@total_budget[fixed.to_sym].floor.to_s(:delimited)%></td>
+  <td class="search-item"><%=(@total_budget[fixed.to_sym].floor + @total_achievement[variable.to_sym]).to_s(:delimited)%></td>
+  <td class="search-item"><%=percentage(@total_budget[fixed.to_sym].floor + @total_achievement[variable.to_sym],@total_budget[fixed.to_sym])%></td>
+</tr>

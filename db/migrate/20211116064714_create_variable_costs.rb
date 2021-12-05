@@ -6,6 +6,7 @@ class CreateVariableCosts < ActiveRecord::Migration[6.0]
       t.integer :food_cost, default: 0
       t.integer :material_cost, default: 0
       t.integer :pert_cost, default: 0
+      t.integer :consumption_tax, default: 0
       t.integer :miscellaneous_cost, default: 0
       t.integer :delivery_commission, default: 0
 

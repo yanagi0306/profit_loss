@@ -3,7 +3,7 @@ class TargetBudgets
     [
       { id: 0, name: '収入客数' },
       { id: 1, name: '変動予算' },
-      { id: 2, name: '固定費' },
+      { id: 2, name: '固定費予算' },
     ]
   end
   def self.income
@@ -11,8 +11,10 @@ class TargetBudgets
       { id: 0, name: 'sale', ja_name: '月間売上' },
       { id: 1, name: 'lunch_sale', ja_name: '月間ランチ' },
       { id: 2, name: 'dinner_sale', ja_name: '月間ディナー' },
-      { id: 3, name: 'interest_income', ja_name: '受取利息' },
-      { id: 4, name: 'miscellaneous_income', ja_name: '雑収入' },
+      { id: 3, name: 'lunch_number', ja_name: '月間ランチ客数' },
+      { id: 4, name: 'dinner_number', ja_name: '月間ディナー客数' },
+      { id: 5, name: 'interest_income', ja_name: '受取利息' },
+      { id: 6, name: 'miscellaneous_income', ja_name: '雑収入' },
     ]
   end
   def self.variable
@@ -20,6 +22,7 @@ class TargetBudgets
       { id: 0, name: 'food_cost', ja_name: '食材費' },
       { id: 1, name: 'material_cost', ja_name: '資材費' },
       { id: 2, name: 'pert_cost', ja_name: 'P人件費' },
+      { id: 2, name: 'consumption_tax', ja_name: '消費税' },
       { id: 3, name: 'miscellaneous_cost', ja_name: '雑費' },
       { id: 4, name: 'delivery_commission', ja_name: 'デリバリー手数料' },
       { id: 5, name: 'electric', ja_name: '電気代' },
@@ -31,7 +34,7 @@ class TargetBudgets
       { id: 11, name: 'meeting', ja_name: '会議費' },
       { id: 12, name: 'traveling', ja_name: '旅費交通費' },
       { id: 13, name: 'selling_administration_cost', ja_name: '販売管理費' },
-      { id: 14, name: 'interest_payment', ja_name: '受取利息' },
+      { id: 14, name: 'interest_payment', ja_name: '支払い利息' },
     ]
   end
   def self.fixed

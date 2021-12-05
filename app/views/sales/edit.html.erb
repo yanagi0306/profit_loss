@@ -38,7 +38,6 @@
 
   <%=form_with(model:@sales,url:sales_path, local: true, method: :patch, class: "search-form") do |f| %>
   <div class="sales-table-all">
-
     <table class='upper-table'>
       <tr class='table-head'>
         <th class='day' id="selected_month"><%=@selected_year%>年</th>
@@ -74,6 +73,12 @@
         </td>
         <td class='column'>
           <%= fh.text_field :dinner_sale, class: "input text-end dinner_field",id:"#{index}dinner"%>
+        </td>
+        <td class='column'>
+          <%= fh.text_field :lunch_number, class: "input text-end dinner_field"%>
+        </td>
+        <td class='column'>
+          <%= fh.text_field :dinner_number, class: "input text-end dinner_field"%>
         </td>
       </tr>
       <%end %>

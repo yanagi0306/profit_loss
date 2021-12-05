@@ -9,6 +9,7 @@ class VariableCost < ApplicationRecord
   validates :food_cost,
             :material_cost,
             :pert_cost,
+            :consumption_tax,
             :miscellaneous_cost,
             :delivery_commission,
             :electric,

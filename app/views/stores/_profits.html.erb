@@ -1,0 +1,7 @@
+<tr class="search-record" style='background-color:#EEFFDD'>
+  <td class="category"><%=name%></td>
+  <td class="subject"></td>
+  <td class="search-item"><%=patch_budgets(profit_columns).to_s(:delimited)-patch_budgets(loss_columns).to_s(:delimited)%></td>
+  <td class="search-item"><%=sum_achievements(columns).to_s(:delimited)%></td>
+  <td class="search-item"><%=get_percentages(columns)%></td>
+</tr>

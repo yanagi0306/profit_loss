@@ -1,0 +1,8 @@
+<tr class="search-record" style='background-color:#FFEEE6'>
+  <td class="category"><%=name%></td>
+  <td class="subject"></td>
+  <td class="search-item"><%=(budget_columns(profit_columns) - budget_columns(loss_columns)).to_s(:delimited)%></td>
+  <td class="search-item">
+    <%=(achievement_columns(profit_columns)- achievement_columns(loss_columns)).to_s(:delimited)%></td>
+  <td class="search-item"><%=percentage(achievement_columns(profit_columns) - achievement_columns(loss_columns),budget_columns(profit_columns) - budget_columns(loss_columns))%></td>
+</tr>
