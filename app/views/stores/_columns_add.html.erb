@@ -5,7 +5,7 @@
 <% end %>
   <td class="category"></td>
   <td class="subject"><%=name%></td>
-  <td class="search-item"><%=patch_budget(variable).to_s(:delimited)%></td>
-  <td class="search-item"><%=(patch_budget(variable)+sum_achievement(fixed)).to_s(:delimited)%></td>
-  <td class="search-item"><%=comparison_percentage(patch_budget(variable)+sum_achievement(fixed),patch_budget(variable))%></td>
+  <td class="search-item"><%=@total_budget[fixed.to_sym].floor.to_s(:delimited)%></td>
+  <td class="search-item"><%=(@total_budget[fixed.to_sym].floor + @total_achievement[variable.to_sym]).to_s(:delimited)%></td>
+  <td class="search-item"><%=percentage(@total_budget[fixed.to_sym].floor + @total_achievement[variable.to_sym],@total_budget[fixed.to_sym])%></td>
 </tr>

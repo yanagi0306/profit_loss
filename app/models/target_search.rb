@@ -22,14 +22,18 @@ class TargetSearch
     %w[sale interest_income miscellaneous_income]
   end
 
-  def self.costs
+  def self.costs_variable
     [
       { id: 0, name: 'food_cost', ja_name: '食材費' },
       { id: 1, name: 'material_cost', ja_name: '資材費' },
       { id: 2, name: 'pert_cost', ja_name: 'P人件費' },
-      { id: 3, name: 'employee_cost', ja_name: 'R人件費' },
-      { id: 4, name: 'director_cost', ja_name: '役員報酬' },
-      { id: 5, name: 'overtime_employee_cost', ja_name: '社員残業代' },
+      { id: 3, name: 'overtime_employee_cost', ja_name: '社員残業代' },
+    ]
+  end
+  def self.costs_fixed
+    [
+      { id: 0, name: 'employee_cost', ja_name: 'R人件費' },
+      { id: 1, name: 'director_cost', ja_name: '役員報酬' },
     ]
   end
   def self.labor_costs
@@ -37,7 +41,8 @@ class TargetSearch
   end
 
   def self.total_costs
-    TargetSearch.costs.map { |i| i[:name] }
+    TargetSearch.costs_variable.map { |i| i[:name] } +
+      TargetSearch.costs_fixed.map { |i| i[:name] }
   end
 
   def self.other
@@ -46,29 +51,35 @@ class TargetSearch
       { id: 1, name: 'water', ja_name: '水道代' },
       { id: 2, name: 'gas', ja_name: 'ガス代' },
       { id: 3, name: 'power', ja_name: '動力代' },
-      { id: 4, name: 'consumption_tax', ja_name: '消費税' },
-      { id: 5, name: 'miscellaneous_cost', ja_name: '雑費' },
-      { id: 6, name: 'delivery_commission', ja_name: 'デリバリー手数料' },
-      { id: 7, name: 'social_insurance_part', ja_name: 'P社会保険' },
-      { id: 8, name: 'meeting', ja_name: '会議費' },
-      { id: 9, name: 'traveling', ja_name: '旅費交通費' },
-      { id: 10, name: 'selling_administration_cost', ja_name: '販売管理費' },
+      { id: 4, name: 'social_insurance_part', ja_name: 'P社会保険' },
+      { id: 5, name: 'meeting', ja_name: '会議費' },
+      { id: 6, name: 'traveling', ja_name: '旅費交通費' },
+      { id: 7, name: 'selling_administration_cost', ja_name: '販売管理費' },
     ]
   end
-
-  def self.fixed_only
+  def self.variable_items
+    TargetSearch.other.map { |i| i[:name] } + ['overtime_employee_cost']
+  end
+  def self.day
     [
-      { id: 11, name: 'rent', ja_name: '家賃' },
-      { id: 12, name: 'company_interest', ja_name: '火災保険等' },
-      { id: 13, name: 'social_insurance_employee', ja_name: 'R社会保険' },
-      { id: 14, name: 'resident_tax', ja_name: '市民税県民税' },
-      { id: 15, name: 'pos_system', ja_name: 'POS管理費' },
-      { id: 16, name: 'welfare_fixed', ja_name: '福利厚生費' },
-      { id: 17, name: 'delivery_fixed', ja_name: 'デリバリー管理費' },
-      { id: 18, name: 'interest_payment', ja_name: '支払利息' },
-      { id: 19, name: 'borrowing', ja_name: '銀行等借入' },
-      { id: 20, name: 'tax_counsellor', ja_name: '税理士' },
-      { id: 21, name: 'labor_counsellor', ja_name: '社労士' },
+      { id: 0, name: 'consumption_tax', ja_name: '消費税' },
+      { id: 1, name: 'miscellaneous_cost', ja_name: '雑費' },
+      { id: 2, name: 'delivery_commission', ja_name: 'デリバリー手数料' },
+    ]
+  end
+  def self.other_fixed
+    [
+      { id: 0, name: 'rent', ja_name: '家賃' },
+      { id: 1, name: 'company_interest', ja_name: '火災保険等' },
+      { id: 2, name: 'social_insurance_employee', ja_name: 'R社会保険' },
+      { id: 3, name: 'resident_tax', ja_name: '市民税県民税' },
+      { id: 4, name: 'pos_system', ja_name: 'POS管理費' },
+      { id: 5, name: 'welfare_fixed', ja_name: '福利厚生費' },
+      { id: 6, name: 'delivery_fixed', ja_name: 'デリバリー管理費' },
+      { id: 7, name: 'interest_payment', ja_name: '支払利息' },
+      { id: 8, name: 'borrowing', ja_name: '銀行等借入' },
+      { id: 9, name: 'tax_counsellor', ja_name: '税理士' },
+      { id: 10, name: 'labor_counsellor', ja_name: '社労士' },
     ]
   end
   def self.fixed
@@ -91,9 +102,17 @@ class TargetSearch
       { id: 5, name: 'clean_variable', ja_name: '衛生管理費' },
     ]
   end
+
+  def self.all_fixed
+    TargetSearch.costs_fixed.map { |i| i[:name] } +
+      TargetSearch.other_fixed.map { |i| i[:name] } +
+      TargetSearch.fixed.map { |i| i[:name] }
+  end
   def self.total_other
     TargetSearch.add.map { |i| i[:name] } +
+      TargetSearch.day.map { |i| i[:name] } +
       TargetSearch.fixed.map { |i| i[:name] } +
+      TargetSearch.other_fixed.map { |i| i[:name] } +
       TargetSearch.other.map { |i| i[:name] }
   end
   def self.total_loss

@@ -63,7 +63,7 @@
           <li class="side_list_table"><i class="fa fa-calculator" aria-hidden="true"></i>店舗分析</li>
 
           <li class="side_list">
-            <%=link_to '売上実績管理',search_store_path(id:current_store.id,year:Date.today.year,month:Date.today.month), class: :link_list%>
+            <%=link_to '月次情報',search_store_path(id:current_store.id,year:Date.today.year,month:Date.today.month), class: :link_list%>
           </li>
           <li class="side_list"><%=link_to 'Zチャート',new_store_registration_path, class: :link_list%></li>
           <li class="side_list"><%=link_to '簡易PL',new_store_registration_path, class: :link_list%></li>
