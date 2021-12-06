@@ -58,12 +58,12 @@ class VariableCostsController < ApplicationController
   def today_date_getter
     @wday = %w[日 月 火 水 木 金 土]
     @year_range = current_store.opening_year..Date.today.year
-    @targets = Targets.data
+    @targets = TargetVariable.items
     @target_columns = [
-      Days.data,
-      Utilities.data,
-      FixedAdds.data,
-      Miscellaneous.data,
+      TargetVariable.days,
+      TargetVariable.utilities,
+      TargetVariable.fixed_add,
+      TargetVariable.miscellaneous,
     ]
   end
   def selected_instance_getter(year, month, target_num, current_store)

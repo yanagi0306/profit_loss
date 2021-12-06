@@ -29,7 +29,8 @@
       </div>
       <div class="form-inline">
         <div class="form-inline_left">
-          <%= f.collection_select(:target_num,Targets.all,:id,:name,{selected: @target_num},{autofocus: 'true', class: 'input-item text-end'})%>
+        <%= f.select :target_num,options_for_select(@targets.map{|i| [i[:name],i[:id]] },@target_num),{},{ autofocus: 'true', class: 'input-item text-end'}%>
+
 
 
         </div>
