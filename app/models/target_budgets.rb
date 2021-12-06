@@ -9,10 +9,10 @@ class TargetBudgets
   def self.income
     [
       { id: 0, name: 'sale', ja_name: '月間売上' },
-      { id: 1, name: 'lunch_sale', ja_name: '月間ランチ' },
-      { id: 2, name: 'dinner_sale', ja_name: '月間ディナー' },
-      { id: 3, name: 'lunch_number', ja_name: '月間ランチ客数' },
-      { id: 4, name: 'dinner_number', ja_name: '月間ディナー客数' },
+      { id: 1, name: 'lunch_sale', ja_name: 'ランチ売上' },
+      { id: 2, name: 'dinner_sale', ja_name: 'ディナー売上' },
+      { id: 3, name: 'lunch_number', ja_name: 'ランチ客数' },
+      { id: 4, name: 'dinner_number', ja_name: 'ディナー客数' },
       { id: 5, name: 'interest_income', ja_name: '受取利息' },
       { id: 6, name: 'miscellaneous_income', ja_name: '雑収入' },
     ]
