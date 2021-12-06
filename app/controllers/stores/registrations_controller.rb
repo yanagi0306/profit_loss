@@ -14,7 +14,17 @@ class Stores::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    FactoryBot.create(:budgets_day_ratio, store_id: current_store.id)
+    BudgetsDayRatio.create(
+      monday: 100,
+      tuesday: 100,
+      wednesday: 100,
+      thursday: 100,
+      friday: 100,
+      saturday: 100,
+      holiday: 100,
+      store_id: current_store.id,
+    )
+    # FactoryBot.create(:budgets_day_ratio, store_id: current_store.id)
   end
 
   # GET /resource/edit
