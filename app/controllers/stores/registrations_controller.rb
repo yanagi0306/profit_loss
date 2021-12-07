@@ -24,7 +24,7 @@ class Stores::RegistrationsController < Devise::RegistrationsController
       holiday: 100,
       store_id: current_store.id,
     )
-
+    # FactoryBot.create(:budgets_day_ratio, store_id: current_store.id)
   end
 
   # GET /resource/edit
