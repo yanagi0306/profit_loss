@@ -121,86 +121,6 @@ class StoresController < ApplicationController
     return value
   end
 
-  # def patch_budget(column)
-  #   day_range = ''
-  #   if @month_check
-  #     day_range = Date.today.beginning_of_month..Date.today
-  #   else
-  #     day_range = @ymd_ranges
-  #   end
-  #   value = 0
-  #   day_range.each { |day| value += @budget[column.to_sym] * day_ratio(day) }
-  #   value.floor
-  # end
-
-  # def patch_budgets(columns)
-  #   day_range = ''
-  #   value = 0
-  #   if @month_check
-  #     day_range = Date.today.beginning_of_month..Date.today
-  #   else
-  #     day_range = @ymd_ranges
-  #   end
-  #   columns.each do |column|
-  #     day_range.each { |day| value += @budget[column.to_sym] * day_ratio(day) }
-
-  #   end
-  #   return value.floor(0)
-  # end
-
-  # def profit_budgets(profit_columns, loss_columns)
-  #   return patch_budgets(profit_columns) - patch_budgets(loss_columns)
-  # end
-
-  # def sum_achievement(column)
-  #   value = 0
-  #   @achievements.each do |achievement|
-  #     value += achievement[column.to_sym].to_i
-  #   end
-  #   return value
-  # end
-
-  # def sum_achievements(columns)
-  #   value = 0
-  #   columns.each do |column|
-  #     @achievements.each do |achievement|
-  #       value += achievement[column.to_sym].to_i
-  #     end
-  #   end
-  #   return value
-  # end
-
-  # def profit_achievements(profit_columns, loss_columns)
-  #   return sum_achievements(profit_columns) - sum_achievements(loss_columns)
-  # end
-
-  # def get_percentage(column)
-  #   if sum_achievement(column) != 0 && patch_budget(column) != 0
-  #     "#{(sum_achievement(column).fdiv(patch_budget(column)) * 100).floor(2)}%"
-  #   else
-  #     return '0.00%'
-  #   end
-  # end
-
-  # def get_percentages(columns)
-  #   achievements = sum_achievements(columns)
-  #   budgets = patch_budgets(columns)
-  #   if achievements != 0 && budgets != 0
-  #     "#{(achievements.to_i.fdiv(budgets.to_i)* 100).floor(2) }%"
-  #   else
-  #     return '0.00%'
-  #   end
-  # end
-
-  # def profit_percentages(profit_columns, loss_columns)
-  #   achievements = profit_achievements(profit_columns, loss_columns)
-  #   budgets = profit_budgets(profit_columns, loss_columns)
-  #   if achievements != 0 && budgets != 0
-  #     "#{(achievements.to_i.fdiv(budgets.to_i)).floor(4) * 100}%"
-  #   else
-  #     return '0.00%'
-  #   end
-  # end
 
   def comparison(item1, item2)
     if item2 != 0 && item1 != 0
@@ -218,13 +138,7 @@ class StoresController < ApplicationController
     end
   end
 
-  # helper_method :patch_budget
-  # helper_method :sum_achievement
-  # helper_method :get_percentage
-  # helper_method :patch_budgets
-  # helper_method :sum_achievements
-  # helper_method :get_percentages
-  # helper_method :profit_budgets
+
   helper_method :budget_columns
   helper_method :achievement_columns
   helper_method :comparison
