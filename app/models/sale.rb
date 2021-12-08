@@ -3,7 +3,7 @@ class Sale < ApplicationRecord
   belongs_to :store
 
   validate :sale_check
-  validates :ymd, uniqueness: { scope: :achievement_id }
+  validates :ymd, uniqueness: { scope: %i[store_id] }
   validates :ymd, presence: { message: 'が未入力です' }
   validates :achievement_id, presence: { message: 'と紐付いていません' }
   validates :sale,
@@ -39,7 +39,7 @@ class Sale < ApplicationRecord
     sales = []
     achievements = []
     month_range.each do |day|
-      if Achievement.exists?(ymd: day)
+      if Achievement.exists?(ymd: day, store_id: current_store)
         new_achievement =
           Achievement.where(ymd: day, store_id: current_store)[0]
       else
@@ -79,4 +79,7 @@ class Sale < ApplicationRecord
     end
     return error_messages
   end
+
+
+
 end

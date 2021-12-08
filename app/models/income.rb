@@ -22,8 +22,7 @@ class Income < ApplicationRecord
             numericality: {
               only_integer: true,
               greater_than_or_equal_to: 0,
-              less_than_or_equal_to: 10000000,
-
+              less_than_or_equal_to: 10_000_000,
             }
 
   def self.search_getter(year, month, current_store)
@@ -36,12 +35,13 @@ class Income < ApplicationRecord
     incomes = []
     achievements = []
     month_range.each do |day|
-      if Achievement.exists?(ymd: day)
+      if Achievement.exists?(ymd: day, store_id: current_store)
         new_achievement =
           Achievement.where(ymd: day, store_id: current_store)[0]
       else
         new_achievement = Achievement.create(ymd: day, store_id: current_store)
       end
+
       achievements.push(new_achievement)
       category_ids.each do |id|
         new_income =

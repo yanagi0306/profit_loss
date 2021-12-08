@@ -5,5 +5,5 @@ class Achievement < ApplicationRecord
   belongs_to :store
 
   validates :store_id, presence: { message: 'としてログインされていません' }
-  validates :ymd, presence: true, uniqueness: true
+  validates :ymd, presence: true, uniqueness: { scope: :store_id }
 end
