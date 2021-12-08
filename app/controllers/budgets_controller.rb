@@ -11,6 +11,12 @@ class BudgetsController < ApplicationController
       search_check
       render :edit
     else
+      Budget.updates_fixed_achievements(
+        params,
+        @budget,
+        budget_params,
+        current_store.id,
+      )
       redirect_to edit_budgets_path(
                     year: @budget[:ymd].year,
                     month: @budget[:ymd].month,
@@ -60,23 +66,7 @@ class BudgetsController < ApplicationController
 
   def second_getter(year, month, target_num)
     @ymd = Date.new(year, month)
-
-    @budget =
-      if Budget.where(ymd: @ymd, store_id: current_store.id)[0].present?
-        Budget.where(ymd: @ymd, store_id: current_store.id)[0]
-      elsif Budget.where(ymd: @ymd - 1.month, store_id: current_store.id)[0]
-            .present?
-        budget =
-          Budget.where(ymd: @ymd - 1.month, store_id: current_store.id)[0].dup
-        budget.ymd = @ymd
-        budget
-      else
-        Budget.new(
-          ymd: @ymd,
-          store_id: current_store.id,
-          budgets_day_ratio_id: @new_ratio,
-        )
-      end
+    @budget = Budget.get_budget(@ymd, @new_ratio, current_store.id)
     @budget.budgets_day_ratio_id = @new_ratio
     @budget.save
     @target_num = target_num
