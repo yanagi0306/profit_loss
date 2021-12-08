@@ -28,7 +28,6 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
-gem 'chart-js-rails', '~> 0.1.4'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -73,3 +72,4 @@ gem 'font-awesome-rails'
 gem 'pry-rails'
 gem 'active_hash'
 gem 'holiday_japan'
+gem 'gon', '~> 6.2.0'

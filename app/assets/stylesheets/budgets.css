@@ -173,45 +173,51 @@ label {
   min-width: 530px;
   height: 1350px;
   min-height: 800px;
-  padding-top:10px;
+  padding-top: 10px;
 }
 .index-table-all {
   width: 560px;
   min-width: 530px;
   height: 560px;
   min-height: 800px;
-  padding-top:10px;
+  padding-top: 10px;
 }
-.search-head{
-  height:23px;
-  width:650px;
-  background-color:#EEEEEE ;
+.search-head {
+  height: 23px;
+  width: 650px;
+  background-color: #eeeeee;
   border: 1px solid #dddddd;
 }
-.category{
-  height:23px;
-  width:100px;
+.category {
+  height: 23px;
+  width: 100px;
   text-align: center;
   border: 1px solid #dddddd;
   font-size: 0.7rem;
   padding: 0.1rem 0.3rem;
   text-align: left;
 }
-.subject{
-  height:23px;
-  width:140px;
+.subject {
+  height: 23px;
+  width: 140px;
   text-align: center;
   border: 1px solid #dddddd;
-  font-size:0.7rem;
+  font-size: 0.7rem;
   padding: 0.1rem 0.3rem;
   text-align: left;
 }
-.search-item{
-  height:23px;
-  width:130px;
+.search-item {
+  height: 23px;
+  width: 130px;
   text-align: center;
   border: 1px solid #dddddd;
-  font-size:0.7rem;
+  font-size: 0.7rem;
   padding: 0.1rem 0.3rem;
   text-align: right;
+}
+.canvas-container {
+  padding:20px;
+  height: 400px;
+  width:600px
+
 }
