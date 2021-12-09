@@ -25,6 +25,9 @@ class StoresController < ApplicationController
   def search; end
   def day_search
     @achievements = Achievement.where(ymd:@target_ranges,store_id:current_store.id)
+
+
+
   end
 
   private
@@ -69,15 +72,15 @@ class StoresController < ApplicationController
     redirect_to new_store_session_path unless store_signed_in?
   end
 
-  def budget_columns(columns)
+  def budget_columns(columns,budget)
     value = 0
-    columns.each { |column| value += @total_budget[column.to_sym] }
+    columns.each { |column| value += budget[column.to_sym] }
     return value.floor
   end
 
-  def achievement_columns(columns)
+  def achievement_columns(columns,achievement)
     value = 0
-    columns.each { |column| value += @total_achievement[column.to_sym] }
+    columns.each { |column| value += achievement[column.to_sym] }
     return value
   end
 
@@ -97,8 +100,19 @@ class StoresController < ApplicationController
     end
   end
 
+  def get_achievement(achievements,ymd)
+    if achievements.where(ymd:ymd)[0].present?
+      return achievements.where(ymd:ymd)[0]
+    else
+      return 0
+    end
+
+  end
+
   helper_method :budget_columns
   helper_method :achievement_columns
   helper_method :comparison
   helper_method :percentage
+  helper_method :get_achievement
+
 end

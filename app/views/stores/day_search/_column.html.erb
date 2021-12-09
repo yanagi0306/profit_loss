@@ -3,15 +3,15 @@
   <td class="subject"><%=column[:ja_name]%></td>
   <% achievements.each do |achievement|%>
 
-  <th class='day-search-item text-center'>
+  <td class='day-search-item'>
     <%=(budget[column[:name].to_sym]*Store.day_ratio(achievement[:ymd],ratio)).floor.to_s(:delimited) %>
-  </th>
-  <th class='day-search-item text-center'>
+  </td>
+  <td class='day-search-item'>
     <%= achievement[column[:name].to_sym].to_s(:delimited)%>
-  </th>
-  <th class='day-search-item text-center'>
+  </td>
+  <td class='day-search-item'>
     <%= percentage(achievement[column[:name].to_sym],budget[column[:name].to_sym]*Store.day_ratio(achievement[:ymd],ratio))%>
 
-  </th>
+  </td>
   <% end %>
 </tr>

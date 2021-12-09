@@ -222,7 +222,7 @@ label {
 }
 .day-search-item {
   height: 23px;
-  width: 90px;
+  width: 130px;
   text-align: center;
   border: 1px solid #dddddd;
   font-size: 0.7rem;
@@ -233,18 +233,18 @@ label {
   max-height:23px;
   background-color: #eeeeee;
   border: 1px solid #dddddd;
+
+
 }
 .day-search-table-all {
-  max-width:2790px;
+  max-width:2800px;
   width:900px;
   min-height: 800px;
-  padding-top: 10px;
+  padding: 10px 10px 30px 10px;
   overflow-x: scroll;
 
 }
+
 .day-search{
-width:2790px;
-}
-.day-search-table{
-  width:2790px;
+  display: inline-block
 }
