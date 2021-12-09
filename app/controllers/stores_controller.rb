@@ -2,70 +2,30 @@ class StoresController < ApplicationController
   before_action :check
   before_action :first_getter
   def index
-    gon.month1_budget =
-      Store.get_budget(@ymd - 1.month, current_store.id)
-    gon.month2_budget =
-      Store.get_budget(@ymd - 2.month, current_store.id)
+    gon.month1_budget = Store.get_budget(@ymd - 1.month, current_store.id)
+    gon.month2_budget = Store.get_budget(@ymd - 2.month, current_store.id)
     gon.month1_achievement =
-      Store.get_achievement(@ymd - 1.month..@ymd -1.day, @total_budget, current_store.id)
+      Store.get_achievement(
+        @ymd - 1.month..@ymd - 1.day,
+        @total_budget,
+        current_store.id,
+      )
 
     gon.month2_achievement =
-      Store.get_achievement(@ymd - 2.month..@ymd - 1.month - 1.day, @total_budget, current_store.id)
+      Store.get_achievement(
+        @ymd - 2.month..@ymd - 1.month - 1.day,
+        @total_budget,
+        current_store.id,
+      )
 
     gon.budget = @total_budget
     gon.achievement = @total_achievement
-
-
-
-    # gon.budgets = [
-    #   '',
-    #   '',
-    #   month2_ago_budget[:sale],
-    #   '',
-    #   '',
-    #   '',
-    #   month1_ago_budget[:sale],
-    #   '',
-    #   '',
-    #   '',
-    #   @total_budget,
-    #   '',
-    #   '',
-    # ]
-    # gon.achievements = [
-    #   '',
-    #   month2_ago_achievement[:lunch_sale],
-    #   month2_ago_achievement[:sale],
-    #   month2_ago_achievement[:dinner_sale],
-    #   '',
-    #   month1_ago_achievement[:lunch_sale],
-    #   month1_ago_achievement[:sale],
-    #   month1_ago_achievement[:dinner_sale],
-    #   '',
-    #   @total_achievement[:lunch_sale],
-    #   @total_achievement[:sale],
-    #   @total_achievement[:dinner_sale],
-    #   '',
-    # ]
-    # gon.ymd = [
-    #   '',
-    #   '',
-    #   Sale.get_month(@ymd - 2.month),
-    #   '',
-    #   '',
-    #   '',
-    #   Sale.get_month(@ymd - 1.month),
-    #   '',
-    #   '',
-    #   '',
-    #   Sale.get_month(@ymd),
-    #   '',
-    #   '',
-    # ]
-
-
   end
+
   def search; end
+  def day_search
+    @achievements = Achievement.where(ymd:@target_ranges,store_id:current_store.id)
+  end
 
   private
 
@@ -81,25 +41,28 @@ class StoresController < ApplicationController
     month_ranges = @ymd..@ymd + 1.month - 1.day
 
     @month_check = month_ranges.cover?(Date.today)
-    target_ranges =
+    @target_ranges =
       @month_check ? Date.today.beginning_of_month..Date.today : month_ranges
 
-    budget = Store.get_budget(@ymd, current_store.id)
+    @budget = Store.get_budget(@ymd, current_store.id)
 
-    @ratio = BudgetsDayRatio.find(budget.budgets_day_ratio_id)
+    @ratio = BudgetsDayRatio.find(@budget.budgets_day_ratio_id)
     @total_budget = TargetSearch.columns
     if @month_check
-      target_ranges.each do |day|
+      @target_ranges.each do |day|
         @total_budget.keys.each do |column|
           @total_budget[column.to_sym] +=
-            (budget[column.to_sym] * Store.day_ratio(day, @ratio)).floor
+            (@budget[column.to_sym] * Store.day_ratio(day, @ratio)).floor
         end
       end
     else
-      @total_budget = budget
+      @total_budget = @budget
     end
     @total_achievement =
-      Store.get_achievement(target_ranges, @total_budget, current_store.id)
+      Store.get_achievement(@target_ranges, @total_budget, current_store.id)
+
+
+
   end
 
   def check

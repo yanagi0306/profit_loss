@@ -4,9 +4,9 @@ const month1 = gon.month1_achievement;
 const month2 = gon.month2_achievement;
 const this_budget = gon.budget;
 const this_month = gon.achievement;
-const lunch_color = "rgb(148, 206, 254)";
+const lunch_color = "rgb(168, 255, 149)";
 const sale_color = "rgb(92, 92, 97)";
-const dinner_color = "rgb(168, 255, 149)";
+const dinner_color = "rgb(148, 206, 254)";
 const dt = new Date();
 const dt1 = new Date();
 const dt2 = new Date();
@@ -15,7 +15,6 @@ dt2.setMonth(dt2.getMonth() - 2);
 console.log(dt.getMonth());
 console.log(dt1.getMonth());
 console.log(dt2.getMonth());
-
 
 const background_colors = () => {
   const colors = [];
@@ -56,6 +55,7 @@ window.draw_graph = () => {
           ],
 
           borderColor: "rgb(128, 133, 233)",
+          backgroundColor: "rgb(128, 133, 233)",
           borderWidth: 2,
           lineTension: 0.2,
           spanGaps: true,
@@ -81,15 +81,15 @@ window.draw_graph = () => {
       ],
       labels: [
         "ランチ",
-        `${dt2.getFullYear()}年${dt2.getMonth()+1}月`,
+        `${dt2.getFullYear()}年${dt2.getMonth() + 1}月`,
         "ディナー",
         "",
         "ランチ",
-        `${dt1.getFullYear()}年${dt1.getMonth()+1}月`,
+        `${dt1.getFullYear()}年${dt1.getMonth() + 1}月`,
         "ディナー",
         ,
         "ランチ",
-        `${dt.getFullYear()}年${dt.getMonth()+1}月`,
+        `${dt.getFullYear()}年${dt.getMonth() + 1}月`,
         "ディナー",
       ],
     },

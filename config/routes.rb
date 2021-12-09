@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :stores, only: [:index] do
     member do
       get 'search'
+      get 'day_search'
     end
   end
   resource :budgets,only: [:edit,:update]

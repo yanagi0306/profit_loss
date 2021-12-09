@@ -219,5 +219,32 @@ label {
   padding:20px;
   height: 400px;
   width:600px
+}
+.day-search-item {
+  height: 23px;
+  width: 90px;
+  text-align: center;
+  border: 1px solid #dddddd;
+  font-size: 0.7rem;
+  text-align: right;
+}
+.day-search-head {
+  height: 23px;
+  max-height:23px;
+  background-color: #eeeeee;
+  border: 1px solid #dddddd;
+}
+.day-search-table-all {
+  max-width:2790px;
+  width:900px;
+  min-height: 800px;
+  padding-top: 10px;
+  overflow-x: scroll;
 
+}
+.day-search{
+width:2790px;
+}
+.day-search-table{
+  width:2790px;
 }
