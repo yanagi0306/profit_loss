@@ -1,6 +1,7 @@
 class StoresController < ApplicationController
   before_action :check
   before_action :first_getter
+
   def index
     gon.month1_budget = Store.get_budget(@ymd - 1.month, current_store.id)
     gon.month2_budget = Store.get_budget(@ymd - 2.month, current_store.id)
@@ -23,9 +24,15 @@ class StoresController < ApplicationController
   end
 
   def search; end
-  def day_search
-    @achievements = Achievement.where(ymd:@target_ranges,store_id:current_store.id)
 
+  def day_search
+    @achievements =
+      Store.get_achievements(
+        @target_ranges,
+        @total_achievement,
+        @budget,
+        current_store.id,
+      )
 
 
   end
@@ -63,22 +70,19 @@ class StoresController < ApplicationController
     end
     @total_achievement =
       Store.get_achievement(@target_ranges, @total_budget, current_store.id)
-
-
-
   end
 
   def check
     redirect_to new_store_session_path unless store_signed_in?
   end
 
-  def budget_columns(columns,budget)
+  def budget_columns(columns, budget)
     value = 0
     columns.each { |column| value += budget[column.to_sym] }
     return value.floor
   end
 
-  def achievement_columns(columns,achievement)
+  def achievement_columns(columns, achievement)
     value = 0
     columns.each { |column| value += achievement[column.to_sym] }
     return value
@@ -100,13 +104,12 @@ class StoresController < ApplicationController
     end
   end
 
-  def get_achievement(achievements,ymd)
-    if achievements.where(ymd:ymd)[0].present?
-      return achievements.where(ymd:ymd)[0]
+  def get_achievement(achievements, ymd)
+    if achievements.where(ymd: ymd)[0].present?
+      return achievements.where(ymd: ymd)[0]
     else
       return 0
     end
-
   end
 
   helper_method :budget_columns
@@ -114,5 +117,4 @@ class StoresController < ApplicationController
   helper_method :comparison
   helper_method :percentage
   helper_method :get_achievement
-
 end

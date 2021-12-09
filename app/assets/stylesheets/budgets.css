@@ -222,11 +222,12 @@ label {
 }
 .day-search-item {
   height: 23px;
-  width: 90px;
+  width: 100px;
   text-align: center;
   border: 1px solid #dddddd;
   font-size: 0.7rem;
   text-align: right;
+  padding: 0.1rem 0.3rem;
 }
 .day-search-head {
   height: 23px;

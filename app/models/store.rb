@@ -47,6 +47,49 @@ class Store < ApplicationRecord
     return total_achievement
   end
 
+  def self.get_achievements(
+    target_ranges,
+    total_achievement,
+    budget,
+    current_store
+  )
+    achievements =
+      Achievement.where(ymd: [target_ranges], store_id: current_store)
+    TargetSearch.variable_items.each do |column|
+      check = 0
+      achievements.each do |achievement|
+        if achievement[column.to_sym] != 0
+          check += 1
+        end
+      end
+      if check == 0
+        achievements.each do |achievement|
+          achievement[column.to_sym] =
+          (
+            budget[column.to_sym] *
+              Store.day_ratio(
+                achievement[:ymd],
+                BudgetsDayRatio.find(budget.budgets_day_ratio_id),
+              )
+          ).floor
+        end
+      end
+    end
+    TargetSearch.all_fixed.each do |column|
+      achievements.each do |achievement|
+        achievement[column.to_sym] =
+          (
+            budget[column.to_sym] *
+              Store.day_ratio(
+                achievement[:ymd],
+                BudgetsDayRatio.find(budget.budgets_day_ratio_id),
+              )
+          ).floor
+      end
+    end
+    return achievements
+  end
+
   def self.get_budget(ymd, current_store)
     if Budget.where(ymd: ymd, store_id: current_store)[0].present?
       Budget.where(ymd: ymd, store_id: current_store)[0]
