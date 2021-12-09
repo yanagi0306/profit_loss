@@ -36,8 +36,8 @@
   <div class="day-search-table-all">
     <table class="day-search">
       <tr class='day-search-head'>
-        <th class='category text-center'>カテゴリ</th>
-        <th class='subject text-center'>科目</th>
+        <th class='category text-center head'>カテゴリ</th>
+        <th class='subject text-center head'>科目</th>
         <%= render partial:'stores/day_search/search_item',collection:@achievements,as:'achievement'%>
       </tr>
       <%= render partial:'stores/day_search/column',collection:TargetSearch.sales,as:"column",locals: {achievements:@achievements,budget:@budget,ratio:@ratio}%>

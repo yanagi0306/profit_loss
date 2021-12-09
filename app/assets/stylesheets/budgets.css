@@ -238,14 +238,64 @@ label {
 
 }
 .day-search-table-all {
-
+  height:100%;
   width:900px;
   min-height: 800px;
-  padding: 10px 10px 30px 10px;
-  overflow-x: scroll;
+  margin:20px 10px 40px 10px;
+  overflow: scroll;
 
 }
 .day-search{
   table-layout: fixed;
   width:100%;
+  border-collspace: separate;
 }
+
+.head {
+  position: sticky;/*←これで追尾させる*/
+  top: 0px;/*←top:0;だと隙間が開いてしまう為マイナス値で詰める*/
+  z-index: 1;
+  text-align: center;
+  background: #EEEEEE;
+  color: #485056;
+  box-shadow: 0 4px 0px rgba(0, 0, 0, 0.1);
+  border: 1px solid #dddddd;
+ }
+ .side1{
+  position: sticky;
+  left: 0px;
+  background: inherit;
+  box-shadow: 4px 0 0px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  border:  solid #dddddd;
+  border-width: 1px 0 1px 0;
+ }
+ .side1::before{
+  content: '';
+  position : absolute ;
+  top : 0;
+  left : -1px;
+  width : 100%;
+  height : 100%;
+  border:  solid #dddddd;
+  border-width: 0 0 0 1px;
+ }
+ .side2{
+  position: sticky;
+  left: 90px;
+  background: inherit;
+  box-shadow: 4px 0 0px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  border:  solid #dddddd;
+  border-width: 1px 0 0 0;
+ }
+ .side2::before{
+  content: '';
+  position : absolute ;
+  top : 0;
+  left : -1px;
+  width : 100%;
+  height : 100%;
+  border:  solid #dddddd;
+  border-width: 0 1px 0 1px;
+ }

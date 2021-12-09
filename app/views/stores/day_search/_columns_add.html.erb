@@ -1,10 +1,10 @@
 <% if id % 2 == 1%>
 <tr class="search-record" style="background-color:#F9F9F9">
   <% else %>
-<tr class="search-record">
+<tr class="search-record" style='background-color:#FFFFFF'>
   <% end %>
-  <td class="category"></td>
-  <td class="subject"><%=name%></td>
+  <td class="category side1"></td>
+  <td class="subject side2"><%=name%></td>
   <% achievements.each do |achievement|%>
   <td class="search-item"><%=(budget[fixed.to_sym]*Store.day_ratio(achievement[:ymd],ratio)).floor.to_s(:delimited)%></td>
   <td class="search-item"><%=((budget[fixed.to_sym]*Store.day_ratio(achievement[:ymd],ratio)).floor + achievement[variable.to_sym]).to_s(:delimited)%></td>

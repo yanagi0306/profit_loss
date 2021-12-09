@@ -1,6 +1,6 @@
 <tr class="search-record" style='background-color:#FFEEE6'>
-  <td class="category"><%=name%></td>
-  <td class="subject"></td>
+  <td class="category side1"><%=name%></td>
+  <td class="subject side2"></td>
   <% achievements.each do |achievement|%>
   <td class="search-item"><%=(budget_columns(profit_columns,budget)*Store.day_ratio(achievement[:ymd],ratio) - budget_columns(loss_columns,budget)*Store.day_ratio(achievement[:ymd],ratio)).floor.to_s(:delimited)%></td>
   <td class="search-item">

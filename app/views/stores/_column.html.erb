@@ -3,7 +3,7 @@
 <% else %>
 <tr class="search-record">
 <% end %>
-  <td class="category"></td>
+  <td class="category "></td>
   <td class="subject"><%=column[:ja_name]%></td>
   <td class="search-item"><%=@total_budget[column[:name].to_sym].floor.to_s(:delimited)%></td>
   <td class="search-item"><%=@total_achievement[column[:name].to_sym].floor.to_s(:delimited)%></td>
