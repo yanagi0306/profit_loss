@@ -292,7 +292,7 @@ label {
  }
  .side2{
   position: sticky;
-  left: 90px;
+  left: 91px;
   background: inherit;
   box-shadow: 4px 0 0px rgba(0, 0, 0, 0.1);
   z-index: 1;
