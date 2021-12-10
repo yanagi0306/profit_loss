@@ -34,104 +34,124 @@
     </div>
   </div>
   <div class="search-table-all">
-    <div class="search-table">
-      <table class="search">
-        <tr class='search-head'>
-          <th class='category text-center'>カテゴリ</th>
-          <th class='subject text-center'>科目</th>
-          <th class='search-item text-center'><%=current_store.name%>予算</th>
-          <th class='search-item text-center'><%=current_store.name%>実績</th>
-          <th class='search-item text-center'><%=current_store.name%>達成率</th>
-        </tr>
+
+    <table class="search">
+      <tr class='search-head'>
+        <th class='category text-center'>カテゴリ</th>
+        <th class='subject text-center'>科目</th>
+        <th class='search-item text-center'><%=current_store.name%>予算</th>
+        <th class='search-item text-center'><%=current_store.name%>実績</th>
+        <th class='search-item text-center'><%=current_store.name%>達成率</th>
+      </tr>
+
+      <%= render partial: 'column', collection: TargetSearch.sales, as: "column" %>
+      <%= render partial: 'columns_collect', locals: {name:'来店客数',columns:TargetSearch.total_number,id:1,total_achievement:@total_achievement,total_budget:@total_budget} %>
+      <%= render partial: 'column', collection: TargetSearch.other_sales, as: "column" %>
+      <%= render partial: 'columns', locals: {name:'総売上',columns:TargetSearch.total_sales,total_achievement:@total_achievement,total_budget:@total_budget } %>
+      <%= render partial: 'column', collection: TargetSearch.costs_variable, as: "column" %>
+      <%= render partial: 'column', collection: TargetSearch.costs_fixed, as: "column" %>
+      <%= render partial: 'columns', locals: {name:'総原価',columns:TargetSearch.total_costs ,total_achievement:@total_achievement,total_budget:@total_budget} %>
+      <%= render partial: 'result', locals: {name:'粗利益',profit_columns:TargetSearch.total_sales,loss_columns:TargetSearch.total_costs ,total_achievement:@total_achievement,total_budget:@total_budget} %>
+      <%= render partial: 'column', collection: TargetSearch.other, as: "column" %>
+      <%= render partial: 'column', collection: TargetSearch.day, as: "column" %>
+      <%= render partial: 'column', collection: TargetSearch.other_fixed, as: "column" %>
+      <%= render partial: 'columns_add', locals: {name:'通信費',fixed:"communications_fixed",variable:"communications_variable",id:0 } %>
+      <%= render partial: 'columns_add', locals: {name:'広告宣伝費',fixed:"publicity_fixed",variable:"publicity_variable" ,id:1} %>
+      <%= render partial: 'columns_add', locals: {name:'ゴミ処理費',fixed:"garbage_fixed",variable:"garbage_variable" ,id:0} %>
+      <%= render partial: 'columns_add', locals: {name:'車両管理費',fixed:"car_fixed",variable:"car_variable" ,id:1} %>
+      <%= render partial: 'columns_add', locals: {name:'クレジット管理費',fixed:"credit_fixed",variable:"credit_variable" ,id:0} %>
+      <%= render partial: 'columns_add', locals: {name:'衛生管理費',fixed:"clean_fixed",variable:"clean_variable" ,id:1} %>
+      <%= render partial: 'columns', locals: {name:'総販管費',columns:TargetSearch.total_other ,total_achievement:@total_achievement,total_budget:@total_budget} %>
+      <%= render partial: 'result', locals: {name:'営業利益',profit_columns:TargetSearch.total_sales,loss_columns:TargetSearch.total_loss ,total_achievement:@total_achievement,total_budget:@total_budget} %>
+      <tr class="search-record" style='background-color:#E7E4F6'>
+        <td class="category">KPI</td>
+        <td class="subject"></td>
+        <td class="search-item"></td>
+        <td class="search-item"></td>
+        <td class="search-item"></td>
+      </tr>
+      <tr class="search-record">
+        <td class="category"></td>
+        <td class="subject">客単価</td>
+        <td class="search-item">
+          <%=comparison(@total_budget[:sale],budget_columns(TargetSearch.total_number,@total_budget)).floor.to_s(:delimited)%>
+        </td>
+        <td class="search-item">
+          <%=comparison(@total_achievement[:sale],achievement_columns(TargetSearch.total_number,@total_achievement)).floor.to_s(:delimited)%>
+        </td>
+        <td class="search-item"></td>
+      </tr>
+      <tr class="search-record" style='background-color:#F9F9F9'>
+        <td class="category"></td>
+        <td class="subject">ランチ客単価</td>
+        <td class="search-item">
+          <%=comparison(@total_budget[:lunch_sale],@total_budget[:lunch_number]).floor.to_s(:delimited)%></td>
+        <td class="search-item">
+          <%=comparison(@total_achievement[:lunch_sale],@total_achievement[:lunch_number]).floor.to_s(:delimited)%></td>
+        <td class="search-item"></td>
+      </tr>
+      <tr class="search-record">
+        <td class="category"></td>
+        <td class="subject">ディナー客単価</td>
+        <td class="search-item">
+          <%=comparison(@total_budget[:dinner_sale],@total_budget[:dinner_number]).floor.to_s(:delimited)%></td>
+        <td class="search-item">
+          <%=comparison(@total_achievement[:dinner_sale],@total_achievement[:dinner_number]).floor.to_s(:delimited)%>
+        </td>
+        <td class="search-item"></td>
+      </tr>
+
+      <tr class="search-record" style='background-color:#F9F9F9'>
+        <td class="category"></td>
+        <td class="subject">食材原材料比率</td>
+        <td class="search-item"><%=percentage(@total_budget[:food_cost],@total_budget[:sale])%></td>
+        <td class="search-item"><%=percentage(@total_achievement[:food_cost],@total_achievement[:sale])%></td>
+        <td class="search-item"></td>
+      </tr>
+      <tr class="search-record">
+        <td class="category"></td>
+        <td class="subject">総原材料比率</td>
+        <td class="search-item">
+          <%=percentage(budget_columns(['food_cost','material_cost'],@total_budget),@total_budget[:sale])%></td>
+        <td class="search-item">
+          <%=percentage(achievement_columns(['food_cost','material_cost'],@total_achievement),@total_achievement[:sale])%>
+        </td>
+        <td class="search-item"></td>
+      </tr>
+      <tr class="search-record" style='background-color:#F9F9F9'>
+        <td class="category"></td>
+        <td class="subject">人件費率</td>
+        <td class="search-item">
+          <%=percentage(budget_columns(TargetSearch.labor_costs,@total_budget),@total_budget[:sale])%></td>
+        <td class="search-item">
+          <%=percentage(achievement_columns(TargetSearch.labor_costs,@total_achievement),@total_achievement[:sale])%>
+        </td>
+        <td class="search-item"></td>
+      </tr>
+      <tr class="search-record">
+        <td class="category"></td>
+        <td class="subject">パート比率</td>
+        <td class="search-item">
+          <%=percentage(@total_budget[:pert_cost],budget_columns(TargetSearch.labor_costs,@total_budget))%></td>
+        <td class="search-item">
+          <%=percentage(@total_achievement[:pert_cost],achievement_columns(TargetSearch.labor_costs,@total_achievement))%>
+        </td>
+        <td class="search-item"></td>
+      </tr>
+      <tr class="search-record" style='background-color:#F9F9F9'>
+        <td class="category"></td>
+        <td class="subject">F/Lコスト率</td>
+        <td class="search-item">
+          <%=percentage(budget_columns(TargetSearch.total_costs,@total_budget),@total_budget[:sale])%></td>
+        <td class="search-item">
+          <%=percentage(achievement_columns(TargetSearch.total_costs,@total_achievement),@total_achievement[:sale])%>
+        </td>
+        <td class="search-item"></td>
+      </tr>
 
 
-        <%= render partial: 'column', collection: TargetSearch.sales, as: "column" %>
-        <%= render partial: 'columns_collect', locals: {name:'来店客数',columns:TargetSearch.total_number,id:1} %>
-        <%= render partial: 'column', collection: TargetSearch.other_sales, as: "column" %>
-        <%= render partial: 'columns', locals: {name:'総売上',columns:TargetSearch.total_sales } %>
-        <%= render partial: 'column', collection: TargetSearch.costs_variable, as: "column" %>
-        <%= render partial: 'column', collection: TargetSearch.costs_fixed, as: "column" %>
-        <%= render partial: 'columns', locals: {name:'総原価',columns:TargetSearch.total_costs } %>
-        <%= render partial: 'result', locals: {name:'粗利益',profit_columns:TargetSearch.total_sales,loss_columns:TargetSearch.total_costs } %>
-        <%= render partial: 'column', collection: TargetSearch.other, as: "column" %>
-        <%= render partial: 'column', collection: TargetSearch.day, as: "column" %>
-        <%= render partial: 'column', collection: TargetSearch.other_fixed, as: "column" %>
-        <%= render partial: 'columns_add', locals: {name:'通信費',fixed:"communications_fixed",variable:"communications_variable",id:0 } %>
-        <%= render partial: 'columns_add', locals: {name:'広告宣伝費',fixed:"publicity_fixed",variable:"publicity_variable" ,id:1} %>
-        <%= render partial: 'columns_add', locals: {name:'ゴミ処理費',fixed:"garbage_fixed",variable:"garbage_variable" ,id:0} %>
-        <%= render partial: 'columns_add', locals: {name:'車両管理費',fixed:"car_fixed",variable:"car_variable" ,id:1} %>
-        <%= render partial: 'columns_add', locals: {name:'クレジット管理費',fixed:"credit_fixed",variable:"credit_variable" ,id:0} %>
-        <%= render partial: 'columns_add', locals: {name:'衛生管理費',fixed:"clean_fixed",variable:"clean_variable" ,id:1} %>
-      <%= render partial: 'columns', locals: {name:'総販管費',columns:TargetSearch.total_other } %>
-      <%= render partial: 'result', locals: {name:'営業利益',profit_columns:TargetSearch.total_sales,loss_columns:TargetSearch.total_loss } %>
-        <tr class="search-record" style='background-color:#E7E4F6'>
-          <td class="category">KPI</td>
-          <td class="subject"></td>
-          <td class="search-item"></td>
-          <td class="search-item"></td>
-          <td class="search-item"></td>
-        </tr>
-        <tr class="search-record" >
-          <td class="category"></td>
-          <td class="subject">客単価</td>
-          <td class="search-item"><%=comparison(@total_budget[:sale],budget_columns(TargetSearch.total_number)).floor.to_s(:delimited)%></td>
-          <td class="search-item"><%=comparison(@total_achievement[:sale],achievement_columns(TargetSearch.total_number)).floor.to_s(:delimited)%></td>
-          <td class="search-item"></td>
-        </tr>
-        <tr class="search-record" style='background-color:#F9F9F9'>
-          <td class="category"></td>
-          <td class="subject">ランチ客単価</td>
-          <td class="search-item"><%=comparison(@total_budget[:lunch_sale],@total_budget[:lunch_number]).floor.to_s(:delimited)%></td>
-          <td class="search-item"><%=comparison(@total_achievement[:lunch_sale],@total_achievement[:lunch_number]).floor.to_s(:delimited)%></td>
-          <td class="search-item"></td>
-        </tr>
-        <tr class="search-record" >
-          <td class="category"></td>
-          <td class="subject">ディナー客単価</td>
-          <td class="search-item"><%=comparison(@total_budget[:dinner_sale],@total_budget[:dinner_number]).floor.to_s(:delimited)%></td>
-          <td class="search-item"><%=comparison(@total_achievement[:dinner_sale],@total_achievement[:dinner_number]).floor.to_s(:delimited)%></td>
-          <td class="search-item"></td>
-        </tr>
 
-        <tr class="search-record" style='background-color:#F9F9F9'>
-          <td class="category"></td>
-          <td class="subject">食材原材料比率</td>
-          <td class="search-item"><%=percentage(@total_budget[:food_cost],@total_budget[:sale])%></td>
-          <td class="search-item"><%=percentage(@total_achievement[:food_cost],@total_achievement[:sale])%></td>
-          <td class="search-item"></td>
-        </tr>
-        <tr class="search-record">
-          <td class="category"></td>
-          <td class="subject">総原材料比率</td>
-          <td class="search-item"><%=percentage(budget_columns(['food_cost','material_cost']),@total_budget[:sale])%></td>
-          <td class="search-item"><%=percentage(achievement_columns(['food_cost','material_cost']),@total_achievement[:sale])%></td>
-          <td class="search-item"></td>
-        </tr>
-        <tr class="search-record" style='background-color:#F9F9F9'>
-          <td class="category"></td>
-          <td class="subject">人件費率</td>
-          <td class="search-item"><%=percentage(budget_columns(TargetSearch.labor_costs),@total_budget[:sale])%></td>
-          <td class="search-item"><%=percentage(achievement_columns(TargetSearch.labor_costs),@total_achievement[:sale])%></td>
-          <td class="search-item"></td>
-        </tr>
-        <tr class="search-record">
-          <td class="category"></td>
-          <td class="subject">パート比率</td>
-          <td class="search-item"><%=percentage(@total_budget[:pert_cost],budget_columns(TargetSearch.labor_costs))%></td>
-          <td class="search-item"><%=percentage(@total_achievement[:pert_cost],achievement_columns(TargetSearch.labor_costs))%></td>
-          <td class="search-item"></td>
-        </tr>
-        <tr class="search-record" style='background-color:#F9F9F9'>
-          <td class="category"></td>
-          <td class="subject">F/Lコスト率</td>
-         <td class="search-item"><%=percentage(budget_columns(TargetSearch.total_costs),@total_budget[:sale])%></td>
-          <td class="search-item"><%=percentage(achievement_columns(TargetSearch.total_costs),@total_achievement[:sale])%></td>
-          <td class="search-item"></td>
-        </tr>
+    </table>
 
-
-
-      </table>
-    </div>
   </div>
 </div>

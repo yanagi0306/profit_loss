@@ -1,0 +1,69 @@
+<div class="content-wrapper">
+  <div class="main-content-title-wrap">
+    閲覧
+    <div class="sub-buttons">
+      <div class="d-inline">
+        <a href="" class="info">CSVアップロード</a>
+      </div>
+    </div>
+  </div>
+  <div class="search">
+    <%= form_with(url: day_search_store_path(current_store.id), local: true, method: :get) do |f| %>
+
+    <div class="form-group">
+      <div class="form-label">
+        <label>指定年月</label>
+      </div>
+      <div class="form-inline">
+        <div class="inline-center">
+
+          <%= f.select :year,options_for_select(@year_range.map{|i| ["#{i}年",i] },@ymd.year),{},{ autofocus: 'true', class: 'input-item text-end',id:"year"}%>
+          <span>/</span>
+          <%= f.select :month,options_for_select((1..12).map{|i| ["#{i}月",i] },@ymd.month),{},{ autofocus: 'true', class: 'input-item',id:"month"}%>
+        </div>
+      </div>
+    </div>
+    <div class="form-group-btn">
+      <%= f.submit "検索" ,class:"form__btn" %>
+    </div>
+    <% end %>
+  </div>
+  <div class="result-wrapper">
+    <div class="result-title">
+      店舗実績情報
+    </div>
+  </div>
+  <div class="day-search-table-all">
+    <table class="day-search">
+      <tr class='day-search-head'>
+        <th class='category text-center top'>カテゴリ</th>
+        <th class='subject text-center top'>科目</th>
+        <%= render partial:'stores/day_search/search_item',collection:@achievements,as:'achievement'%>
+      </tr>
+
+      <div class="bottom">
+      <%= render partial:'stores/day_search/column',collection:TargetSearch.sales,as:"column",locals: {achievements:@achievements,budget:@budget,ratio:@ratio}%>
+      <%= render partial:'stores/day_search/columns_collect',locals: {achievements:@achievements,budget:@budget,ratio:@ratio,name:'来店客数',columns:TargetSearch.total_number}%>
+      <%= render partial:'stores/day_search/column',collection:TargetSearch.other_sales,as:"column",locals: {achievements:@achievements,budget:@budget,ratio:@ratio}%>
+      <%= render partial:'stores/day_search/columns',locals: {achievements:@achievements,budget:@budget,ratio:@ratio,name:'総売上',columns:TargetSearch.total_sales}%>
+      <%= render partial:'stores/day_search/column',collection:TargetSearch.costs_variable,as:"column",locals: {achievements:@achievements,budget:@budget,ratio:@ratio}%>
+      <%= render partial:'stores/day_search/column',collection:TargetSearch.costs_fixed,as:"column",locals: {achievements:@achievements,budget:@budget,ratio:@ratio}%>
+      <%= render partial:'stores/day_search/columns',locals: {achievements:@achievements,budget:@budget,ratio:@ratio,name:'総原価',columns:TargetSearch.total_costs}%>
+      <%= render partial: 'stores/day_search/result', locals: {name:'粗利益',profit_columns:TargetSearch.total_sales,loss_columns:TargetSearch.total_costs ,achievements:@achievements,budget:@budget,ratio:@ratio} %>
+      <%= render partial:'stores/day_search/column',collection:TargetSearch.other,as:"column",locals: {achievements:@achievements,budget:@budget,ratio:@ratio}%>
+      <%= render partial:'stores/day_search/column',collection:TargetSearch.day,as:"column",locals: {achievements:@achievements,budget:@budget,ratio:@ratio}%>
+      <%= render partial:'stores/day_search/column',collection:TargetSearch.other_fixed,as:"column",locals: {achievements:@achievements,budget:@budget,ratio:@ratio}%>
+      <%= render partial: 'stores/day_search/columns_add', locals: {name:'通信費',fixed:"communications_fixed",variable:"communications_variable",id:0,achievements:@achievements,budget:@budget,ratio:@ratio } %>
+      <%= render partial: 'stores/day_search/columns_add', locals: {name:'広告宣伝費',fixed:"publicity_fixed",variable:"publicity_variable" ,id:1,achievements:@achievements,budget:@budget,ratio:@ratio} %>
+      <%= render partial: 'stores/day_search/columns_add', locals: {name:'ゴミ処理費',fixed:"garbage_fixed",variable:"garbage_variable" ,id:0,achievements:@achievements,budget:@budget,ratio:@ratio} %>
+      <%= render partial: 'stores/day_search/columns_add', locals: {name:'車両管理費',fixed:"car_fixed",variable:"car_variable" ,id:1,achievements:@achievements,budget:@budget,ratio:@ratio} %>
+      <%= render partial: 'stores/day_search/columns_add', locals: {name:'クレジット管理費',fixed:"credit_fixed",variable:"credit_variable" ,id:0,achievements:@achievements,budget:@budget,ratio:@ratio} %>
+      <%= render partial: 'stores/day_search/columns_add', locals: {name:'衛生管理費',fixed:"clean_fixed",variable:"clean_variable" ,id:1,achievements:@achievements,budget:@budget,ratio:@ratio} %>
+      <%= render partial:'stores/day_search/columns',locals: {achievements:@achievements,budget:@budget,ratio:@ratio,name:'総販管費',columns:TargetSearch.total_other}%>
+      <%= render partial: 'stores/day_search/result', locals: {name:'営業利益',profit_columns:TargetSearch.total_sales,loss_columns:TargetSearch.total_loss ,achievements:@achievements,budget:@budget,ratio:@ratio} %>
+
+
+    </table>
+</div>
+  </div>
+</div>

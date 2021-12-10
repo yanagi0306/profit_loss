@@ -1,0 +1,19 @@
+
+<tr class="search-record" style='background-color:#FFFFFF'>
+
+  <td class="category side1"></td>
+  <td class="subject side2"><%=name%></td>
+<% achievements.each do |achievement|%>
+
+  <td class='day-search-item'>
+    <%=(budget_columns(columns,budget)*Store.day_ratio(achievement[:ymd],ratio)).floor.to_s(:delimited) %>
+  </td>
+  <td class='day-search-item'>
+    <%= achievement_columns(columns,achievement).to_s(:delimited)%>
+  </td>
+  <td class='day-search-item'>
+    <%= percentage(achievement_columns(columns,achievement),budget_columns(columns,budget)*Store.day_ratio(achievement[:ymd],ratio))%>
+
+  </td>
+  <% end %>
+</tr>
