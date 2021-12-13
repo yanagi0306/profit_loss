@@ -1,0 +1,111 @@
+<mxfile host="65bd71144e">
+    <diagram id="5PzZoNoEkkq_noJI8aUy" name="ページ1">
+        <mxGraphModel dx="1210" dy="736" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="9" style="edgeStyle=none;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=classic;endFill=1;startArrow=classic;startFill=1;" edge="1" parent="1" source="2" target="5">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="240" y="240"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="11" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;startArrow=classic;startFill=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="2" target="4">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;startArrow=classic;startFill=1;endArrow=classic;endFill=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;rounded=0;" edge="1" parent="1" source="2" target="12">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="460" y="80" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="460" y="240"/>
+                            <mxPoint x="460" y="120"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="2" value="トップページ" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="220" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="・直近３ヶ月の予実情報グラフ&lt;br&gt;・今月の簡易月次情報　　　　" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="240" y="270" width="180" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="店舗ログインページ" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="270" y="60" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="店舗新規登録ページ" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="70" y="220" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="・会社ログイン時のみ遷移" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="50" y="275" width="160" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="予算固定費入力ページ" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="520" y="100" width="130" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" style="edgeStyle=none;rounded=0;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;startArrow=classic;startFill=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="17" target="2">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="店舗売上入力ページ" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="520" y="220" width="130" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" style="edgeStyle=none;rounded=0;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;" edge="1" parent="1" source="19">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="460" y="300" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="19" value="変動費入力ページ" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="520" y="280" width="130" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" style="edgeStyle=none;rounded=0;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;" edge="1" parent="1" source="20">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="460" y="180" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="460" y="60"/>
+                            <mxPoint x="460" y="130"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="20" value="曜日別予算比率入力ページ" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="520" y="40" width="150" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" style="edgeStyle=none;rounded=0;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;" edge="1" parent="1" source="22">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="460" y="180" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="22" value="その他収入入力ページ" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="520" y="160" width="130" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" style="edgeStyle=none;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;" edge="1" parent="1" source="23">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="330" y="150" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="160" y="150"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="23" value="会社ログインページ" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="100" y="60" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" style="edgeStyle=none;rounded=0;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;" edge="1" parent="1" source="25">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="460" y="360" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="25" value="月次閲覧ページ" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="520" y="340" width="130" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" style="edgeStyle=none;rounded=0;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;" edge="1" parent="1" source="26">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="460" y="240" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="460" y="420"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="26" value="日次閲覧ページ" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="520" y="400" width="130" height="40" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

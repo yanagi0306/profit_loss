@@ -1,23 +1,3 @@
-|                          |                      備考                          |
-| ------------------------ | ------------------------------------------------- |
-| アプリケーション名          | Food Journal                                      |
-| アプリケーション概要        |  飲食店経営者用損益管理アプリ                          |
-| URL                      |  52.198.70.166                                    |
-| Basic認証                 | ・ID:admin  ・Password:2222                       |
-| テスト用アカウント(店舗)     | ・Name:有限会社ティーツー                            |
-|                          | ・Password:aaa111                                 |
-| テスト用アカウント(会社)     | ・Name:馬鹿豚や                                    |
-|                          | ・Password:ccc333                                 |
-| 利用方法                  |                                                   |
-| アプリケーションを作成した背景|                                                   |
-| group                    |                                                   |
-| group                    |                                                   |
-| group                    |                                                   |
-| group                    |                                                   |
-| group                    |                                                   |
-| group                    |                                                   |
-| group                    |                                                   |
-| group                    |                                                   |
 
 # テーブル設計
 
@@ -54,9 +34,9 @@
 | Colum                       | Type       | Options                       |
 | --------------------------- | ---------- | ----------------------------- |
 | ymd                         | date       | null:false,unique:true        |
-| sale_value                  | integer    |                               |
-| lunch_value                 | integer    |                               |
-| dinner_value                | integer    |                               |
+| sale                        | integer    |                               |
+| lunch_sake                  | integer    |                               |
+| dinner_sake                 | integer    |                               |
 | interest_income             | integer    |                               |
 | miscellaneous_income        | integer    |                               |
 | overtime_employee_cost      | integer    |                               |
@@ -107,7 +87,7 @@
 ### Association
 
 - belongs_to :store
-- belongs_to : budget_day_ratio
+- belongs_to :budget_day_ratio
 
 
 ## Achievementsテーブル
@@ -115,9 +95,9 @@
 | Colum                       | Type       | Options                       |
 | --------------------------- | ---------- | ----------------------------- |
 | ymd                         | date       | null:false,unique:true        |
-| sale_value                  | integer    |                               |
-| lunch_value                 | integer    |                               |
-| dinner_value                | integer    |                               |
+| sale_                       | integer    |                               |
+| lunch_sake                  | integer    |                               |
+| dinner_sake                 | integer    |                               |
 | interest_income             | integer    |                               |
 | miscellaneous_income        | integer    |                               |
 | overtime_employee_cost      | integer    |                               |
@@ -181,10 +161,12 @@
 | ymd                | date       | null:false, unique: true      |
 | income_category_id | integer    | null:false                    |
 | achievement        | references | null: false, foreign_key: true|
+| store              | references | null:false,foreign_key: true  |
 
 ### Association
 
 - belongs_to :achievement
+- belongs_to :store
 
 
 ## Salesテーブル
@@ -196,11 +178,13 @@
 | lunch_sales        | integer    | null:false                     |
 | dinner_sales       | integer    | null:false                     |
 | achievement        | references | null: false, foreign_key: true |
+| store              | references | null:false,foreign_key: true  |
 
 ### Association
 
 
 - belongs_to :achievement
+- belongs_to :store
 
 
 
@@ -212,12 +196,13 @@
 | variable_category_id| integer    | null:false                     |
 | ymd                 | date       | null:false                     |
 | achievement         | references | null:false,foreign_key: true   |
-
+| store               | references | null:false,foreign_key: true  |
 
 ### Association
 
 
 - belongs_to :achievement
+- belongs_to :store
 
 ## Budget_day_ratiosテーブル
 
@@ -230,9 +215,11 @@
 | friday              | integer    | null:false                     |
 | saturday            | integer    | null:false                     |
 | holiday             | integer    | null:false                     |
+| store               | references | null:false,foreign_key: true  |
 
 
 ### Association
 
 
 - has_many :budgets
+- belongs_to :store
