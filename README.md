@@ -66,9 +66,11 @@ https://github.com/yanagi0306/profit_loss.git
 
 以下、コマンドを順に実行してください<br>
 % git clone https://github.com/yanagi0306/profit_loss.git<br>
-% cd xxxxxx<br>
+% cd profit_loss<br>
 % bundle install<br>
-% yarn install
+% yarn install<br>
+% rails db:create<br>
+% rails s
 
 ## 遷移図
 
