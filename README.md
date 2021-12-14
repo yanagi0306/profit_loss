@@ -25,7 +25,7 @@ Pass:ccc111
 
 ## Github リポジトリ
 
-<https://github.com/yanagi0306/profit_loss.git>
+<https\://github.com/yanagi0306/profit_loss.git>
 
 ## 動作確認方法
 
