@@ -25,7 +25,7 @@ Pass:ccc111
 
 ## Github リポジトリ
 
-<https\://github.com/yanagi0306/profit_loss.git>
+https://github.com/yanagi0306/profit_loss.git
 
 ## 動作確認方法
 
@@ -65,7 +65,7 @@ Pass:ccc111
 ## ローカルでの作動方法
 
 以下、コマンドを順に実行してください<br>
-% git clone https://github.com/yanagi0306/profit_loss.git<br>
+% git clone `https://github.com/yanagi0306/profit_loss.git`<br>
 % cd profit_loss<br>
 % bundle install<br>
 % yarn install<br>
