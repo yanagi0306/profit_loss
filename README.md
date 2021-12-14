@@ -166,7 +166,7 @@ https://github.com/yanagi0306/profit_loss.git
 | Colum                       | Type       | Options                      |
 | --------------------------- | ---------- | ---------------------------- |
 | ymd                         | date       | null:false,unique:true       |
-| sale\_                      | integer    |                              |
+| sale                        | integer    |                              |
 | lunch_sale                  | integer    |                              |
 | dinner_sale                 | integer    |                              |
 | interest_income             | integer    |                              |
@@ -222,8 +222,8 @@ https://github.com/yanagi0306/profit_loss.git
 
 | Colum              | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| price              | integer    | null:false                     |
-| ymd                | date       | null:false, unique: true       |
+| price              | integer    |                                |
+| ymd                | date       | null:false                     |
 | income_category_id | integer    | null:false                     |
 | achievement        | references | null: false, foreign_key: true |
 | store              | references | null:false,foreign_key: true   |
@@ -237,10 +237,12 @@ https://github.com/yanagi0306/profit_loss.git
 
 | Colum        | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
-| price        | integer    | null:false                     |
-| ymd          | date       | null:false,unique:true         |
-| lunch_sales  | integer    | null:false                     |
-| dinner_sales | integer    | null:false                     |
+| sale         | integer    |                                |
+| ymd          | date       | null:false                     |
+| lunch_sale   | integer    |                                |
+| dinner_sale  | integer    |                                |
+| lunch_number | integer    |                                |
+| dinner_number| integer    |                                |
 | achievement  | references | null: false, foreign_key: true |
 | store        | references | null:false,foreign_key: true   |
 
@@ -251,13 +253,31 @@ https://github.com/yanagi0306/profit_loss.git
 
 ### Variable_costs テーブル
 
-| Colum                | Type       | Options                      |
-| -------------------- | ---------- | ---------------------------- |
-| price                | integer    | null:false                   |
-| variable_category_id | integer    | null:false                   |
-| ymd                  | date       | null:false                   |
-| achievement          | references | null:false,foreign_key: true |
-| store                | references | null:false,foreign_key: true |
+| Colum                       | Type       | Options                      |
+| --------------------------- | ---------- | ---------------------------- |
+| overtime_employee_cost      | integer    |                              |
+| social_insurance_part       | integer    |                              |
+| communications_variable     | integer    |                              |
+| publicity_variable          | integer    |                              |
+| social                      | integer    |                              |
+| meeting                     | integer    |                              |
+| traveling                   | integer    |                              |
+| selling_administration_cost | integer    |                              |
+| garbage_variable            | integer    |                              |
+| car_variable                | integer    |                              |
+| clean_variable              | integer    |                              |
+| credit_variable             | integer    |                              |
+| delivery_variable           | integer    |                              |
+| electric                    | integer    |                              |
+| water                       | integer    |                              |
+| gas                         | integer    |                              |
+| power                       | integer    |                              |
+| food_cost                   | integer    |                              |
+| material_cost               | integer    |                              |
+| interest_payment            | integer    |                              |
+| ymd                         | date       | null:false                   |
+| achievement                 | references | null:false,foreign_key: true |
+| store                       | references | null:false,foreign_key: true |
 
 #### Association
 
