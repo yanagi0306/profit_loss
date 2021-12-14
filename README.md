@@ -7,7 +7,8 @@ FoodJournal
 52.198.70.166
 
 ## Basic認証
-ID:admin Pass：2222
+ID:admin
+Pass：2222
 
 ## テスト用会社アカウント
 name:有限会社ティーツー
