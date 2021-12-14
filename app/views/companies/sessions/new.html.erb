@@ -16,9 +16,11 @@
       </div>
 
       <% unless store_signed_in? %>
-      <p><%= link_to '店舗でログイン',new_store_session_path, class: "info"%></p>
+      <%= link_to '店舗でログイン',new_store_session_path, class: "info"%><br>
+
+      <%= link_to '会社新規登録',new_company_registration_path, class: "info"%>
+
       <%end%>
-      <p><%= link_to 'Forgot Password ?',root_path, class: "info"%></p>
       <div class="actions">
         <%= f.submit "ログイン", class: :form__btn %>
       </div>

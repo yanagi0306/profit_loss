@@ -25,8 +25,8 @@
         <%= f.label :name, "社名" ,class:"certification"%><br />
         <%= f.text_field :name, id:"user_name" %>
       </div>
-
-
+      <%= link_to '店舗でログイン',new_store_session_path, class: "info"%><br>
+      <%= link_to '会社でログイン',new_company_session_path, class: "info"%><br>
 
       <div class="actions">
         <%= f.submit "新規登録", class: :form__btn  %>

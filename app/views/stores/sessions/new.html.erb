@@ -14,11 +14,11 @@
         <%= f.label :password, "パスワード（6文字以上）" ,class:"certification"%><br />
         <%= f.password_field :password, id:"user_password", autocomplete: "current-password" %>
       </div>
-      <% unless store_signed_in? %>
+      <% unless company_signed_in? %>
       <%= link_to '会社でログイン',new_company_session_path, class: "info"%><br>
-      <%end%>
-      <%= link_to 'Forgot Password ?',root_path, class: "info"%>
 
+      <%= link_to '会社新規登録',new_company_registration_path, class: "info"%>
+      <%end%>
       <div class="actions">
         <%= f.submit "ログイン", class: :form__btn %>
       </div>
