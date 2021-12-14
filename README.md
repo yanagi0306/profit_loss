@@ -10,17 +10,17 @@ FoodJournal
 
 ## Basic 認証
 
-ID:admin
+ID:admin<br>
 Pass：2222
 
 ## テスト用会社アカウント
 
-name:有限会社ティーツー
+name:有限会社ティーツー<br>
 Pass:aaa111
 
 ## テスト用店舗アカウント
 
-name:馬鹿豚や
+name:馬鹿豚や<br>
 Pass:ccc111
 
 ## Github リポジトリ
