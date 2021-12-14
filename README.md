@@ -21,7 +21,7 @@ Pass:aaa111
 ## テスト用店舗アカウント
 
 name:馬鹿豚や<br>
-Pass:ccc111
+Pass:ccc333
 
 ## Github リポジトリ
 
