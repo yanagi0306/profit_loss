@@ -6,7 +6,7 @@ FoodJournal
 
 ## URL
 
-<52.198.70.166>
+[52.198.70.166](52.198.70.166)
 
 ## Basic 認証
 
@@ -25,7 +25,7 @@ Pass:ccc111
 
 ## Github リポジトリ
 
-https://github.com/yanagi0306/profit_loss.git
+<https://github.com/yanagi0306/profit_loss.git>
 
 ## 動作確認方法
 
