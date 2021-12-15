@@ -76,8 +76,7 @@ https://github.com/yanagi0306/profit_loss.git
 ![実績入力 (1)](https://user-images.githubusercontent.com/82252568/146182445-b3702886-775d-4162-93f6-e1a941eb53e9.gif)
 
 ## デモ 日次情報
-![日次情報](https://user-images.githubusercontent.com/82252568/146182913-a5050893-399c-441b-90e9-31a23875f622.gif)
-
+![AnyConv com__画面収録 2021-12-15 21 27 25-1](https://user-images.githubusercontent.com/82252568/146188877-01ad03f3-cb97-4345-9ec0-5f0db6ca9b77.gif)
 ## 遷移図
 
 <img width="752" alt="スクリーンショット 2021-12-13 2 04 14" src="https://user-images.githubusercontent.com/82252568/145927240-5780a852-ca48-4a18-a123-e76ddf7e225b.png">
