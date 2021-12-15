@@ -73,9 +73,10 @@ https://github.com/yanagi0306/profit_loss.git
 % rails s
 
 ## デモ 実績入力
-![実績入力](https://user-images.githubusercontent.com/82252568/146179281-af582497-3bf6-49bb-8734-99a6d6088efb.gif)
+![実績入力 (1)](https://user-images.githubusercontent.com/82252568/146182445-b3702886-775d-4162-93f6-e1a941eb53e9.gif)
+
 ## デモ 日次情報
-![日次情報](https://user-images.githubusercontent.com/82252568/146179784-f22942c5-1ddd-441c-87ee-aeea9b713c43.gif)
+
 ## 遷移図
 
 <img width="752" alt="スクリーンショット 2021-12-13 2 04 14" src="https://user-images.githubusercontent.com/82252568/145927240-5780a852-ca48-4a18-a123-e76ddf7e225b.png">
