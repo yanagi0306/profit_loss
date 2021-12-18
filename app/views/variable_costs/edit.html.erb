@@ -59,18 +59,16 @@
 
 
 
-  <div class="variables-table-all">
-    <table class='upper-table'>
-      <tr class='table-head'>
+  <div class="day-search-table-all">
+    <table class="day-search">
+      <tr class='day-search-head'>
         <th class='day' id="selected_month"><%=@selected_dates[0].year%>年</th>
         <th class='weeks'>曜日</th>
         <%@target_column.each do |n|%>
         <th class='variable-column'><%=n[:ja_name]%></th>
         <%end %>
       </tr>
-    </table>
 
-    <table class='under-table'>
 
 
       <%@variable_costs.each_with_index do |variable_cost,index|%>

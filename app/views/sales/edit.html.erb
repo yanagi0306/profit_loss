@@ -37,18 +37,16 @@
 
 
   <%=form_with(model:@sales,url:sales_path, local: true, method: :patch, class: "search-form") do |f| %>
-  <div class="sales-table-all">
-    <table class='upper-table'>
-      <tr class='table-head'>
+  <div class="day-search-table-all">
+    <table class='day-search'>
+      <tr class='day-search-head'>
         <th class='day' id="selected_month"><%=@selected_year%>年</th>
         <th class='weeks'>曜日</th>
         <%@input_columns.each do |n|%>
         <th class='column'><%=n%></th>
         <%end %>
       </tr>
-    </table>
 
-    <table class='under-table'>
 
 
       <%@sales.each_with_index do |sale,index|%>
