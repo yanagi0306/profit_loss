@@ -83,7 +83,7 @@ https://github.com/yanagi0306/profit_loss.git
 <img width="752" alt="スクリーンショット 2021-12-13 2 04 14" src="https://user-images.githubusercontent.com/82252568/145927240-5780a852-ca48-4a18-a123-e76ddf7e225b.png">
 
 ## データベース設計
-### Companies テーブル　
+### Companies テーブル
 
 | Column             | Type   | Options                |
 | ------------------ | ------ | ---------------------- |
@@ -95,7 +95,7 @@ https://github.com/yanagi0306/profit_loss.git
 
 - has_many :stores
 
-### Stores テーブル　
+### Stores テーブル
 
 | Column             | Type       | Options                      |
 | ------------------ | ---------- | ---------------------------- |
