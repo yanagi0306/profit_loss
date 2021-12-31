@@ -1,0 +1,2 @@
+class SettlementFeeSubject < ApplicationRecord
+end

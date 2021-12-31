@@ -1,0 +1,2 @@
+class DeliveryCommissionSubject < ApplicationRecord
+end

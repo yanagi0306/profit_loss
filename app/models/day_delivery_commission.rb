@@ -1,0 +1,2 @@
+class DayDeliveryCommission < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class DaySettlementFee < ApplicationRecord
+end

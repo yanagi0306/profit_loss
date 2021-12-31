@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_16_064714) do
+ActiveRecord::Schema.define(version: 2021_12_31_035900) do
 
   create_table "achievements", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "ymd", null: false
@@ -21,46 +21,40 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
     t.integer "dinner_number", default: 0
     t.integer "interest_income", default: 0
     t.integer "miscellaneous_income", default: 0
-    t.integer "food_cost", default: 0
-    t.integer "material_cost", default: 0
-    t.integer "pert_cost", default: 0
-    t.integer "consumption_tax", default: 0
-    t.integer "miscellaneous_cost", default: 0
+    t.integer "social_insurance_part", default: 0
+    t.integer "social_insurance_employee", default: 0
+    t.integer "welfare", default: 0
+    t.integer "company_interest", default: 0
+    t.integer "resident_tax", default: 0
+    t.integer "settlement_fee", default: 0
     t.integer "delivery_commission", default: 0
+    t.integer "overtime_employee_cost", default: 0
+    t.integer "employee_cost", default: 0
+    t.integer "director_cost", default: 0
+    t.integer "traveling", default: 0
+    t.integer "meeting", default: 0
+    t.integer "interest_payment", default: 0
+    t.integer "rent", default: 0
+    t.integer "system", default: 0
+    t.integer "borrowing", default: 0
+    t.integer "tax_counsellor", default: 0
+    t.integer "labor_counsellor", default: 0
     t.integer "electric", default: 0
     t.integer "water", default: 0
     t.integer "gas", default: 0
     t.integer "power", default: 0
-    t.integer "overtime_employee_cost", default: 0
-    t.integer "social_insurance_part", default: 0
-    t.integer "meeting", default: 0
-    t.integer "traveling", default: 0
-    t.integer "selling_administration_cost", default: 0
-    t.integer "interest_payment", default: 0
-    t.integer "communications_variable", default: 0
-    t.integer "publicity_variable", default: 0
-    t.integer "garbage_variable", default: 0
-    t.integer "car_variable", default: 0
-    t.integer "credit_variable", default: 0
-    t.integer "clean_variable", default: 0
+    t.integer "food_cost", default: 0
+    t.integer "material_cost", default: 0
+    t.integer "pert_cost", default: 0
+    t.integer "miscellaneous_cost", default: 0
+    t.integer "communications_add", default: 0
+    t.integer "publicity_add", default: 0
+    t.integer "garbage_add", default: 0
+    t.integer "clean_add", default: 0
     t.integer "communications_fixed", default: 0
     t.integer "publicity_fixed", default: 0
     t.integer "garbage_fixed", default: 0
-    t.integer "car_fixed", default: 0
-    t.integer "credit_fixed", default: 0
     t.integer "clean_fixed", default: 0
-    t.integer "rent", default: 0
-    t.integer "employee_cost", default: 0
-    t.integer "director_cost", default: 0
-    t.integer "company_interest", default: 0
-    t.integer "social_insurance_employee", default: 0
-    t.integer "resident_tax", default: 0
-    t.integer "pos_system", default: 0
-    t.integer "welfare_fixed", default: 0
-    t.integer "delivery_fixed", default: 0
-    t.integer "borrowing", default: 0
-    t.integer "tax_counsellor", default: 0
-    t.integer "labor_counsellor", default: 0
     t.bigint "store_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -76,46 +70,40 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
     t.integer "dinner_number", default: 0
     t.integer "interest_income", default: 0
     t.integer "miscellaneous_income", default: 0
-    t.integer "food_cost", default: 0
-    t.integer "material_cost", default: 0
-    t.integer "pert_cost", default: 0
-    t.integer "consumption_tax", default: 0
-    t.integer "miscellaneous_cost", default: 0
+    t.integer "social_insurance_part", default: 0
+    t.integer "social_insurance_employee", default: 0
+    t.integer "welfare", default: 0
+    t.integer "company_interest", default: 0
+    t.integer "resident_tax", default: 0
+    t.integer "settlement_fee", default: 0
     t.integer "delivery_commission", default: 0
+    t.integer "overtime_employee_cost", default: 0
+    t.integer "employee_cost", default: 0
+    t.integer "director_cost", default: 0
+    t.integer "traveling", default: 0
+    t.integer "meeting", default: 0
+    t.integer "interest_payment", default: 0
+    t.integer "rent", default: 0
+    t.integer "system", default: 0
+    t.integer "borrowing", default: 0
+    t.integer "tax_counsellor", default: 0
+    t.integer "labor_counsellor", default: 0
     t.integer "electric", default: 0
     t.integer "water", default: 0
     t.integer "gas", default: 0
     t.integer "power", default: 0
-    t.integer "overtime_employee_cost", default: 0
-    t.integer "social_insurance_part", default: 0
-    t.integer "meeting", default: 0
-    t.integer "traveling", default: 0
-    t.integer "selling_administration_cost", default: 0
-    t.integer "interest_payment", default: 0
-    t.integer "communications_variable", default: 0
-    t.integer "publicity_variable", default: 0
-    t.integer "garbage_variable", default: 0
-    t.integer "car_variable", default: 0
-    t.integer "credit_variable", default: 0
-    t.integer "clean_variable", default: 0
+    t.integer "food_cost", default: 0
+    t.integer "material_cost", default: 0
+    t.integer "pert_cost", default: 0
+    t.integer "miscellaneous_cost", default: 0
+    t.integer "communications_add", default: 0
+    t.integer "publicity_add", default: 0
+    t.integer "garbage_add", default: 0
+    t.integer "clean_add", default: 0
     t.integer "communications_fixed", default: 0
     t.integer "publicity_fixed", default: 0
     t.integer "garbage_fixed", default: 0
-    t.integer "car_fixed", default: 0
-    t.integer "credit_fixed", default: 0
     t.integer "clean_fixed", default: 0
-    t.integer "rent", default: 0
-    t.integer "employee_cost", default: 0
-    t.integer "director_cost", default: 0
-    t.integer "company_interest", default: 0
-    t.integer "social_insurance_employee", default: 0
-    t.integer "resident_tax", default: 0
-    t.integer "pos_system", default: 0
-    t.integer "welfare_fixed", default: 0
-    t.integer "delivery_fixed", default: 0
-    t.integer "borrowing", default: 0
-    t.integer "tax_counsellor", default: 0
-    t.integer "labor_counsellor", default: 0
     t.bigint "store_id", null: false
     t.bigint "budgets_day_ratio_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -151,16 +139,60 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
     t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
   end
 
-  create_table "incomes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "price", default: 0, null: false
-    t.date "ymd", null: false
-    t.string "income_category_id", null: false
-    t.bigint "achievement_id", null: false
+  create_table "day_delivery_commissions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "value", null: false
+    t.bigint "delivery_commission_subject_id"
+    t.bigint "achievement_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["achievement_id"], name: "index_day_delivery_commissions_on_achievement_id"
+    t.index ["delivery_commission_subject_id"], name: "index_day_delivery_commissions_on_delivery_commission_subject_id"
+  end
+
+  create_table "day_settlement_fees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "value", null: false
+    t.bigint "settlement_fee_subject_id"
+    t.bigint "achievement_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["achievement_id"], name: "index_day_settlement_fees_on_achievement_id"
+    t.index ["settlement_fee_subject_id"], name: "index_day_settlement_fees_on_settlement_fee_subject_id"
+  end
+
+  create_table "delivery_commission_subjects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "rate", null: false
     t.bigint "store_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["achievement_id"], name: "index_incomes_on_achievement_id"
-    t.index ["store_id"], name: "index_incomes_on_store_id"
+    t.index ["store_id"], name: "index_delivery_commission_subjects_on_store_id"
+  end
+
+  create_table "incomes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "price", default: 0, null: false
+    t.date "ymd", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "month_delivery_commissions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "value", null: false
+    t.bigint "delivery_commission_subject_id"
+    t.bigint "achievement_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["achievement_id"], name: "index_month_delivery_commissions_on_achievement_id"
+    t.index ["delivery_commission_subject_id"], name: "month_delivery_commissions"
+  end
+
+  create_table "month_settlement_fees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "value", null: false
+    t.bigint "settlement_fee_subject_id"
+    t.bigint "achievement_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["achievement_id"], name: "index_month_settlement_fees_on_achievement_id"
+    t.index ["settlement_fee_subject_id"], name: "index_month_settlement_fees_on_settlement_fee_subject_id"
   end
 
   create_table "sales", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -170,12 +202,17 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
     t.integer "dinner_sale", default: 0
     t.integer "lunch_number", default: 0
     t.integer "dinner_number", default: 0
-    t.bigint "achievement_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "settlement_fee_subjects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "rate", null: false
     t.bigint "store_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["achievement_id"], name: "index_sales_on_achievement_id"
-    t.index ["store_id"], name: "index_sales_on_store_id"
+    t.index ["store_id"], name: "index_settlement_fee_subjects_on_store_id"
   end
 
   create_table "stores", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -230,10 +267,16 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
   add_foreign_key "budgets", "budgets_day_ratios"
   add_foreign_key "budgets", "stores"
   add_foreign_key "budgets_day_ratios", "stores"
-  add_foreign_key "incomes", "achievements"
-  add_foreign_key "incomes", "stores"
-  add_foreign_key "sales", "achievements"
-  add_foreign_key "sales", "stores"
+  add_foreign_key "day_delivery_commissions", "achievements"
+  add_foreign_key "day_delivery_commissions", "delivery_commission_subjects"
+  add_foreign_key "day_settlement_fees", "achievements"
+  add_foreign_key "day_settlement_fees", "settlement_fee_subjects"
+  add_foreign_key "delivery_commission_subjects", "stores"
+  add_foreign_key "month_delivery_commissions", "achievements"
+  add_foreign_key "month_delivery_commissions", "delivery_commission_subjects"
+  add_foreign_key "month_settlement_fees", "achievements"
+  add_foreign_key "month_settlement_fees", "settlement_fee_subjects"
+  add_foreign_key "settlement_fee_subjects", "stores"
   add_foreign_key "stores", "companies"
   add_foreign_key "variable_costs", "achievements"
   add_foreign_key "variable_costs", "stores"

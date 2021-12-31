@@ -1,0 +1,2 @@
+class MonthDeliveryCommission < ApplicationRecord
+end
