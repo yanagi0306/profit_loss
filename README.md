@@ -108,6 +108,8 @@ https://github.com/yanagi0306/profit_loss.git
 
 - has_many :achievements
 - has_many :budgets
+- has_many :delivery_commission_subjects
+- has_many :settlement_fee_subjects
 - belongs_to :company
 
 ### Budgets テーブル
@@ -118,47 +120,52 @@ https://github.com/yanagi0306/profit_loss.git
 | sale                        | integer    |                              |
 | lunch_sale                  | integer    |                              |
 | dinner_sale                 | integer    |                              |
+| lunch_number                | integer    |                              |
+| dinner_number               | integer    |                              |
 | interest_income             | integer    |                              |
 | miscellaneous_income        | integer    |                              |
-| overtime_employee_cost      | integer    |                              |
+
 | social_insurance_part       | integer    |                              |
-| communications_variable     | integer    |                              |
-| publicity_variable          | integer    |                              |
-| social                      | integer    |                              |
-| meeting                     | integer    |                              |
+| social_insurance_employee   | integer    |                              |
+| welfare                     | integer    |                              |
+| company_interest            | integer    |                              |
+| resident_tax                | integer    |                              |
+
+| settlement_fee              | integer    |                              |
+| delivery_commission         | integer    |                              |
+
+| overtime_employee_cost      | integer    |                              |
+| employee_cost               | integer    |                              |
+| director_cost               | integer    |                              |
 | traveling                   | integer    |                              |
-| selling_administration_cost | integer    |                              |
-| garbage_variable            | integer    |                              |
-| car_variable                | integer    |                              |
-| clean_variable              | integer    |                              |
-| credit_variable             | integer    |                              |
-| delivery_variable           | integer    |                              |
+
+| meeting                     | integer    |                              |
+| interest_payment            | integer    |                              |
+| rent                        | integer    |                              |
+| system                      | integer    |                              |
+| borrowing                   | integer    |                              |
+| tax_counsellor              | integer    |                              |
+| labor_counsellor            | integer    |                              |
+
 | electric                    | integer    |                              |
 | water                       | integer    |                              |
 | gas                         | integer    |                              |
 | power                       | integer    |                              |
+
 | food_cost                   | integer    |                              |
 | material_cost               | integer    |                              |
-| interest_payment            | integer    |                              |
-| welfare_fixed               | integer    |                              |
+| pert_cost                   | integer    |                              |
+| miscellaneous_cost          | integer    |                              |
+
+| communications_add          | integer    |                              |
+| publicity_add               | integer    |                              |
+| garbage_add                 | integer    |                              |
+| clean_add                   | integer    |                              |
 | communications_fixed        | integer    |                              |
 | publicity_fixed             | integer    |                              |
+| garbage_fixed               | integer    |                              |
 | clean_fixed                 | integer    |                              |
-| car_fixed                   | integer    |                              |
-| credit_fixed                | integer    |                              |
-| delivery_variable           | integer    |                              |
-| rent                        | integer    |                              |
-| employee_cost               | integer    |                              |
-| director_cost               | integer    |                              |
-| company_interest            | integer    |                              |
-| social_insurance_employee   | integer    |                              |
-| resident_tax                | integer    |                              |
-| pos_system                  | integer    |                              |
-| garbage_variable            | integer    |                              |
-| borrowing                   | integer    |                              |
-| tax_counsellor              | integer    |                              |
-| labor_counsellor            | integer    |                              |
-| miscellaneous_income        | integer    |                              |
+
 | store                       | references | null:false,foreign_key: true |
 | budget_day_ratio            | references | null:false,foreign_key: true |
 
@@ -166,6 +173,8 @@ https://github.com/yanagi0306/profit_loss.git
 
 - belongs_to :store
 - belongs_to :budget_day_ratio
+
+
 
 ### Achievements テーブル
 
@@ -175,120 +184,145 @@ https://github.com/yanagi0306/profit_loss.git
 | sale                        | integer    |                              |
 | lunch_sale                  | integer    |                              |
 | dinner_sale                 | integer    |                              |
+| lunch_number                | integer    |                              |
+| dinner_number               | integer    |                              |
 | interest_income             | integer    |                              |
 | miscellaneous_income        | integer    |                              |
-| overtime_employee_cost      | integer    |                              |
+
 | social_insurance_part       | integer    |                              |
-| communications_variable     | integer    |                              |
-| publicity_variable          | integer    |                              |
-| social                      | integer    |                              |
-| meeting                     | integer    |                              |
-| traveling                   | integer    |                              |
-| selling_administration_cost | integer    |                              |
-| garbage_variable            | integer    |                              |
-| car_variable                | integer    |                              |
-| clean_variable              | integer    |                              |
-| credit_variable             | integer    |                              |
-| delivery_variable           | integer    |                              |
-| electric                    | integer    |                              |
-| water                       | integer    |                              |
-| gas                         | integer    |                              |
-| power                       | integer    |                              |
-| food_cost                   | integer    |                              |
-| material_cost               | integer    |                              |
-| interest_payment            | integer    |                              |
-| welfare_fixed               | integer    |                              |
-| communications_fixed        | integer    |                              |
-| publicity_fixed             | integer    |                              |
-| clean_fixed                 | integer    |                              |
-| car_fixed                   | integer    |                              |
-| credit_fixed                | integer    |                              |
-| delivery_variable           | integer    |                              |
-| rent                        | integer    |                              |
+| social_insurance_employee   | integer    |                              |
+| welfare                     | integer    |                              |
+| company_interest            | integer    |                              |
+| resident_tax                | integer    |                              |
+
+| settlement_fee              | integer    |                              |
+| delivery_commission         | integer    |                              |
+
+| overtime_employee_cost      | integer    |                              |
 | employee_cost               | integer    |                              |
 | director_cost               | integer    |                              |
-| company_interest            | integer    |                              |
-| social_insurance_employee   | integer    |                              |
-| resident_tax                | integer    |                              |
-| pos_system                  | integer    |                              |
-| garbage_variable            | integer    |                              |
+| traveling                   | integer    |                              |
+
+| meeting                     | integer    |                              |
+| interest_payment            | integer    |                              |
+| rent                        | integer    |                              |
+| system                      | integer    |                              |
 | borrowing                   | integer    |                              |
 | tax_counsellor              | integer    |                              |
 | labor_counsellor            | integer    |                              |
-| store                       | references | null:false,foreign_key: true |
 
-#### Association
-
-- has_one :sale
-- has_many :incomes
-- has_many :variable_costs
-- belongs_to :store
-
-### Incomes テーブル
-
-| Colum              | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| price              | integer    |                                |
-| ymd                | date       | null:false                     |
-| income_category_id | integer    | null:false                     |
-| achievement        | references | null: false, foreign_key: true |
-| store              | references | null:false,foreign_key: true   |
-
-#### Association
-
-- belongs_to :achievement
-- belongs_to :store
-
-### Sales テーブル
-
-| Colum        | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| sale         | integer    |                                |
-| ymd          | date       | null:false                     |
-| lunch_sale   | integer    |                                |
-| dinner_sale  | integer    |                                |
-| lunch_number | integer    |                                |
-| dinner_number| integer    |                                |
-| achievement  | references | null: false, foreign_key: true |
-| store        | references | null:false,foreign_key: true   |
-
-#### Association
-
-- belongs_to :achievement
-- belongs_to :store
-
-### Variable_costs テーブル
-
-| Colum                       | Type       | Options                      |
-| --------------------------- | ---------- | ---------------------------- |
-| overtime_employee_cost      | integer    |                              |
-| social_insurance_part       | integer    |                              |
-| communications_variable     | integer    |                              |
-| publicity_variable          | integer    |                              |
-| social                      | integer    |                              |
-| meeting                     | integer    |                              |
-| traveling                   | integer    |                              |
-| selling_administration_cost | integer    |                              |
-| garbage_variable            | integer    |                              |
-| car_variable                | integer    |                              |
-| clean_variable              | integer    |                              |
-| credit_variable             | integer    |                              |
-| delivery_variable           | integer    |                              |
 | electric                    | integer    |                              |
 | water                       | integer    |                              |
 | gas                         | integer    |                              |
 | power                       | integer    |                              |
+
 | food_cost                   | integer    |                              |
 | material_cost               | integer    |                              |
-| interest_payment            | integer    |                              |
-| ymd                         | date       | null:false                   |
-| achievement                 | references | null:false,foreign_key: true |
+| pert_cost                   | integer    |                              |
+| miscellaneous_cost          | integer    |                              |
+
+| communications_add          | integer    |                              |
+| publicity_add               | integer    |                              |
+| garbage_add                 | integer    |                              |
+| clean_add                   | integer    |                              |
+| communications_fixed        | integer    |                              |
+| publicity_fixed             | integer    |                              |
+| garbage_fixed               | integer    |                              |
+| clean_fixed                 | integer    |                              |
+
 | store                       | references | null:false,foreign_key: true |
 
 #### Association
 
-- belongs_to :achievement
+- has_one :day_delivery_commission
+- has_one :month_delivery_commission
+- has_one :day_settlement_fee
+- has_one :month_settlement_fee
 - belongs_to :store
+
+
+### settlement_fee_subject(決済手数料 科目) テーブル
+
+| Colum     | Type       | Options                      |
+| --------- | ---------- | ---------------------------- |
+| name      | integer    | null:false                   |
+| rate      | integer    | null:false                   |
+| store     | references | null:false,foreign_key: true |
+
+#### Association
+
+- has_many :day_settlement_fee
+- has_many :month_settlement_fee
+- belongs_to :store
+
+
+### day_settlement_fee(日別決済手数料) テーブル
+
+| Colum                      | Type       | Options                      |
+| -------------------------- | ---------- | ---------------------------- |
+| value                      | integer    | null:false                   |
+| settlement_fee_subject     | references | null:false,foreign_key: true |
+| achievement                | references | null:false,foreign_key: true |
+
+#### Association
+
+- has_one :achievement
+- has_one :settlement_fee_subject
+
+### month_settlement_fee(月間決済手数料) テーブル
+
+| Colum                      | Type       | Options                      |
+| -------------------------- | ---------- | ---------------------------- |
+| value                      | integer    | null:false                   |
+| settlement_fee_subject     | references | null:false,foreign_key: true |
+| achievement                | references | null:false,foreign_key: true |
+
+#### Association
+
+- has_one :achievement
+- has_one :settlement_fee_subject
+
+### delivery_commission_subject(デリバリー手数料 科目) テーブル
+
+| Colum     | Type       | Options                      |
+| --------- | ---------- | ---------------------------- |
+| name      | integer    | null:false                   |
+| rate      | integer    | null:false                   |
+| store     | references | null:false,foreign_key: true |
+
+#### Association
+
+- has_many :day_delivery_commission
+- has_many :month_delivery_commission
+- belongs_to :store
+
+### day_delivery_commission(日別デリバリー手数料) テーブル
+
+| Colum                      | Type       | Options                      |
+| -------------------------- | ---------- | ---------------------------- |
+| value                      | integer    | null:false                   |
+| delivery_commission_subject| references | null:false,foreign_key: true |
+| achievement                | references | null:false,foreign_key: true |
+
+#### Association
+
+- has_one :achievement
+- has_one :delivery_commission_subject
+
+### month_delivery_commission(月間デリバリー手数料) テーブル
+
+| Colum                      | Type       | Options                      |
+| -------------------------- | ---------- | ---------------------------- |
+| value                      | integer    | null:false                   |
+| delivery_commission_subject| references | null:false,foreign_key: true |
+| achievement                | references | null:false,foreign_key: true |
+
+#### Association
+
+- has_one :achievement
+- has_one :delivery_commission_subject
+
+
 
 ### Budget_day_ratios テーブル
 
