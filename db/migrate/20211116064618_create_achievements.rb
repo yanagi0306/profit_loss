@@ -10,9 +10,6 @@ class CreateAchievements < ActiveRecord::Migration[6.0]
       t.integer :interest_income, default: 0
       t.integer :miscellaneous_income, default: 0
 
-
-      t.integer :social_insurance_part, default: 0
-      t.integer :social_insurance_employee, default: 0
       t.integer :welfare, default: 0
       t.integer :company_interest, default: 0
       t.integer :resident_tax, default: 0
@@ -47,6 +44,7 @@ class CreateAchievements < ActiveRecord::Migration[6.0]
       t.integer :publicity_add, default: 0
       t.integer :garbage_add, default: 0
       t.integer :clean_add, default: 0
+      t.integer :welfare_add, default: 0
 
       t.integer :communications_fixed , default: 0
       t.integer :publicity_fixed , default: 0

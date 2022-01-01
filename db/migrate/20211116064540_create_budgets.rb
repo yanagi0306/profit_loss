@@ -10,9 +10,6 @@ class CreateBudgets < ActiveRecord::Migration[6.0]
       t.integer :interest_income, default: 0
       t.integer :miscellaneous_income, default: 0
 
-
-      t.integer :social_insurance_part, default: 0
-      t.integer :social_insurance_employee, default: 0
       t.integer :welfare, default: 0
       t.integer :company_interest, default: 0
       t.integer :resident_tax, default: 0
@@ -52,6 +49,7 @@ class CreateBudgets < ActiveRecord::Migration[6.0]
       t.integer :publicity_fixed , default: 0
       t.integer :garbage_fixed , default: 0
       t.integer :clean_fixed , default: 0
+      t.integer :welfare_add, default: 0
 
       t.references :store, type: :bigint, null: false, foreign_key: true
       t.references :budgets_day_ratio, null: false, foreign_key: true

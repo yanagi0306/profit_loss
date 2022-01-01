@@ -17,9 +17,20 @@ Rails.application.routes.draw do
       get 'day_search'
     end
   end
+
   resource :budgets,only: [:edit,:update]
   resources :budgets_day_ratios, only: [:new,:create]
-  resource :incomes,only: [:edit,:update]
-  resource :sales, only: [:edit,:update]
-  resource :variable_costs, only: [:edit,:update]
+
+  resource :achievement,only: [:edit,:update]
+
+  resources :settlement_fee_subject,only: [:edit,:update]
+  resources :day_settlement_fee,only: [:edit,:update]
+  resources :month_settlement_fee,only: [:edit,:update]
+
+  resources :delivery_commission_subject,only: [:edit,:update]
+  resources :day_delivery_commission,only: [:edit,:update]
+  resources :month_delivery_commission,only: [:edit,:update]
+
+
+
 end

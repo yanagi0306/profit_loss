@@ -270,8 +270,8 @@ https://github.com/yanagi0306/profit_loss.git
 
 #### Association
 
-- has_one :achievement
-- has_one :settlement_fee_subject
+- belongs_to :achievement
+- belongs_to :settlement_fee_subject
 
 ### month_settlement_fee(月間決済手数料) テーブル
 
@@ -283,8 +283,8 @@ https://github.com/yanagi0306/profit_loss.git
 
 #### Association
 
-- has_one :achievement
-- has_one :settlement_fee_subject
+- belongs_to :achievement
+- belongs_to :settlement_fee_subject
 
 ### delivery_commission_subject(デリバリー手数料 科目) テーブル
 
@@ -310,8 +310,8 @@ https://github.com/yanagi0306/profit_loss.git
 
 #### Association
 
-- has_one :achievement
-- has_one :delivery_commission_subject
+- belongs_to :achievement
+- belongs_to :delivery_commission_subject
 
 ### month_delivery_commission(月間デリバリー手数料) テーブル
 
@@ -323,8 +323,8 @@ https://github.com/yanagi0306/profit_loss.git
 
 #### Association
 
-- has_one :achievement
-- has_one :delivery_commission_subject
+- belongs_to :achievement
+- belongs_to :delivery_commission_subject
 
 
 
