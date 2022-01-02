@@ -30,7 +30,7 @@
   </div>
   <div class="result-wrapper">
     <div class="result-title">
-      臨時収入情報
+      売上情報
     </div>
   </div>
   <%=render 'shared/error_messages', error_messages: @error_messages%>
@@ -40,10 +40,10 @@
   <div class="day-search-table-all">
     <table class='day-search'>
       <tr class='day-search-head'>
-        <th class='day' id="selected_month"><%=@selected_year%>年</th>
-        <th class='weeks'>曜日</th>
+        <th class='day top' id="selected_month"><%=@selected_year%>年</th>
+        <th class='weeks top'>曜日</th>
         <%@input_columns.each do |n|%>
-        <th class='column'><%=n%></th>
+        <th class='column top'><%=n%></th>
         <%end %>
       </tr>
 

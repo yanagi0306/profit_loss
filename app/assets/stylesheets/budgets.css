@@ -169,11 +169,13 @@ label {
 }
 /* 実績 */
 .search-table-all {
-  width: 560px;
-  min-width: 530px;
-  height: 1350px;
-  min-height: 800px;
-  padding-top: 10px;
+  width: 600px;
+  height: 800px;
+  margin:20px 10px 40px 10px;
+  overflow: scroll;
+
+
+
 }
 .index-table-all {
   width: 560px;
@@ -239,7 +241,6 @@ label {
 }
 .day-search-table-all {
   height:800px;
-  width:1000px;
   min-height: 800px;
   margin:20px 10px 40px 10px;
   overflow: scroll;
