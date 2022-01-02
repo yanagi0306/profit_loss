@@ -249,7 +249,7 @@ label {
 .day-search{
   table-layout: fixed;
   width:100%;
-  border-collspace: separate;
+  /* border-collspace: collapse; */
 }
 .top {
   position: sticky;/*←これで追尾させる*/

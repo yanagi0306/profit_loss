@@ -20,7 +20,9 @@ body {
   color: #3b4043;
 
 }
-
+table {
+  border-collapse: collapse;
+}
 li {
   list-style: none;
 }
