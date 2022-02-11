@@ -170,7 +170,7 @@ label {
 /* 実績 */
 .search-table-all {
   width: 600px;
-  height: 800px;
+  height: 500px;
   margin:20px 10px 40px 10px;
   overflow: scroll;
 
@@ -240,8 +240,8 @@ label {
 
 }
 .day-search-table-all {
-  height:800px;
-  min-height: 800px;
+  height:500px;
+  min-height: 500px;
   margin:20px 10px 40px 10px;
   overflow: scroll;
 
