@@ -45,10 +45,10 @@
         <td class="category"></td>
         <td class="subject">客単価</td>
         <td class="search-item">
-          <%=comparison(@total_budget[:sale],budget_columns(TargetSearch.total_number,@total_budget)).floor.to_s(:delimited)%>
+          <%=comparison(@total_budget[:sale]-@total_budget[:lunch_delivery]-@total_budget[:dinner_delivery],budget_columns(TargetSearch.total_number,@total_budget)).floor.to_s(:delimited)%>
         </td>
         <td class="search-item">
-          <%=comparison(@total_achievement[:sale],achievement_columns(TargetSearch.total_number,@total_achievement)).floor.to_s(:delimited)%>
+          <%=comparison(@total_achievement[:sale]-@total_achievement[:lunch_delivery]-@total_achievement[:dinner_delivery],achievement_columns(TargetSearch.total_number,@total_achievement)).floor.to_s(:delimited)%>
         </td>
         <td class="search-item"></td>
       </tr>
@@ -56,18 +56,18 @@
         <td class="category"></td>
         <td class="subject">ランチ客単価</td>
         <td class="search-item">
-          <%=comparison(@total_budget[:lunch_sale],@total_budget[:lunch_number]).floor.to_s(:delimited)%></td>
+          <%=comparison(@total_budget[:lunch_sale]-@total_budget[:lunch_delivery],@total_budget[:lunch_number]).floor.to_s(:delimited)%></td>
         <td class="search-item">
-          <%=comparison(@total_achievement[:lunch_sale],@total_achievement[:lunch_number]).floor.to_s(:delimited)%></td>
+          <%=comparison(@total_achievement[:lunch_sale]-@total_achievement[:lunch_delivery],@total_achievement[:lunch_number]).floor.to_s(:delimited)%>
         <td class="search-item"></td>
       </tr>
       <tr class="search-record">
         <td class="category"></td>
         <td class="subject">ディナー客単価</td>
         <td class="search-item">
-          <%=comparison(@total_budget[:dinner_sale],@total_budget[:dinner_number]).floor.to_s(:delimited)%></td>
+          <%=comparison(@total_budget[:dinner_sale]-@total_budget[:dinner_delivery],@total_budget[:dinner_number]).floor.to_s(:delimited)%></td>
         <td class="search-item">
-          <%=comparison(@total_achievement[:dinner_sale],@total_achievement[:dinner_number]).floor.to_s(:delimited)%>
+          <%=comparison(@total_achievement[:dinner_sale]-@total_achievement[:dinner_delivery],@total_achievement[:dinner_number]).floor.to_s(:delimited)%>
         </td>
         <td class="search-item"></td>
       </tr>
