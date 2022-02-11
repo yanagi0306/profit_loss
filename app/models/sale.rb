@@ -9,6 +9,8 @@ class Sale < ApplicationRecord
   validates :sale,
             :lunch_sale,
             :dinner_sale,
+            :lunch_delivery,
+            :dinner_delivery,
             numericality: {
               only_integer: true,
               greater_than_or_equal_to: 0,
