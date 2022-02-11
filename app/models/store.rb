@@ -96,7 +96,8 @@ class Store < ApplicationRecord
     elsif Budget.where(ymd: ymd - 1.month, store_id: current_store)[0].present?
       budget = Budget.where(ymd: ymd - 1.month, store_id: current_store)[0].dup
       budget.ymd = ymd
-      budget.create
+      budget.save
+      return budget
     else
       Budget.create(
         ymd: ymd,
