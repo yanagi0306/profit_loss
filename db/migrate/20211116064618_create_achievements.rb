@@ -7,6 +7,8 @@ class CreateAchievements < ActiveRecord::Migration[6.0]
       t.integer :dinner_sale, default: 0
       t.integer :lunch_number,default:0
       t.integer :dinner_number,default:0
+      t.integer :lunch_delivery,default:0
+      t.integer :dinner_delivery,default:0
       t.integer :interest_income, default: 0
       t.integer :miscellaneous_income, default: 0
 

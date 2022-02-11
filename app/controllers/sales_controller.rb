@@ -32,7 +32,7 @@ class SalesController < ApplicationController
   def sale_params
     params
       .require(:sale)
-      .permit(sales: [:sale,:lunch_sale,:dinner_sale,:lunch_number,:dinner_number])[
+      .permit(sales: [:sale,:lunch_sale,:dinner_sale,:lunch_delivery,:dinner_delivery,:lunch_number,:dinner_number])[
       :sales
     ]
   end
@@ -44,7 +44,7 @@ class SalesController < ApplicationController
   def today_date_getter
     @wday = %w[日 月 火 水 木 金 土]
     @year_range = current_store.opening_year..Date.today.year
-    @input_columns = ['店舗売上','ランチ売上','ディナー売上','ランチ客数','ディナー客数']
+    @input_columns = ['店舗売上','ランチ売上','ディナー売上','ランチテイク売上','ディナーテイク売上','ランチ客数','ディナー客数']
   end
   def selected_instance_getter(year, month, current_store)
     getter = Sale.search_getter(year, month, current_store)

@@ -4,6 +4,8 @@ class TargetSearch
       { id: 0, name: 'sale', ja_name: '売上' },
       { id: 1, name: 'lunch_sale', ja_name: 'ランチ売上' },
       { id: 2, name: 'dinner_sale', ja_name: 'ディナー売上' },
+      { id: 1, name: 'lunch_delivery', ja_name: 'ランチテイク売上' },
+      { id: 2, name: 'dinner_delivery', ja_name: 'ディナーテイク売上' },
     ]
   end
   def self.total_number
@@ -124,6 +126,8 @@ class TargetSearch
       sale: 0,
       lunch_sale: 0,
       dinner_sale: 0,
+      lunch_delivery: 0,
+      dinner_delivery: 0,
       lunch_number: 0,
       dinner_number: 0,
       interest_income: 0,

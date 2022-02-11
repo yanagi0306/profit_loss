@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
     t.integer "dinner_sale", default: 0
     t.integer "lunch_number", default: 0
     t.integer "dinner_number", default: 0
+    t.integer "lunch_delivery", default: 0
+    t.integer "dinner_delivery", default: 0
     t.integer "interest_income", default: 0
     t.integer "miscellaneous_income", default: 0
     t.integer "food_cost", default: 0
@@ -74,6 +76,8 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
     t.integer "dinner_sale", default: 0
     t.integer "lunch_number", default: 0
     t.integer "dinner_number", default: 0
+    t.integer "lunch_delivery", default: 0
+    t.integer "dinner_delivery", default: 0
     t.integer "interest_income", default: 0
     t.integer "miscellaneous_income", default: 0
     t.integer "food_cost", default: 0
@@ -170,6 +174,8 @@ ActiveRecord::Schema.define(version: 2021_11_16_064714) do
     t.integer "dinner_sale", default: 0
     t.integer "lunch_number", default: 0
     t.integer "dinner_number", default: 0
+    t.integer "lunch_delivery", default: 0
+    t.integer "dinner_delivery", default: 0
     t.bigint "achievement_id", null: false
     t.bigint "store_id", null: false
     t.datetime "created_at", precision: 6, null: false
