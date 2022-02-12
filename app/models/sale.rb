@@ -27,7 +27,7 @@ class Sale < ApplicationRecord
             allow_blank: true
 
   def sale_check
-    unless sale == lunch_sale + dinner_sale
+    unless sale == lunch_sale + dinner_sale + lunch_delivery + dinner_delivery
       errors.add(:base, '入力された数値が不正です')
     end
   end

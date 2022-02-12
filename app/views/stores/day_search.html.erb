@@ -43,28 +43,142 @@
       </tr>
 
       <div class="bottom">
-      <%= render partial:'stores/day_search/column',collection:TargetSearch.sales,as:"column",locals: {achievements:@achievements,budget:@budget,ratio:@ratio}%>
-      <%= render partial:'stores/day_search/columns_collect',locals: {achievements:@achievements,budget:@budget,ratio:@ratio,name:'来店客数',columns:TargetSearch.total_number}%>
-      <%= render partial:'stores/day_search/column',collection:TargetSearch.other_sales,as:"column",locals: {achievements:@achievements,budget:@budget,ratio:@ratio}%>
-      <%= render partial:'stores/day_search/columns',locals: {achievements:@achievements,budget:@budget,ratio:@ratio,name:'総売上',columns:TargetSearch.total_sales}%>
-      <%= render partial:'stores/day_search/column',collection:TargetSearch.costs_variable,as:"column",locals: {achievements:@achievements,budget:@budget,ratio:@ratio}%>
-      <%= render partial:'stores/day_search/column',collection:TargetSearch.costs_fixed,as:"column",locals: {achievements:@achievements,budget:@budget,ratio:@ratio}%>
-      <%= render partial:'stores/day_search/columns',locals: {achievements:@achievements,budget:@budget,ratio:@ratio,name:'総原価',columns:TargetSearch.total_costs}%>
-      <%= render partial: 'stores/day_search/result', locals: {name:'粗利益',profit_columns:TargetSearch.total_sales,loss_columns:TargetSearch.total_costs ,achievements:@achievements,budget:@budget,ratio:@ratio} %>
-      <%= render partial:'stores/day_search/column',collection:TargetSearch.other,as:"column",locals: {achievements:@achievements,budget:@budget,ratio:@ratio}%>
-      <%= render partial:'stores/day_search/column',collection:TargetSearch.day,as:"column",locals: {achievements:@achievements,budget:@budget,ratio:@ratio}%>
-      <%= render partial:'stores/day_search/column',collection:TargetSearch.other_fixed,as:"column",locals: {achievements:@achievements,budget:@budget,ratio:@ratio}%>
-      <%= render partial: 'stores/day_search/columns_add', locals: {name:'通信費',fixed:"communications_fixed",variable:"communications_variable",id:0,achievements:@achievements,budget:@budget,ratio:@ratio } %>
-      <%= render partial: 'stores/day_search/columns_add', locals: {name:'広告宣伝費',fixed:"publicity_fixed",variable:"publicity_variable" ,id:1,achievements:@achievements,budget:@budget,ratio:@ratio} %>
-      <%= render partial: 'stores/day_search/columns_add', locals: {name:'ゴミ処理費',fixed:"garbage_fixed",variable:"garbage_variable" ,id:0,achievements:@achievements,budget:@budget,ratio:@ratio} %>
-      <%= render partial: 'stores/day_search/columns_add', locals: {name:'車両管理費',fixed:"car_fixed",variable:"car_variable" ,id:1,achievements:@achievements,budget:@budget,ratio:@ratio} %>
-      <%= render partial: 'stores/day_search/columns_add', locals: {name:'クレジット管理費',fixed:"credit_fixed",variable:"credit_variable" ,id:0,achievements:@achievements,budget:@budget,ratio:@ratio} %>
-      <%= render partial: 'stores/day_search/columns_add', locals: {name:'衛生管理費',fixed:"clean_fixed",variable:"clean_variable" ,id:1,achievements:@achievements,budget:@budget,ratio:@ratio} %>
-      <%= render partial:'stores/day_search/columns',locals: {achievements:@achievements,budget:@budget,ratio:@ratio,name:'総販管費',columns:TargetSearch.total_other}%>
-      <%= render partial: 'stores/day_search/result', locals: {name:'営業利益',profit_columns:TargetSearch.total_sales,loss_columns:TargetSearch.total_loss ,achievements:@achievements,budget:@budget,ratio:@ratio} %>
+        <%= render partial:'stores/day_search/column',collection:TargetSearch.sales,as:"column",locals: {achievements:@achievements,budget:@budget,ratio:@ratio}%>
+        <%= render partial:'stores/day_search/columns_collect',locals: {achievements:@achievements,budget:@budget,ratio:@ratio,name:'来店客数',columns:TargetSearch.total_number}%>
+        <%= render partial:'stores/day_search/column',collection:TargetSearch.other_sales,as:"column",locals: {achievements:@achievements,budget:@budget,ratio:@ratio}%>
+        <%= render partial:'stores/day_search/columns',locals: {achievements:@achievements,budget:@budget,ratio:@ratio,name:'総売上',columns:TargetSearch.total_sales}%>
+        <%= render partial:'stores/day_search/column',collection:TargetSearch.costs_variable,as:"column",locals: {achievements:@achievements,budget:@budget,ratio:@ratio}%>
+        <%= render partial:'stores/day_search/column',collection:TargetSearch.costs_fixed,as:"column",locals: {achievements:@achievements,budget:@budget,ratio:@ratio}%>
+        <%= render partial:'stores/day_search/columns',locals: {achievements:@achievements,budget:@budget,ratio:@ratio,name:'総原価',columns:TargetSearch.total_costs}%>
+        <%= render partial: 'stores/day_search/result', locals: {name:'粗利益',profit_columns:TargetSearch.total_sales,loss_columns:TargetSearch.total_costs ,achievements:@achievements,budget:@budget,ratio:@ratio} %>
+        <%= render partial:'stores/day_search/column',collection:TargetSearch.other,as:"column",locals: {achievements:@achievements,budget:@budget,ratio:@ratio}%>
+        <%= render partial:'stores/day_search/column',collection:TargetSearch.day,as:"column",locals: {achievements:@achievements,budget:@budget,ratio:@ratio}%>
+        <%= render partial:'stores/day_search/column',collection:TargetSearch.other_fixed,as:"column",locals: {achievements:@achievements,budget:@budget,ratio:@ratio}%>
+        <%= render partial: 'stores/day_search/columns_add', locals: {name:'通信費',fixed:"communications_fixed",variable:"communications_variable",id:0,achievements:@achievements,budget:@budget,ratio:@ratio } %>
+        <%= render partial: 'stores/day_search/columns_add', locals: {name:'広告宣伝費',fixed:"publicity_fixed",variable:"publicity_variable" ,id:1,achievements:@achievements,budget:@budget,ratio:@ratio} %>
+        <%= render partial: 'stores/day_search/columns_add', locals: {name:'ゴミ処理費',fixed:"garbage_fixed",variable:"garbage_variable" ,id:0,achievements:@achievements,budget:@budget,ratio:@ratio} %>
+        <%= render partial: 'stores/day_search/columns_add', locals: {name:'車両管理費',fixed:"car_fixed",variable:"car_variable" ,id:1,achievements:@achievements,budget:@budget,ratio:@ratio} %>
+        <%= render partial: 'stores/day_search/columns_add', locals: {name:'クレジット管理費',fixed:"credit_fixed",variable:"credit_variable" ,id:0,achievements:@achievements,budget:@budget,ratio:@ratio} %>
+        <%= render partial: 'stores/day_search/columns_add', locals: {name:'衛生管理費',fixed:"clean_fixed",variable:"clean_variable" ,id:1,achievements:@achievements,budget:@budget,ratio:@ratio} %>
+        <%= render partial:'stores/day_search/columns',locals: {achievements:@achievements,budget:@budget,ratio:@ratio,name:'総販管費',columns:TargetSearch.total_other}%>
+        <%= render partial: 'stores/day_search/result', locals: {name:'営業利益',profit_columns:TargetSearch.total_sales,loss_columns:TargetSearch.total_loss ,achievements:@achievements,budget:@budget,ratio:@ratio} %>
+        <tr class="search-record" style='background-color:#E7E4F6'>
+          <td class="category side1">KPI</td>
+          <td class="subject side2"></td>
+          <% @target_ranges.each do |ymd|%>
+          <td class="day-search-item"></td>
+          <td class="day-search-item"></td>
+          <td class="day-search-item"></td>
+          <% end %>
+        </tr>
+        <tr class="search-record" style='background-color:#FFFFFF'>
+          <td class="category side1"></td>
+          <td class="subject side2">客単価</td>
+          <% @target_ranges.each do |ymd|%>
+          <td class="day-search-item">
+            <%=comparison(budget_columns(%w[lunch_sale dinner_sale],@budget)* Store.day_ratio(ymd, @ratio),budget_columns(%w[lunch_number dinner_number],@budget)* Store.day_ratio(ymd, @ratio)).floor.to_s(:delimited)%>
+          </td>
+          <td class="day-search-item">
+            <%=comparison(get_achievement(@achievements,ymd)[:lunch_sale]+get_achievement(@achievements,ymd)[:dinner_sale],get_achievement(@achievements,ymd)[:lunch_number]+get_achievement(@achievements,ymd)[:dinner_number]).floor.to_s(:delimited)%>
+          </td>
+          <td class="day-search-item"></td>
+          <% end %>
+        </tr>
+        <tr class="search-record" style='background-color:#F9F9F9'>
+          <td class="category side1"></td>
+          <td class="subject side2">ランチ客単価</td>
+          <% @target_ranges.each do |ymd|%>
+          <td class="day-search-item">
+            <%=comparison(@budget[:lunch_sale]* Store.day_ratio(ymd, @ratio),@budget[:lunch_number]* Store.day_ratio(ymd, @ratio)).floor.to_s(:delimited)%>
+          </td>
+          <td class="day-search-item">
+            <%=comparison(get_achievement(@achievements,ymd)[:lunch_sale],get_achievement(@achievements,ymd)[:lunch_number]).floor.to_s(:delimited)%>
+          </td>
+          <td class="day-search-item"></td>
+          <% end %>
+        </tr>
+        <tr class="search-record" style='background-color:#FFFFFF'>
+          <td class="category side1"></td>
+          <td class="subject side2">ディナー客単価</td>
+          <% @target_ranges.each do |ymd|%>
+          <td class="day-search-item">
+            <%=comparison(@budget[:dinner_sale]* Store.day_ratio(ymd, @ratio),@budget[:dinner_number]* Store.day_ratio(ymd, @ratio)).floor.to_s(:delimited)%>
+          </td>
+          <td class="day-search-item">
+            <%=comparison(get_achievement(@achievements,ymd)[:dinner_sale],get_achievement(@achievements,ymd)[:dinner_number]).floor.to_s(:delimited)%>
+          </td>
+          <td class="day-search-item"></td>
+          <% end %>
+        </tr>
+        <tr class="search-record" style='background-color:#F9F9F9'>
+          <td class="category side1"></td>
+          <td class="subject side2">食材原材料比率</td>
+          <% @target_ranges.each do |ymd|%>
+          <td class="day-search-item">
+            <%=percentage(@budget[:food_cost]* Store.day_ratio(ymd, @ratio),@budget[:sale]* Store.day_ratio(ymd, @ratio))%>
+          </td>
+          <td class="day-search-item">
+            <%=percentage(get_achievement(@achievements,ymd)[:food_cost],get_achievement(@achievements,ymd)[:sale])%>
+          </td>
+          <td class="day-search-item"></td>
+          <% end %>
+        </tr>
 
+        <tr class="search-record" style='background-color:#FFFFFF'>
+          <td class="category side1"></td>
+          <td class="subject side2">総原材料費率</td>
+          <% @target_ranges.each do |ymd|%>
+          <td class="day-search-item">
+            <%=percentage(budget_columns(%w[food_cost material_cost],@budget)* Store.day_ratio(ymd, @ratio),@budget[:sale]* Store.day_ratio(ymd, @ratio))%>
+          </td>
+          <td class="day-search-item">
+            <%=percentage(achievement_columns(%w[food_cost material_cost],get_achievement(@achievements,ymd)),get_achievement(@achievements,ymd)[:sale])%>
+          </td>
+          <td class="day-search-item"></td>
+          <% end %>
+
+        </tr>
+        <tr class="search-record" style='background-color:#F9F9F9'>
+          <td class="category side1"></td>
+          <td class="subject side2">人件費率</td>
+          <% @target_ranges.each do |ymd|%>
+          <td class="day-search-item">
+            <%=percentage(budget_columns(TargetSearch.labor_costs,@budget)* Store.day_ratio(ymd, @ratio),@budget[:sale]* Store.day_ratio(ymd, @ratio))%>
+          </td>
+          <td class="day-search-item">
+            <%=percentage(achievement_columns(TargetSearch.labor_costs,get_achievement(@achievements,ymd)),get_achievement(@achievements,ymd)[:sale])%>
+          </td>
+          <td class="day-search-item"></td>
+          <% end %>
+        </tr>
+        <tr class="search-record" style='background-color:#FFFFFF'>
+          <td class="category side1"></td>
+          <td class="subject side2">パート比率</td>
+          <% @target_ranges.each do |ymd|%>
+          <td class="day-search-item">
+            <%=percentage(@budget[:pert_cost]* Store.day_ratio(ymd, @ratio),budget_columns(TargetSearch.labor_costs,@budget)* Store.day_ratio(ymd, @ratio))%>
+          </td>
+          <td class="day-search-item">
+            <%=percentage(achievement_columns(TargetSearch.labor_costs,get_achievement(@achievements,ymd)),get_achievement(@achievements,ymd)[:sale])%>
+          </td>
+          <td class="day-search-item"></td>
+          <% end %>
+        </tr>
+        <tr class="search-record" style='background-color:#F9F9F9'>
+          <td class="category side1"></td>
+          <td class="subject side2">F/Lコスト率</td>
+          <% @target_ranges.each do |ymd|%>
+          <td class="day-search-item">
+            <%=percentage(budget_columns(TargetSearch.total_costs,@budget)* Store.day_ratio(ymd, @ratio),@budget[:sale]* Store.day_ratio(ymd, @ratio))%>
+          </td>
+          <td class="day-search-item">
+            <%=percentage(achievement_columns(TargetSearch.total_costs,get_achievement(@achievements,ymd)),get_achievement(@achievements,ymd)[:sale])%>
+          </td>
+          <td class="day-search-item"></td>
+          <% end %>
+        </tr>
 
     </table>
-</div>
   </div>
+</div>
 </div>

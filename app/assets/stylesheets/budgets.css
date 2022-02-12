@@ -69,7 +69,7 @@ label {
   width: 100%;
 }
 .record {
-  height: 50px;
+  height: 45px;
 }
 .day {
   border: #dee2e6 solid 1px;
@@ -77,37 +77,37 @@ label {
   color: #4a4a4a;
   font-size: 13px;
   font-weight: 700;
-  width: 90px;
+  width: 80px;
 }
 .weeks {
   border: #dee2e6 solid 1px;
   text-align: center;
   color: #4a4a4a;
-  height: 40px;
+  height: 45px;
   font-size: 13px;
   font-weight: 700;
-  width: 69px;
+  width: 60px;
 }
 .column {
-  width: 157px;
-  border: #dee2e6 solid 1px;
-  text-align: center;
-}
-.variable-column {
   width: 130px;
   border: #dee2e6 solid 1px;
   text-align: center;
 }
+.variable-column {
+  width: 100px;
+  border: #dee2e6 solid 1px;
+  text-align: center;
+}
 .input {
-  height: 33px;
+  height: 30px;
   width: 100px;
   border: 1px solid #c5c5c5;
   padding: 11px;
   border-radius: 0.3rem;
 }
 .input_variable {
-  height: 33px;
-  width: 100px;
+  height: 27px;
+  width: 95px;
   border: 1px solid #c5c5c5;
   padding: 11px;
   border-radius: 0.3rem;
@@ -122,7 +122,7 @@ label {
   overflow-y: scroll;
 }
 .table-head {
-  height: 38px;
+  height: 35px;
   background-color: #eee;
 }
 .variables-table-all {
@@ -170,7 +170,7 @@ label {
 /* 実績 */
 .search-table-all {
   width: 600px;
-  height: 500px;
+  height: 400px;
   margin:20px 10px 40px 10px;
   overflow: scroll;
 
@@ -240,8 +240,8 @@ label {
 
 }
 .day-search-table-all {
-  height:500px;
-  min-height: 500px;
+  height:400px;
+  min-height: 400px;
   margin:20px 10px 40px 10px;
   overflow: scroll;
 
