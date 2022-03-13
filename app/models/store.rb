@@ -140,6 +140,7 @@ class Store < ApplicationRecord
     denominator = 0
     ratios.each_with_index { |ratio, index| denominator += ratio * days[index] }
 
+
     return ratios[ymd_week] / denominator.to_f
   end
 end
