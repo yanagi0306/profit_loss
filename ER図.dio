@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="l_d14unaQuM9DvvHqGzT" name="ページ1">
-        <mxGraphModel dx="2871" dy="903" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+        <mxGraphModel dx="2619" dy="736" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -152,13 +152,13 @@
                 <mxCell id="1356" value="lunch_number(ランチ客数)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;" parent="1354" vertex="1">
                     <mxGeometry x="30" width="250" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="1363" value="" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="582" vertex="1">
+                <mxCell id="1363" value="" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="582">
                     <mxGeometry y="240" width="280" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="1364" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;" parent="1363" vertex="1">
+                <mxCell id="1364" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;" vertex="1" parent="1363">
                     <mxGeometry width="30" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="1365" value="dinner_number(ディナー客数)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;" parent="1363" vertex="1">
+                <mxCell id="1365" value="dinner_number(ディナー客数)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;" vertex="1" parent="1363">
                     <mxGeometry x="30" width="250" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="977" value="" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="582" vertex="1">
@@ -239,7 +239,7 @@
                 <mxCell id="1325" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;" parent="1324" vertex="1">
                     <mxGeometry width="30" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="1326" value="selling_administration_cost(減価償却費)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;" parent="1324" vertex="1">
+                <mxCell id="1326" value="selling_administration_cost(販売管理費)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;" parent="1324" vertex="1">
                     <mxGeometry x="30" width="250" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="1330" value="" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="582" vertex="1">
@@ -916,22 +916,22 @@
                 <mxCell id="1117" value="dinner_sale(ディナー売上)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;" parent="1115" vertex="1">
                     <mxGeometry x="30" width="250" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="1357" value="" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="1099" vertex="1">
+                <mxCell id="1357" value="" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="1099">
                     <mxGeometry y="180" width="280" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="1358" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;" parent="1357" vertex="1">
+                <mxCell id="1358" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;" vertex="1" parent="1357">
                     <mxGeometry width="30" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="1359" value="lunch_number(ランチ客数)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;" parent="1357" vertex="1">
+                <mxCell id="1359" value="lunch_number(ランチ客数)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;" vertex="1" parent="1357">
                     <mxGeometry x="30" width="250" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="1360" value="" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="1099" vertex="1">
+                <mxCell id="1360" value="" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="1099">
                     <mxGeometry y="210" width="280" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="1361" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;" parent="1360" vertex="1">
+                <mxCell id="1361" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;" vertex="1" parent="1360">
                     <mxGeometry width="30" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="1362" value="dinner_number(ディナー客数)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;" parent="1360" vertex="1">
+                <mxCell id="1362" value="dinner_number(ディナー客数)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;" vertex="1" parent="1360">
                     <mxGeometry x="30" width="250" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="1118" value="" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="1099" vertex="1">
@@ -1030,7 +1030,7 @@
                 <mxCell id="1149" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;" parent="1148" vertex="1">
                     <mxGeometry width="30" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="1150" value="selling_administration_cost(減価償却費)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;" parent="1148" vertex="1">
+                <mxCell id="1150" value="selling_administration_cost(販売管理費)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;" parent="1148" vertex="1">
                     <mxGeometry x="30" width="250" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="1151" value="" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="1099" vertex="1">

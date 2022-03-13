@@ -35,7 +35,7 @@ class TargetBudgets
       { id: 10, name: 'social_insurance_part', ja_name: 'P社会保険' },
       { id: 11, name: 'meeting', ja_name: '会議費' },
       { id: 12, name: 'traveling', ja_name: '旅費交通費' },
-      { id: 13, name: 'selling_administration_cost', ja_name: '減価償却費' },
+      { id: 13, name: 'selling_administration_cost', ja_name: '販売管理費' },
       { id: 14, name: 'interest_payment', ja_name: '支払い利息' },
     ]
   end
