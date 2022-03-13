@@ -23,6 +23,7 @@ class Stores::RegistrationsController < Devise::RegistrationsController
       saturday: 100,
       holiday: 100,
       store_id: current_store.id,
+
     )
     # FactoryBot.create(:budgets_day_ratio, store_id: current_store.id)
   end
