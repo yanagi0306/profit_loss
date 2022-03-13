@@ -39,18 +39,18 @@ class StoresController < ApplicationController
 
   def first_getter
     @wday = %w[日 月 火 水 木 金 土]
-    @year_range = current_store.opening_year..Date.today.year
+    @year_range = current_store.opening_year..Date.current.year
     @ymd =
       if params[:year].present? && params[:month].present?
         Date.new(params[:year].to_i, params[:month].to_i)
       else
-        Date.new(Date.today.year, Date.today.month)
+        Date.new(Date.current.year, Date.current.month)
       end
     month_ranges = @ymd..@ymd + 1.month - 1.day
 
-    @month_check = month_ranges.cover?(Date.today)
+    @month_check = month_ranges.cover?(Date.current)
     @target_ranges =
-      @month_check ? Date.today.beginning_of_month..Date.today : month_ranges
+      @month_check ? Date.current.beginning_of_month..Date.current : month_ranges
 
     @budget = Store.get_budget(@ymd, current_store.id)
 
