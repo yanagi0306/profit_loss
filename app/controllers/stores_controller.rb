@@ -33,8 +33,6 @@ class StoresController < ApplicationController
         @budget,
         current_store.id,
       )
-
-
   end
 
   private
@@ -52,7 +50,7 @@ class StoresController < ApplicationController
 
     @month_check = month_ranges.cover?(Date.today)
     @target_ranges =
-      @month_check ? Date.today.beginning_of_month..(Date.today - 12.hour) : month_ranges
+      @month_check ? Date.today.beginning_of_month..Date.today : month_ranges
 
     @budget = Store.get_budget(@ymd, current_store.id)
 
