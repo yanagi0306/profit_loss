@@ -146,7 +146,7 @@
             <%=percentage(budget_columns(TargetSearch.labor_costs,@budget)* Store.day_ratio(ymd, @ratio),@budget[:sale]* Store.day_ratio(ymd, @ratio))%>
           </td>
           <td class="day-search-item">
-            <%=percentage(budget_columns(TargetSearch.costs_fixed.map { |i| i[:name] },@budget)* Store.day_ratio(ymd, @ratio) + get_achievement(@achievements,ymd)[:pert_cost]+ get_achievement(@achievements,ymd)[:overtime_employee_cost],get_achievement(@achievements,ymd)[:sale])%>
+            <%=percentage(achievement_columns(TargetSearch.labor_costs,get_achievement(@achievements,ymd)),get_achievement(@achievements,ymd)[:sale])%>
           </td>
           <td class="day-search-item"></td>
           <% end %>
@@ -159,8 +159,7 @@
             <%=percentage(@budget[:pert_cost]* Store.day_ratio(ymd, @ratio),budget_columns(TargetSearch.labor_costs,@budget)* Store.day_ratio(ymd, @ratio))%>
           </td>
           <td class="day-search-item">
-
-            <%=percentage(get_achievement(@achievements,ymd)[:pert_cost],budget_columns(TargetSearch.costs_fixed.map { |i| i[:name] },@budget)* Store.day_ratio(ymd, @ratio) + get_achievement(@achievements,ymd)[:pert_cost]+ get_achievement(@achievements,ymd)[:overtime_employee_cost])%>
+            <%=percentage(achievement_columns(TargetSearch.labor_costs,get_achievement(@achievements,ymd)),get_achievement(@achievements,ymd)[:sale])%>
           </td>
           <td class="day-search-item"></td>
           <% end %>
@@ -173,7 +172,7 @@
             <%=percentage(budget_columns(TargetSearch.total_costs,@budget)* Store.day_ratio(ymd, @ratio),@budget[:sale]* Store.day_ratio(ymd, @ratio))%>
           </td>
           <td class="day-search-item">
-            <%=percentage(achievement_columns(TargetSearch.total_costs,get_achievement(@achievements,ymd))+budget_columns(TargetSearch.costs_fixed.map { |i| i[:name] },@budget)* Store.day_ratio(ymd, @ratio),get_achievement(@achievements,ymd)[:sale])%>
+            <%=percentage(achievement_columns(TargetSearch.total_costs,get_achievement(@achievements,ymd)),get_achievement(@achievements,ymd)[:sale])%>
           </td>
           <td class="day-search-item"></td>
           <% end %>
