@@ -159,7 +159,7 @@
             <%=percentage(@budget[:pert_cost]* Store.day_ratio(ymd, @ratio),budget_columns(TargetSearch.labor_costs,@budget)* Store.day_ratio(ymd, @ratio))%>
           </td>
           <td class="day-search-item">
-            <%=percentage(achievement_columns(TargetSearch.labor_costs,get_achievement(@achievements,ymd)),get_achievement(@achievements,ymd)[:sale])%>
+            <%=percentage(get_achievement(@achievements,ymd)[:pert_cost],achievement_columns(TargetSearch.labor_costs,get_achievement(@achievements,ymd)))%>
           </td>
           <td class="day-search-item"></td>
           <% end %>
