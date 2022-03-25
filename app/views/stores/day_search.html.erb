@@ -79,7 +79,7 @@
             <%=comparison(budget_columns(%w[lunch_sale dinner_sale],@budget)* Store.day_ratio(ymd, @ratio),budget_columns(%w[lunch_number dinner_number],@budget)* Store.day_ratio(ymd, @ratio)).floor.to_s(:delimited)%>
           </td>
           <td class="day-search-item">
-            <%=comparison(get_achievement(@achievements,ymd)[:lunch_sale]+get_achievement(@achievements,ymd)[:dinner_sale],get_achievement(@achievements,ymd)[:lunch_number]+get_achievement(@achievements,ymd)[:dinner_number]).floor.to_s(:delimited)%>
+            <%=comparison(get_array(@achievements,ymd)[:lunch_sale]+get_array(@achievements,ymd)[:dinner_sale],get_array(@achievements,ymd)[:lunch_number]+get_array(@achievements,ymd)[:dinner_number]).floor.to_s(:delimited)%>
           </td>
           <td class="day-search-item"></td>
           <% end %>
@@ -92,7 +92,7 @@
             <%=comparison(@budget[:lunch_sale]* Store.day_ratio(ymd, @ratio),@budget[:lunch_number]* Store.day_ratio(ymd, @ratio)).floor.to_s(:delimited)%>
           </td>
           <td class="day-search-item">
-            <%=comparison(get_achievement(@achievements,ymd)[:lunch_sale],get_achievement(@achievements,ymd)[:lunch_number]).floor.to_s(:delimited)%>
+            <%=comparison(get_array(@achievements,ymd)[:lunch_sale],get_array(@achievements,ymd)[:lunch_number]).floor.to_s(:delimited)%>
           </td>
           <td class="day-search-item"></td>
           <% end %>
@@ -105,7 +105,7 @@
             <%=comparison(@budget[:dinner_sale]* Store.day_ratio(ymd, @ratio),@budget[:dinner_number]* Store.day_ratio(ymd, @ratio)).floor.to_s(:delimited)%>
           </td>
           <td class="day-search-item">
-            <%=comparison(get_achievement(@achievements,ymd)[:dinner_sale],get_achievement(@achievements,ymd)[:dinner_number]).floor.to_s(:delimited)%>
+            <%=comparison(get_array(@achievements,ymd)[:dinner_sale],get_array(@achievements,ymd)[:dinner_number]).floor.to_s(:delimited)%>
           </td>
           <td class="day-search-item"></td>
           <% end %>
@@ -118,7 +118,7 @@
             <%=percentage(@budget[:food_cost]* Store.day_ratio(ymd, @ratio),@budget[:sale]* Store.day_ratio(ymd, @ratio))%>
           </td>
           <td class="day-search-item">
-            <%=percentage(get_achievement(@achievements,ymd)[:food_cost],get_achievement(@achievements,ymd)[:sale])%>
+            <%=percentage(get_array(@achievements,ymd)[:food_cost],get_array(@achievements,ymd)[:sale])%>
           </td>
           <td class="day-search-item"></td>
           <% end %>
@@ -132,12 +132,13 @@
             <%=percentage(budget_columns(%w[food_cost material_cost],@budget)* Store.day_ratio(ymd, @ratio),@budget[:sale]* Store.day_ratio(ymd, @ratio))%>
           </td>
           <td class="day-search-item">
-            <%=percentage(achievement_columns(%w[food_cost material_cost],get_achievement(@achievements,ymd)),get_achievement(@achievements,ymd)[:sale])%>
+            <%=percentage(achievement_columns(%w[food_cost material_cost],get_array(@achievements,ymd)),get_array(@achievements,ymd)[:sale])%>
           </td>
           <td class="day-search-item"></td>
           <% end %>
 
         </tr>
+
         <tr class="search-record" style='background-color:#F9F9F9'>
           <td class="category side1"></td>
           <td class="subject side2">人件費率</td>
@@ -146,7 +147,7 @@
             <%=percentage(budget_columns(TargetSearch.labor_costs,@budget)* Store.day_ratio(ymd, @ratio),@budget[:sale]* Store.day_ratio(ymd, @ratio))%>
           </td>
           <td class="day-search-item">
-            <%=percentage(achievement_columns(TargetSearch.labor_costs,get_achievement(@achievements,ymd)),get_achievement(@achievements,ymd)[:sale])%>
+            <%=percentage(achievement_columns(TargetSearch.labor_costs,get_array(@achievements,ymd)),get_array(@achievements,ymd)[:sale])%>
           </td>
           <td class="day-search-item"></td>
           <% end %>
@@ -159,7 +160,7 @@
             <%=percentage(@budget[:pert_cost]* Store.day_ratio(ymd, @ratio),budget_columns(TargetSearch.labor_costs,@budget)* Store.day_ratio(ymd, @ratio))%>
           </td>
           <td class="day-search-item">
-            <%=percentage(get_achievement(@achievements,ymd)[:pert_cost],achievement_columns(TargetSearch.labor_costs,get_achievement(@achievements,ymd)))%>
+            <%=percentage(get_array(@achievements,ymd)[:pert_cost],achievement_columns(TargetSearch.labor_costs,get_array(@achievements,ymd)))%>
           </td>
           <td class="day-search-item"></td>
           <% end %>
@@ -172,7 +173,7 @@
             <%=percentage(budget_columns(TargetSearch.total_costs,@budget)* Store.day_ratio(ymd, @ratio),@budget[:sale]* Store.day_ratio(ymd, @ratio))%>
           </td>
           <td class="day-search-item">
-            <%=percentage(achievement_columns(TargetSearch.total_costs,get_achievement(@achievements,ymd)),get_achievement(@achievements,ymd)[:sale])%>
+            <%=percentage(achievement_columns(TargetSearch.total_costs,get_array(@achievements,ymd)),get_array(@achievements,ymd)[:sale])%>
           </td>
           <td class="day-search-item"></td>
           <% end %>

@@ -39,7 +39,7 @@ class TargetSearch
     ]
   end
   def self.labor_costs
-    %w[pert_cost employee_cost director_cost overtime_employee_cost]
+    %w[pert_cost overtime_employee_cost employee_cost director_cost]
   end
 
   def self.total_costs

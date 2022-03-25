@@ -50,7 +50,11 @@ class StoresController < ApplicationController
 
     @month_check = month_ranges.cover?(Date.current)
     @target_ranges =
-      @month_check ? Date.current.beginning_of_month..Date.current : month_ranges
+      if @month_check
+        Date.current.beginning_of_month..Date.current
+      else
+        month_ranges
+      end
 
     @budget = Store.get_budget(@ymd, current_store.id)
 
@@ -102,6 +106,7 @@ class StoresController < ApplicationController
     end
   end
 
+  # 注意！！！データベースから取得しています　
   def get_achievement(achievements, ymd)
     if achievements.where(ymd: ymd)[0].present?
       return achievements.where(ymd: ymd)[0]
@@ -110,9 +115,14 @@ class StoresController < ApplicationController
     end
   end
 
+  def get_array(array, ymd)
+    array.find { |a| a[:ymd] == ymd }
+  end
+
   helper_method :budget_columns
   helper_method :achievement_columns
   helper_method :comparison
   helper_method :percentage
   helper_method :get_achievement
+  helper_method :get_array
 end
